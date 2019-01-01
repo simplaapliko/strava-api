@@ -1,0 +1,118 @@
+/*
+ * Copyright (C) 2018 Oleg Kan
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+apply plugin: 'com.github.ben-manes.versions'
+
+buildscript {
+
+  ext.buildConfig = [
+      'minSdk'    : 21,
+      'compileSdk': 28,
+      'targetSdk' : 28,
+  ]
+
+  ext.appVersion = [
+      'major': 0,
+      'minor': 1,
+      'patch': 0,
+      'build': 0,
+  ]
+
+  ext.appVersion['name'] = "${appVersion.major}.${appVersion.minor}.${appVersion.patch}"
+  ext.appVersion['fullName'] = "${appVersion.name}.${appVersion.build}"
+  ext.appVersion['code'] = appVersion.major * 1000000 + appVersion.minor * 10000 + appVersion.patch * 100 + appVersion.build
+
+  ext.versions = [
+      'dagger'  : '2.20',
+      'kotlin'  : '1.3.11',
+      'okHttp'  : '3.12.1',
+      'retrofit': '2.5.0',
+  ]
+
+  ext.deps = [
+      'android'        : [
+          'support': [
+              'annotations'     : "androidx.annotation:annotation:1.0.1",
+              'browser'         : "androidx.browser:browser:1.0.0",
+              'cardview'        : "androidx.cardview:cardview:1.0.0",
+              'constraintLayout': "androidx.constraintlayout:constraintlayout:1.1.3",
+              'core'            : "androidx.core:core:1.0.1",
+              'material'        : "com.google.android.material:material:1.0.0",
+          ],
+      ],
+      'analytics'      : [
+          'crashlytics': "com.crashlytics.sdk.android:crashlytics:2.9.8",
+      ],
+      'dagger'         : [
+          'runtime' : "com.google.dagger:dagger:${versions.dagger}",
+          'compiler': "com.google.dagger:dagger-compiler:${versions.dagger}",
+      ],
+      'gson'           : "com.google.code.gson:gson:2.8.5",
+      'javaxannotation': "javax.annotation:jsr250-api:1.0",
+      'kotlin'         : [
+          'stdlib': [
+              'jdk': "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+          ],
+      ],
+      'okhttp'         : [
+          'client' : "com.squareup.okhttp3:okhttp:${versions.okHttp}",
+          'logging': "com.squareup.okhttp3:logging-interceptor:${versions.okHttp}",
+      ],
+      'reactivex'      : [
+          'rxAndroid': "io.reactivex.rxjava2:rxandroid:2.1.0",
+          'rxJava2'  : "io.reactivex.rxjava2:rxjava:2.2.4",
+      ],
+      'retrofit'       : [
+          'client'       :    "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+          'adapterRxJava':    "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}",
+          'converterGson':    "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
+          'converterScalars': "com.squareup.retrofit2:converter-scalars:${versions.retrofit}",
+      ],
+      'test'           : [
+          'mockito': "org.mockito:mockito-core:2.18.3",
+          'junit'  : "junit:junit:4.12",
+      ],
+      'truth'          : "com.google.truth:truth:0.42",
+  ]
+
+  repositories {
+    google()
+    jcenter()
+    maven { url 'https://jitpack.io' }
+  }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:3.2.1'
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.20.0'
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+
+    // NOTE: Do not place your application dependencies here; they belong
+    // in the individual module build.gradle files
+  }
+}
+
+allprojects {
+  repositories {
+    google()
+    jcenter()
+    maven { url 'https://jitpack.io' }
+  }
+}
+
+task clean(type: Delete) {
+  delete rootProject.buildDir
+}

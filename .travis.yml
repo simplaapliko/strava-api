@@ -1,0 +1,11 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+sudo: false
+
+script:
+  - ./gradlew :strava_api:clean
+  - ./gradlew :strava_api:build
+  - ./gradlew :strava_api:test

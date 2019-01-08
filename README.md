@@ -1,3 +1,5 @@
+# Strava-API
+[![Build Status](https://travis-ci.org/simplaapliko/strava-api.svg)](https://travis-ci.org/simplaapliko/strava-api)
 [![Release](https://jitpack.io/v/simplaapliko/strava-api.svg)](https://jitpack.io/#simplaapliko/strava-api)
 
 ## Usage

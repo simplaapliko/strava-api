@@ -72,4 +72,4 @@ data class DetailedGear(
      */
     @SerializedName("description")
     var description: String = ""
-)
+) : StravaResponse()

@@ -27,39 +27,39 @@ class ResourceStateTest {
     fun emptyResourceState_shouldBeConvertedToUnknown() {
         val json = "{}"
 
-        val gear = GsonUtils.gson()
+        val model = GsonUtils.gson()
                 .fromJson(json, DetailedGear::class.java)
 
-        assertThat(gear.resourceState).isEqualTo(ResourceState.UNKNOWN)
+        assertThat(model.resourceState).isEqualTo(ResourceState.UNKNOWN)
     }
 
     @Test
     fun resourceState0_shouldBeConvertedToUnknown() {
         val json = """{"resource_state" : 0}"""
 
-        val gear = GsonUtils.gson()
+        val model = GsonUtils.gson()
                 .fromJson(json, DetailedGear::class.java)
 
-        assertThat(gear.resourceState).isEqualTo(ResourceState.UNKNOWN)
+        assertThat(model.resourceState).isEqualTo(ResourceState.UNKNOWN)
     }
 
     @Test
     fun resourceState3_shouldBeConvertedToDetail() {
         val json = """{"resource_state" : 3}"""
 
-        val gear = GsonUtils.gson()
+        val model = GsonUtils.gson()
                 .fromJson(json, DetailedGear::class.java)
 
-        assertThat(gear.resourceState).isEqualTo(ResourceState.DETAIL)
+        assertThat(model.resourceState).isEqualTo(ResourceState.DETAIL)
     }
 
     @Test
     fun resourceState5_shouldBeConvertedToUnknown() {
         val json = """{"resource_state" : 5}"""
 
-        val gear = GsonUtils.gson()
+        val model = GsonUtils.gson()
                 .fromJson(json, DetailedGear::class.java)
 
-        assertThat(gear.resourceState).isEqualTo(ResourceState.UNKNOWN)
+        assertThat(model.resourceState).isEqualTo(ResourceState.UNKNOWN)
     }
 }

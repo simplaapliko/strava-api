@@ -26,17 +26,17 @@ class DetailedGearTest {
     fun emptyJson_modelShouldHaveDefaultValues() {
         val json = "{}"
 
-        val gear = GsonUtils.gson()
+        val model = GsonUtils.gson()
                 .fromJson(json, DetailedGear::class.java)
 
-        assertThat(gear.id).isEmpty()
-        assertThat(gear.resourceState).isEqualTo(ResourceState.UNKNOWN)
-        assertThat(gear.primary).isFalse()
-        assertThat(gear.name).isEmpty()
-        assertThat(gear.distance).isZero()
-        assertThat(gear.brandName).isEmpty()
-        assertThat(gear.modelName).isEmpty()
-        assertThat(gear.frameType).isEqualTo(FrameType.UNKNOWN)
-        assertThat(gear.description).isEmpty()
+        assertThat(model.id).isEmpty()
+        assertThat(model.resourceState).isEqualTo(ResourceState.UNKNOWN)
+        assertThat(model.primary).isFalse()
+        assertThat(model.name).isEmpty()
+        assertThat(model.distance).isZero()
+        assertThat(model.brandName).isEmpty()
+        assertThat(model.modelName).isEmpty()
+        assertThat(model.frameType).isEqualTo(FrameType.UNKNOWN)
+        assertThat(model.description).isEmpty()
     }
 }

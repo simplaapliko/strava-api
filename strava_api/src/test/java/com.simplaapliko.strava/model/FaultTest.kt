@@ -26,11 +26,11 @@ class FaultTest {
     fun emptyJson_modelShouldNotHaveErrors() {
         val json = "{}"
 
-        val gear = GsonUtils.gson()
+        val model = GsonUtils.gson()
                 .fromJson(json, DetailedGear::class.java)
 
-        assertThat(gear.errors).isNull()
-        assertThat(gear.errorMessage).isNull()
+        assertThat(model.errors).isNull()
+        assertThat(model.errorMessage).isNull()
     }
 
     @Test
@@ -47,10 +47,10 @@ class FaultTest {
                 "message": "message"
             }"""
 
-        val gear = GsonUtils.gson()
+        val model = GsonUtils.gson()
             .fromJson(json, DetailedGear::class.java)
 
-        assertThat(gear.errors).hasSize(1)
-        assertThat(gear.errorMessage).isEqualTo("message")
+        assertThat(model.errors).hasSize(1)
+        assertThat(model.errorMessage).isEqualTo("message")
     }
 }

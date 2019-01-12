@@ -32,4 +32,4 @@ data class Zones(
      */
     @SerializedName("power")
     var power: PowerZoneRanges? = null
-) :StravaResponse()
+) : StravaResponse()

@@ -17,8 +17,8 @@
 package com.simplaapliko.strava.gson
 
 import com.google.common.truth.Truth.assertThat
-import com.simplaapliko.strava.model.FrameType
 import com.simplaapliko.strava.model.DetailedGear
+import com.simplaapliko.strava.model.FrameType
 import org.junit.Test
 
 class FrameTypeTest {
@@ -27,39 +27,39 @@ class FrameTypeTest {
     fun emptyFrameType_shouldBeConvertedToUnknown() {
         val json = "{}"
 
-        val gear = GsonUtils.gson()
+        val model = GsonUtils.gson()
                 .fromJson(json, DetailedGear::class.java)
 
-        assertThat(gear.frameType).isEqualTo(FrameType.UNKNOWN)
+        assertThat(model.frameType).isEqualTo(FrameType.UNKNOWN)
     }
 
     @Test
     fun frameType0_shouldBeConvertedToUnknown() {
         val json = """{"frame_type" : 0}"""
 
-        val gear = GsonUtils.gson()
+        val model = GsonUtils.gson()
                 .fromJson(json, DetailedGear::class.java)
 
-        assertThat(gear.frameType).isEqualTo(FrameType.UNKNOWN)
+        assertThat(model.frameType).isEqualTo(FrameType.UNKNOWN)
     }
 
     @Test
     fun frameType3_shouldBeConvertedToRoadBike() {
         val json = """{"frame_type" : 3}"""
 
-        val gear = GsonUtils.gson()
+        val model = GsonUtils.gson()
                 .fromJson(json, DetailedGear::class.java)
 
-        assertThat(gear.frameType).isEqualTo(FrameType.ROAD)
+        assertThat(model.frameType).isEqualTo(FrameType.ROAD)
     }
 
     @Test
     fun frameType5_shouldBeConvertedToUnknown() {
         val json = """{"frame_type" : 5}"""
 
-        val gear = GsonUtils.gson()
+        val model = GsonUtils.gson()
                 .fromJson(json, DetailedGear::class.java)
 
-        assertThat(gear.frameType).isEqualTo(FrameType.UNKNOWN)
+        assertThat(model.frameType).isEqualTo(FrameType.UNKNOWN)
     }
 }

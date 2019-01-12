@@ -14,22 +14,23 @@
  * limitations under the License.
  */
 
-package com.simplaapliko.strava.model
+package com.simplaapliko.strava.gson.serializer
 
-enum class ResourceState(val id: Int) {
-    UNKNOWN(-1),
-    META(1),
-    SUMMARY(2),
-    DETAIL(3);
+import com.google.gson.*
+import com.simplaapliko.strava.model.Sex
+import java.lang.reflect.Type
 
-    companion object {
-        fun byId(id: Int): ResourceState {
-            for (frameType in values()) {
-                if (frameType.id == id) {
-                    return frameType
-                }
-            }
-            return UNKNOWN
-        }
+class SexTypeSerializer : JsonDeserializer<Sex>, JsonSerializer<Sex> {
+
+    override fun deserialize(
+        json: JsonElement, typeOfT: Type, context: JsonDeserializationContext
+    ): Sex {
+        return Sex.byId(json.asString)
+    }
+
+    override fun serialize(
+        src: Sex, typeOfSrc: Type, context: JsonSerializationContext
+    ): JsonElement {
+        return context.serialize(src.id)
     }
 }

@@ -17,6 +17,7 @@
 package com.simplaapliko.strava.api
 
 import com.simplaapliko.strava.model.ActivityStats
+import com.simplaapliko.strava.model.Athlete
 import com.simplaapliko.strava.model.Zones
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -37,6 +38,14 @@ interface AthleteApi {
         @Query("page ") page : Int = 1,
         @Query("per_page ") perPage : Int = 30
     ): Single<ActivityStats>
+
+    /**
+     * Returns the currently authenticated athlete.
+     * Tokens with profile:read_all scope will receive a detailed athlete representation;
+     * all others will receive a summary representation.
+     */
+    @GET("athlete")
+    fun getAuthenticatedAthlete(): Single<Athlete>
 
     /**
      * Returns the the authenticated athlete’s heart rate and power zones.

@@ -16,17 +16,17 @@
 
 package com.simplaapliko.strava.model
 
-enum class ResourceState(val id: Int) {
-    UNKNOWN(-1),
-    META(1),
-    SUMMARY(2),
-    DETAIL(3);
+enum class FriendState(val id: String) {
+    UNKNOWN("unknown"),
+    ACCEPTED("accepted"),
+    BLOCKED("blocked"),
+    PENDING("pending");
 
     companion object {
-        fun byId(id: Int): ResourceState {
-            for (frameType in values()) {
-                if (frameType.id == id) {
-                    return frameType
+        fun byId(id: String): FriendState {
+            for (type in values()) {
+                if (type.id == id) {
+                    return type
                 }
             }
             return UNKNOWN

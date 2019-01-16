@@ -73,6 +73,12 @@ object Auth {
         }
     }
 
+    object Response {
+        const val CODE = "code"
+        const val SCOPE = "scope"
+        const val STATE = "state"
+    }
+
     object UrlBuilder {
         const val BASE_URL = "https://www.strava.com/oauth/mobile/"
         const val AUTHORIZE = "authorize"

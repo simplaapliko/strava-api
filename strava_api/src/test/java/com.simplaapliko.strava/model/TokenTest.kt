@@ -31,7 +31,7 @@ class TokenTest {
 
         Truth.assertThat(model.tokenType).isEmpty()
         Truth.assertThat(model.accessToken).isEmpty()
-        Truth.assertThat(model.athlete).isNull()
+        Truth.assertThat(model.athleteSummary).isNull()
         Truth.assertThat(model.refreshToken).isEmpty()
         Truth.assertThat(model.expiresAt).isEqualTo(0)
         Truth.assertThat(model.state).isEmpty()

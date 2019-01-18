@@ -27,7 +27,7 @@ data class Token(
     var accessToken: String = "",
 
     @SerializedName("athlete")
-    var athlete: Athlete? = null,
+    var athleteSummary: Athlete? = null,
 
     @SerializedName("refresh_token")
     var refreshToken: String = "",

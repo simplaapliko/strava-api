@@ -19,10 +19,12 @@ package com.simplaapliko.strava.gson
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.simplaapliko.strava.gson.serializer.FrameTypeSerializer
+import com.simplaapliko.strava.gson.serializer.FriendStateSerializer
 import com.simplaapliko.strava.gson.serializer.ResourceStateSerializer
 import com.simplaapliko.strava.gson.serializer.SexTypeSerializer
 import com.simplaapliko.strava.gson.serializer.SportTypeSerializer
 import com.simplaapliko.strava.model.FrameType
+import com.simplaapliko.strava.model.FriendState
 import com.simplaapliko.strava.model.ResourceState
 import com.simplaapliko.strava.model.Sex
 import com.simplaapliko.strava.model.SportType
@@ -32,6 +34,7 @@ object GsonUtils {
     fun gson(): Gson {
         return GsonBuilder()
                 .registerTypeAdapter(FrameType::class.java, FrameTypeSerializer())
+                .registerTypeAdapter(FriendState::class.java, FriendStateSerializer())
                 .registerTypeAdapter(ResourceState::class.java, ResourceStateSerializer())
                 .registerTypeAdapter(Sex::class.java, SexTypeSerializer())
                 .registerTypeAdapter(SportType::class.java, SportTypeSerializer())

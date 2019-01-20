@@ -27,9 +27,11 @@ class ResourceStateTest {
     fun emptyResourceState_shouldBeConvertedToUnknown() {
         val json = "{}"
 
-        val model = GsonUtils.gson()
-                .fromJson(json, DetailedGear::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(DetailedGear::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.resourceState).isEqualTo(ResourceState.UNKNOWN)
     }
 
@@ -37,9 +39,11 @@ class ResourceStateTest {
     fun resourceState0_shouldBeConvertedToUnknown() {
         val json = """{"resource_state" : 0}"""
 
-        val model = GsonUtils.gson()
-                .fromJson(json, DetailedGear::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(DetailedGear::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.resourceState).isEqualTo(ResourceState.UNKNOWN)
     }
 
@@ -47,9 +51,11 @@ class ResourceStateTest {
     fun resourceState3_shouldBeConvertedToDetail() {
         val json = """{"resource_state" : 3}"""
 
-        val model = GsonUtils.gson()
-                .fromJson(json, DetailedGear::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(DetailedGear::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.resourceState).isEqualTo(ResourceState.DETAIL)
     }
 
@@ -57,9 +63,11 @@ class ResourceStateTest {
     fun resourceState5_shouldBeConvertedToUnknown() {
         val json = """{"resource_state" : 5}"""
 
-        val model = GsonUtils.gson()
-                .fromJson(json, DetailedGear::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(DetailedGear::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.resourceState).isEqualTo(ResourceState.UNKNOWN)
     }
 }

@@ -16,21 +16,23 @@
 
 package com.simplaapliko.strava.gson.serializer
 
-import com.google.gson.*
-import com.simplaapliko.strava.model.Sex
-import java.lang.reflect.Type
+import com.simplaapliko.strava.model.SportType
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.JsonReader
+import com.squareup.moshi.JsonWriter
 
-class SexTypeSerializer : JsonDeserializer<Sex>, JsonSerializer<Sex> {
+class SportTypeAdapter : JsonAdapter<SportType>() {
 
-    override fun deserialize(
-        json: JsonElement, typeOfT: Type, context: JsonDeserializationContext
-    ): Sex {
-        return Sex.byId(json.asString)
+    override fun fromJson(reader: JsonReader): SportType {
+        return if (reader.peek() == JsonReader.Token.NULL) {
+            reader.nextNull<Unit>()
+            SportType.UNKNOWN
+        } else {
+            SportType.byId(reader.nextString())
+        }
     }
 
-    override fun serialize(
-        src: Sex, typeOfSrc: Type, context: JsonSerializationContext
-    ): JsonElement {
-        return context.serialize(src.id)
+    override fun toJson(writer: JsonWriter, value: SportType?) {
+        writer.value(value?.id)
     }
 }

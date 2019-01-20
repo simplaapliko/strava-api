@@ -40,7 +40,10 @@ android {
 dependencies {
   implementation deps.kotlin.stdlib.jdk
 
-  implementation deps.gson
+  implementation deps.moshi.adapters
+  implementation deps.moshi.kotlin
+  implementation deps.moshi.runtime
+  kapt deps.moshi.compiler
 
   implementation deps.okhttp.client
   implementation deps.okhttp.logging

@@ -16,8 +16,8 @@
 
 package com.simplaapliko.strava.model
 
-enum class FrameType(val id: Int) {
-    UNKNOWN(-1),
+enum class FrameType(val id: Int?) {
+    UNKNOWN(null),
     MOUNTAIN(1),
     CROSS(2),
     ROAD(3),

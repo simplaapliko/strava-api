@@ -16,8 +16,8 @@
 
 package com.simplaapliko.strava.model
 
-enum class MeasurementPreference(val id: String) {
-    UNKNOWN("unknown"),
+enum class MeasurementPreference(val id: String?) {
+    UNKNOWN(null),
     FEET("feet"),
     METERS("meters");
 

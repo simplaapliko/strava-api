@@ -1,17 +1,17 @@
 package com.simplaapliko.strava.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 abstract class StravaResponse {
     /**
      * The set of specific errors associated with this fault, if any.
      */
-    @SerializedName("errors")
+    @Json(name ="errors")
     var errors: List<Error>? = null
 
     /**
      * The message of the fault.
      */
-    @SerializedName("message")
+    @Json(name ="message")
     var errorMessage: String? = null
 }

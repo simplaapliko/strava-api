@@ -16,8 +16,8 @@
 
 package com.simplaapliko.strava.model
 
-import com.google.common.truth.Truth
-import com.simplaapliko.strava.gson.GsonUtils
+import com.google.common.truth.Truth.assertThat
+import com.simplaapliko.strava.gson.JsonUtils
 import org.junit.Test
 
 class RefreshTokenTest {
@@ -26,12 +26,14 @@ class RefreshTokenTest {
     fun emptyJson_modelShouldHaveDefaultValues() {
         val json = "{}"
 
-        val model = GsonUtils.gson()
-            .fromJson(json, RefreshToken::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(RefreshToken::class.java)
+                .fromJson(json)
 
-        Truth.assertThat(model.tokenType).isEmpty()
-        Truth.assertThat(model.accessToken).isEmpty()
-        Truth.assertThat(model.refreshToken).isEmpty()
-        Truth.assertThat(model.expiresAt).isEqualTo(0)
+        assertThat(model!!).isNotNull()
+        assertThat(model.tokenType).isEmpty()
+        assertThat(model.accessToken).isEmpty()
+        assertThat(model.refreshToken).isEmpty()
+        assertThat(model.expiresAt).isEqualTo(0)
     }
 }

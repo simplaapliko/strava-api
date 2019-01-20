@@ -27,9 +27,11 @@ class SexTest {
     fun emptyJson_sexShouldBeConvertedToUnknown() {
         val json = "{}"
 
-        val model = GsonUtils.gson()
-                .fromJson(json, Athlete::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(Athlete::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.sex).isEqualTo(Sex.UNKNOWN)
     }
 
@@ -37,9 +39,23 @@ class SexTest {
     fun emptySex_shouldBeConvertedToUnknown() {
         val json = """{"sex" : ""}"""
 
-        val model = GsonUtils.gson()
-                .fromJson(json, Athlete::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(Athlete::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
+        assertThat(model.sex).isEqualTo(Sex.UNKNOWN)
+    }
+
+    @Test
+    fun nullSex_shouldBeConvertedToUnknown() {
+        val json = """{"sex" : null}"""
+
+        val model = JsonUtils.moshi()
+                .adapter(Athlete::class.java)
+                .fromJson(json)
+
+        assertThat(model!!).isNotNull()
         assertThat(model.sex).isEqualTo(Sex.UNKNOWN)
     }
 
@@ -47,9 +63,11 @@ class SexTest {
     fun sexM_shouldBeConvertedToM() {
         val json = """{"sex" : "M"}"""
 
-        val model = GsonUtils.gson()
-                .fromJson(json, Athlete::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(Athlete::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.sex).isEqualTo(Sex.M)
     }
 
@@ -57,9 +75,11 @@ class SexTest {
     fun sexUnknown_shouldBeConvertedToUnknown() {
         val json = """{"sex" : "unknown_sex"}"""
 
-        val model = GsonUtils.gson()
-                .fromJson(json, Athlete::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(Athlete::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.sex).isEqualTo(Sex.UNKNOWN)
     }
 }

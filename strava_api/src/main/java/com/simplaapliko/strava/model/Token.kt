@@ -16,25 +16,25 @@
 
 package com.simplaapliko.strava.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class Token(
 
-    @SerializedName("token_type")
+    @Json(name ="token_type")
     var tokenType: String = "",
 
-    @SerializedName("access_token")
+    @Json(name ="access_token")
     var accessToken: String = "",
 
-    @SerializedName("athlete")
+    @Json(name ="athlete")
     var athleteSummary: Athlete? = null,
 
-    @SerializedName("refresh_token")
+    @Json(name ="refresh_token")
     var refreshToken: String = "",
 
-    @SerializedName("expires_at")
+    @Json(name ="expires_at")
     var expiresAt: Int = 0,
 
-    @SerializedName("state")
+    @Json(name ="state")
     var state: String = ""
 )

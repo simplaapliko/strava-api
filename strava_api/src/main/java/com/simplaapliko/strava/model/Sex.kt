@@ -16,8 +16,8 @@
 
 package com.simplaapliko.strava.model
 
-enum class Sex(val id: String) {
-    UNKNOWN("unknown"),
+enum class Sex(val id: String?) {
+    UNKNOWN(null),
     F("F"),
     M("M");
 

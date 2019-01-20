@@ -17,7 +17,7 @@
 package com.simplaapliko.strava.model
 
 import com.google.common.truth.Truth.assertThat
-import com.simplaapliko.strava.gson.GsonUtils
+import com.simplaapliko.strava.gson.JsonUtils
 import org.junit.Test
 
 class AthleteTest {
@@ -26,9 +26,11 @@ class AthleteTest {
     fun emptyJson_modelShouldHaveDefaultValues() {
         val json = "{}"
 
-        val model = GsonUtils.gson()
-                .fromJson(json, Athlete::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(Athlete::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.id).isEqualTo(0)
         assertThat(model.resourceState).isEqualTo(ResourceState.UNKNOWN)
         assertThat(model.firstName).isEqualTo("")

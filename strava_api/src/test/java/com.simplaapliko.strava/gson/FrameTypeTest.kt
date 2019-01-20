@@ -27,9 +27,23 @@ class FrameTypeTest {
     fun emptyFrameType_shouldBeConvertedToUnknown() {
         val json = "{}"
 
-        val model = GsonUtils.gson()
-                .fromJson(json, DetailedGear::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(DetailedGear::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
+        assertThat(model.frameType).isEqualTo(FrameType.UNKNOWN)
+    }
+
+    @Test
+    fun nullFrameType_shouldBeConvertedToUnknown() {
+        val json = """{"frame_type" : null}"""
+
+        val model = JsonUtils.moshi()
+                .adapter(DetailedGear::class.java)
+                .fromJson(json)
+
+        assertThat(model!!).isNotNull()
         assertThat(model.frameType).isEqualTo(FrameType.UNKNOWN)
     }
 
@@ -37,9 +51,11 @@ class FrameTypeTest {
     fun frameType0_shouldBeConvertedToUnknown() {
         val json = """{"frame_type" : 0}"""
 
-        val model = GsonUtils.gson()
-                .fromJson(json, DetailedGear::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(DetailedGear::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.frameType).isEqualTo(FrameType.UNKNOWN)
     }
 
@@ -47,9 +63,11 @@ class FrameTypeTest {
     fun frameType3_shouldBeConvertedToRoadBike() {
         val json = """{"frame_type" : 3}"""
 
-        val model = GsonUtils.gson()
-                .fromJson(json, DetailedGear::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(DetailedGear::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.frameType).isEqualTo(FrameType.ROAD)
     }
 
@@ -57,9 +75,11 @@ class FrameTypeTest {
     fun frameType5_shouldBeConvertedToUnknown() {
         val json = """{"frame_type" : 5}"""
 
-        val model = GsonUtils.gson()
-                .fromJson(json, DetailedGear::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(DetailedGear::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.frameType).isEqualTo(FrameType.UNKNOWN)
     }
 }

@@ -16,8 +16,8 @@
 
 package com.simplaapliko.strava.model
 
-enum class SportType(val id: String) {
-    UNKNOWN("unknown"),
+enum class SportType(val id: String?) {
+    UNKNOWN(null),
     CYCLING("cycling"),
     RUNNING("running"),
     TRIATHLON("triathlon"),

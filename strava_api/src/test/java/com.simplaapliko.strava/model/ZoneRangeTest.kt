@@ -17,7 +17,7 @@
 package com.simplaapliko.strava.model
 
 import com.google.common.truth.Truth.assertThat
-import com.simplaapliko.strava.gson.GsonUtils
+import com.simplaapliko.strava.gson.JsonUtils
 import org.junit.Test
 
 class ZoneRangeTest {
@@ -26,9 +26,11 @@ class ZoneRangeTest {
     fun emptyJson_modelShouldHaveDefaultValues() {
         val json = "{}"
 
-        val model = GsonUtils.gson()
-                .fromJson(json, ZoneRange::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(ZoneRange::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.min).isEqualTo(0)
         assertThat(model.max).isEqualTo(0)
     }

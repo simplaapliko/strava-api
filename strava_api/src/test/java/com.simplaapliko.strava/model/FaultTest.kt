@@ -17,7 +17,7 @@
 package com.simplaapliko.strava.model
 
 import com.google.common.truth.Truth.assertThat
-import com.simplaapliko.strava.gson.GsonUtils
+import com.simplaapliko.strava.gson.JsonUtils
 import org.junit.Test
 
 class FaultTest {
@@ -26,9 +26,11 @@ class FaultTest {
     fun emptyJson_modelShouldNotHaveErrors() {
         val json = "{}"
 
-        val model = GsonUtils.gson()
-                .fromJson(json, DetailedGear::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(DetailedGear::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.errors).isNull()
         assertThat(model.errorMessage).isNull()
     }
@@ -47,9 +49,11 @@ class FaultTest {
                 "message": "message"
             }"""
 
-        val model = GsonUtils.gson()
-            .fromJson(json, DetailedGear::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(DetailedGear::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.errors).hasSize(1)
         assertThat(model.errorMessage).isEqualTo("message")
     }

@@ -16,25 +16,23 @@
 
 package com.simplaapliko.strava.gson.serializer
 
-import com.google.gson.JsonDeserializationContext
-import com.google.gson.JsonDeserializer
-import com.google.gson.JsonElement
-import com.google.gson.JsonSerializationContext
-import com.google.gson.JsonSerializer
 import com.simplaapliko.strava.model.ResourceState
-import java.lang.reflect.Type
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.JsonReader
+import com.squareup.moshi.JsonWriter
 
-class ResourceStateSerializer : JsonDeserializer<ResourceState>, JsonSerializer<ResourceState> {
+class ResourceStateAdapter : JsonAdapter<ResourceState>() {
 
-    override fun deserialize(
-        json: JsonElement, typeOfT: Type, context: JsonDeserializationContext
-    ): ResourceState {
-        return ResourceState.byId(json.asInt)
+    override fun fromJson(reader: JsonReader): ResourceState {
+        return if (reader.peek() == JsonReader.Token.NULL) {
+            reader.nextNull<Unit>()
+            ResourceState.UNKNOWN
+        } else {
+            ResourceState.byId(reader.nextInt())
+        }
     }
 
-    override fun serialize(
-        src: ResourceState, typeOfSrc: Type, context: JsonSerializationContext
-    ): JsonElement {
-        return context.serialize(src.id)
+    override fun toJson(writer: JsonWriter, value: ResourceState?) {
+        writer.value(value?.id)
     }
 }

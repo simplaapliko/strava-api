@@ -40,6 +40,7 @@ buildscript {
   ext.versions = [
       'dagger'  : '2.20',
       'kotlin'  : '1.3.11',
+      'moshi'   : '1.8.0',
       'okHttp'  : '3.12.1',
       'retrofit': '2.5.0',
   ]
@@ -62,12 +63,17 @@ buildscript {
           'runtime' : "com.google.dagger:dagger:${versions.dagger}",
           'compiler': "com.google.dagger:dagger-compiler:${versions.dagger}",
       ],
-      'gson'           : "com.google.code.gson:gson:2.8.5",
       'javaxannotation': "javax.annotation:jsr250-api:1.0",
       'kotlin'         : [
           'stdlib': [
               'jdk': "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
           ],
+      ],
+      'moshi'         : [
+          'adapters'   : "com.squareup.moshi:moshi-adapters:${versions.moshi}",
+          'compiler'   : "com.squareup.moshi:moshi-kotlin-codegen:${versions.moshi}",
+          'kotlin'     : "com.squareup.moshi:moshi-kotlin:${versions.moshi}",
+          'runtime'    : "com.squareup.moshi:moshi:${versions.moshi}",
       ],
       'okhttp'         : [
           'client' : "com.squareup.okhttp3:okhttp:${versions.okHttp}",

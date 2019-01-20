@@ -27,20 +27,24 @@ class FriendStateTest {
     fun emptyFriendState_shouldBeConvertedToUnknown() {
         val json = "{}"
 
-        val model = GsonUtils.gson()
-                .fromJson(json, Athlete::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(Athlete::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.friend).isEqualTo(FriendState.UNKNOWN)
         assertThat(model.follower).isEqualTo(FriendState.UNKNOWN)
     }
 
     @Test
-    fun friendStateNull_shouldBeConvertedToUnknown() {
+    fun nullFriendState_shouldBeConvertedToUnknown() {
         val json = """{"friend" : null, "follower" : null}"""
 
-        val model = GsonUtils.gson()
-                .fromJson(json, Athlete::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(Athlete::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.friend).isEqualTo(FriendState.UNKNOWN)
         assertThat(model.follower).isEqualTo(FriendState.UNKNOWN)
     }
@@ -49,9 +53,11 @@ class FriendStateTest {
     fun friendStatePending_shouldBeConvertedToPending() {
         val json = """{"friend" : "pending", "follower" : "pending"}"""
 
-        val model = GsonUtils.gson()
-                .fromJson(json, Athlete::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(Athlete::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.friend).isEqualTo(FriendState.PENDING)
         assertThat(model.follower).isEqualTo(FriendState.PENDING)
     }

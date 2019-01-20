@@ -16,18 +16,18 @@
 
 package com.simplaapliko.strava.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class ZoneRange(
     /**
      * The minimum value in the range.
      */
-    @SerializedName("min")
+    @Json(name ="min")
     var min: Int = 0,
 
     /**
      * The maximum value in the range.
      */
-    @SerializedName("max")
+    @Json(name ="max")
     var max: Int = 0
 )

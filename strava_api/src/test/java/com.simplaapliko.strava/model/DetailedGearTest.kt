@@ -17,7 +17,7 @@
 package com.simplaapliko.strava.model
 
 import com.google.common.truth.Truth.assertThat
-import com.simplaapliko.strava.gson.GsonUtils
+import com.simplaapliko.strava.gson.JsonUtils
 import org.junit.Test
 
 class DetailedGearTest {
@@ -26,9 +26,11 @@ class DetailedGearTest {
     fun emptyJson_modelShouldHaveDefaultValues() {
         val json = "{}"
 
-        val model = GsonUtils.gson()
-                .fromJson(json, DetailedGear::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(DetailedGear::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.id).isEmpty()
         assertThat(model.resourceState).isEqualTo(ResourceState.UNKNOWN)
         assertThat(model.primary).isFalse()

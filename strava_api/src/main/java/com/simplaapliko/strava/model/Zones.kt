@@ -16,20 +16,20 @@
 
 package com.simplaapliko.strava.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class Zones(
     /**
      * An instance of HeartRateZoneRanges.
      * @see com.simplaapliko.strava.model.HeartRateZoneRanges
      */
-    @SerializedName("heart_rate")
+    @Json(name ="heart_rate")
     var heartRate: HeartRateZoneRanges? = null,
 
     /**
      * An instance of PowerZoneRanges.
      * @see com.simplaapliko.strava.model.PowerZoneRanges
      */
-    @SerializedName("power")
+    @Json(name ="power")
     var power: PowerZoneRanges? = null
 ) : StravaResponse()

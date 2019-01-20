@@ -27,19 +27,23 @@ class MeasurementPreferenceTest {
     fun emptyMeasurementPreference_shouldBeConvertedToUnknown() {
         val json = "{}"
 
-        val model = GsonUtils.gson()
-                .fromJson(json, Athlete::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(Athlete::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.measurementPreference).isEqualTo(MeasurementPreference.UNKNOWN)
     }
 
     @Test
-    fun measurementPreferenceNull_shouldBeConvertedToUnknown() {
+    fun nullMeasurementPreference_shouldBeConvertedToUnknown() {
         val json = """{"measurement_preference" : null}"""
 
-        val model = GsonUtils.gson()
-                .fromJson(json, Athlete::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(Athlete::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.measurementPreference).isEqualTo(MeasurementPreference.UNKNOWN)
     }
 
@@ -47,9 +51,11 @@ class MeasurementPreferenceTest {
     fun  measurementPreferenceMeters_shouldBeConvertedToMeters() {
         val json = """{"measurement_preference" : "meters"}"""
 
-        val model = GsonUtils.gson()
-                .fromJson(json, Athlete::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(Athlete::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.measurementPreference).isEqualTo(MeasurementPreference.METERS)
     }
 }

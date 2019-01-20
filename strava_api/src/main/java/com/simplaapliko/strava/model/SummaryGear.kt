@@ -16,37 +16,37 @@
 
 package com.simplaapliko.strava.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class SummaryGear(
     /**
      * The gear's unique identifier.
      */
-    @SerializedName("id")
+    @Json(name ="id")
     var id: String = "",
 
     /**
      * Resource state, indicates level of detail.
      * Possible values: 2 -> "summary", 3 -> "detail"
      */
-    @SerializedName("resource_state")
+    @Json(name ="resource_state")
     var resourceState: ResourceState = ResourceState.UNKNOWN,
 
     /**
      * Whether this gear's is the owner's default one.
      */
-    @SerializedName("primary")
+    @Json(name ="primary")
     var primary: Boolean = false,
 
     /**
      * The gear's name.
      */
-    @SerializedName("name")
+    @Json(name ="name")
     var name: String = "",
 
     /**
      * The distance logged with this gear.
      */
-    @SerializedName("distance")
+    @Json(name ="distance")
     var distance: Double = 0.0
 )

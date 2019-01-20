@@ -16,42 +16,42 @@
 
 package com.simplaapliko.strava.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class ActivityTotal(
     /**
      * The number of activities considered in this total.
      */
-    @SerializedName("count")
+    @Json(name ="count")
     var count: Int = 0,
 
     /**
      * The total distance covered by the considered activities.
      */
-    @SerializedName("distance")
+    @Json(name ="distance")
     var distance: Double = 0.0,
 
     /**
      * The total moving time of the considered activities.
      */
-    @SerializedName("moving_time")
+    @Json(name ="moving_time")
     var movingTime: Int = 0,
 
     /**
      * The total elapsed time of the considered activities.
      */
-    @SerializedName("elapsed_time")
+    @Json(name ="elapsed_time")
     var elapsedTime: Int = 0,
 
     /**
      * The total elevation gain of the considered activities.
      */
-    @SerializedName("elevation_gain")
+    @Json(name ="elevation_gain")
     var elevationGain: Double = 0.0,
 
     /**
      * The total number of achievements of the considered activities.
      */
-    @SerializedName("achievement_count")
+    @Json(name ="achievement_count")
     var achievementCount: Int = 0
 )

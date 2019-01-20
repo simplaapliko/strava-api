@@ -16,60 +16,60 @@
 
 package com.simplaapliko.strava.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class DetailedGear(
     /**
      * The gear's unique identifier.
      */
-    @SerializedName("id")
+    @Json(name ="id")
     var id: String = "",
 
     /**
      * Resource state, indicates level of detail. Possible values: 2 -> "summary", 3 -> "detail"
      */
-    @SerializedName("resource_state")
+    @Json(name ="resource_state")
     var resourceState: ResourceState = ResourceState.UNKNOWN,
 
     /**
      * Whether this gear's is the owner's default one.
      */
-    @SerializedName("primary")
+    @Json(name ="primary")
     var primary: Boolean = false,
 
     /**
      * The gear's name.
      */
-    @SerializedName("name")
+    @Json(name ="name")
     var name: String = "",
 
     /**
      * The distance logged with this gear.
      */
-    @SerializedName("distance")
+    @Json(name ="distance")
     var distance: Double = 0.0,
 
     /**
      * The gear's brand name.
      */
-    @SerializedName("brand_name")
+    @Json(name ="brand_name")
     var brandName: String = "",
 
     /**
      * The gear's model name.
      */
-    @SerializedName("model_name")
+    @Json(name ="model_name")
     var modelName: String = "",
 
     /**
      * The gear's frame type (bike only).
      */
-    @SerializedName("frame_type")
-    var frameType: FrameType = FrameType.UNKNOWN,
+    @Json(name ="frame_type")
+    var frameType: FrameType? = FrameType.UNKNOWN,
 
     /**
      * The gear's description.
      */
-    @SerializedName("description")
+    @Json(name ="description")
     var description: String = ""
 ) : StravaResponse()

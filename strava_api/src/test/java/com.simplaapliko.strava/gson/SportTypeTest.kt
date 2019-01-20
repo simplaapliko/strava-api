@@ -27,9 +27,11 @@ class SportTypeTest {
     fun emptyJson_sportTypeShouldBeConvertedToUnknown() {
         val json = "{}"
 
-        val model = GsonUtils.gson()
-                .fromJson(json, SummaryClub::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(SummaryClub::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.sportType).isEqualTo(SportType.UNKNOWN)
     }
 
@@ -37,9 +39,23 @@ class SportTypeTest {
     fun emptySportType_shouldBeConvertedToUnknown() {
         val json = """{"sport_type" : ""}"""
 
-        val model = GsonUtils.gson()
-                .fromJson(json, SummaryClub::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(SummaryClub::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
+        assertThat(model.sportType).isEqualTo(SportType.UNKNOWN)
+    }
+
+    @Test
+    fun nullSportType_shouldBeConvertedToUnknown() {
+        val json = """{"sport_type" : null}"""
+
+        val model = JsonUtils.moshi()
+                .adapter(SummaryClub::class.java)
+                .fromJson(json)
+
+        assertThat(model!!).isNotNull()
         assertThat(model.sportType).isEqualTo(SportType.UNKNOWN)
     }
 
@@ -47,9 +63,11 @@ class SportTypeTest {
     fun sportTypeCycling_shouldBeConvertedToCycling() {
         val json = """{"sport_type" : "cycling"}"""
 
-        val model = GsonUtils.gson()
-                .fromJson(json, SummaryClub::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(SummaryClub::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.sportType).isEqualTo(SportType.CYCLING)
     }
 
@@ -57,9 +75,11 @@ class SportTypeTest {
     fun sportTypeUnknown_shouldBeConvertedToUnknown() {
         val json = """{"sport_type" : "unknown_type"}"""
 
-        val model = GsonUtils.gson()
-                .fromJson(json, SummaryClub::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(SummaryClub::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.sportType).isEqualTo(SportType.UNKNOWN)
     }
 }

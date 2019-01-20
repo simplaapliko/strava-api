@@ -16,97 +16,97 @@
 
 package com.simplaapliko.strava.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class SummaryClub(
     /**
      * The club's unique identifier.
      */
-    @SerializedName("id")
+    @Json(name ="id")
     var id: Int = 0,
 
     /**
      * Resource state, indicates level of detail.
      * Possible values: 1 -> "meta", 2 -> "summary", 3 -> "detail"
      */
-    @SerializedName("resource_state")
+    @Json(name ="resource_state")
     var resourceState: ResourceState = ResourceState.UNKNOWN,
 
     /**
      * The club's name.
      */
-    @SerializedName("name")
+    @Json(name ="name")
     var name: String = "",
 
     /**
      * URL to a 60x60 pixel profile picture.
      */
-    @SerializedName("profile_medium")
+    @Json(name ="profile_medium")
     var profileMedium: String = "",
 
     /**
      * URL to a ~1185x580 pixel cover photo.
      */
-    @SerializedName("cover_photo")
+    @Json(name ="cover_photo")
     var coverPhoto: String = "",
 
     /**
      * URL to a ~360x176 pixel cover photo.
      */
-    @SerializedName("cover_photo_small")
+    @Json(name ="cover_photo_small")
     var coverPhotoSmall: String = "",
 
     /**
      * May take one of the following values: cycling, running, triathlon, other
      */
-    @SerializedName("sport_type")
+    @Json(name ="sport_type")
     var sportType: SportType = SportType.UNKNOWN,
 
     /**
      * The club's city.
      */
-    @SerializedName("city")
+    @Json(name ="city")
     var city: String = "",
 
     /**
      * The club's state or geographical region.
      */
-    @SerializedName("state")
+    @Json(name ="state")
     var state: String = "",
 
     /**
      * The club's country.
      */
-    @SerializedName("country")
+    @Json(name ="country")
     var country: String = "",
 
     /**
      * Whether the club is private.
      */
-    @SerializedName("private")
+    @Json(name ="private")
     var private: Boolean = false,
 
     /**
      * The club's member count.
      */
-    @SerializedName("member_count")
+    @Json(name ="member_count")
     var memberCount: Int = 0,
 
     /**
      * Whether the club is featured or not.
      */
-    @SerializedName("featured")
+    @Json(name ="featured")
     var featured: Boolean = false,
 
     /**
      * Whether the club is verified or not.
      */
-    @SerializedName("verified")
+    @Json(name ="verified")
     var verified: Boolean = false,
 
     /**
      * The club's vanity URL.
      */
-    @SerializedName("url")
+    @Json(name ="url")
     var url: String = ""
 )

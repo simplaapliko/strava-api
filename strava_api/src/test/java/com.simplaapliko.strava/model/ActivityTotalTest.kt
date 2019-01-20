@@ -17,7 +17,7 @@
 package com.simplaapliko.strava.model
 
 import com.google.common.truth.Truth.assertThat
-import com.simplaapliko.strava.gson.GsonUtils
+import com.simplaapliko.strava.gson.JsonUtils
 import org.junit.Test
 
 class ActivityTotalTest {
@@ -26,9 +26,11 @@ class ActivityTotalTest {
     fun emptyJson_modelShouldHaveDefaultValues() {
         val json = "{}"
 
-        val model = GsonUtils.gson()
-                .fromJson(json, ActivityTotal::class.java)
+        val model = JsonUtils.moshi()
+                .adapter(ActivityTotal::class.java)
+                .fromJson(json)
 
+        assertThat(model!!).isNotNull()
         assertThat(model.count).isEqualTo(0)
         assertThat(model.distance).isEqualTo(0.0)
         assertThat(model.movingTime).isEqualTo(0)

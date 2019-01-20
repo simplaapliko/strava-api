@@ -16,8 +16,8 @@
 
 package com.simplaapliko.strava.model
 
-enum class FriendState(val id: String) {
-    UNKNOWN("unknown"),
+enum class FriendState(val id: String?) {
+    UNKNOWN(null),
     ACCEPTED("accepted"),
     BLOCKED("blocked"),
     PENDING("pending");

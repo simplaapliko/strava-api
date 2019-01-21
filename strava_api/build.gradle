@@ -50,7 +50,7 @@ dependencies {
 
   implementation deps.retrofit.client
   implementation deps.retrofit.adapterRxJava
-  implementation deps.retrofit.converterGson
+  implementation deps.retrofit.converterMoshi
 
   testImplementation deps.test.junit
   testImplementation deps.truth

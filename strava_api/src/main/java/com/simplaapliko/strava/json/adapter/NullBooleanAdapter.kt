@@ -14,25 +14,24 @@
  * limitations under the License.
  */
 
-package com.simplaapliko.strava.gson.serializer
+package com.simplaapliko.strava.json.adapter
 
-import com.simplaapliko.strava.model.MeasurementPreference
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 
-class MeasurementPreferenceAdapter : JsonAdapter<MeasurementPreference>() {
+class NullBooleanAdapter : JsonAdapter<Boolean>() {
 
-    override fun fromJson(reader: JsonReader): MeasurementPreference {
+    override fun fromJson(reader: JsonReader): Boolean {
         return if (reader.peek() == JsonReader.Token.NULL) {
             reader.nextNull<Unit>()
-            MeasurementPreference.UNKNOWN
+            false
         } else {
-            MeasurementPreference.byId(reader.nextString())
+            reader.nextBoolean()
         }
     }
 
-    override fun toJson(writer: JsonWriter, value: MeasurementPreference?) {
-        writer.value(value?.id)
+    override fun toJson(writer: JsonWriter, value: Boolean?) {
+        writer.value(value ?: false)
     }
 }

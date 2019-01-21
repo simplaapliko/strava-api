@@ -14,24 +14,25 @@
  * limitations under the License.
  */
 
-package com.simplaapliko.strava.gson.serializer
+package com.simplaapliko.strava.json.adapter
 
+import com.simplaapliko.strava.model.FriendState
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 
-class NullBooleanAdapter : JsonAdapter<Boolean>() {
+class FriendStateAdapter : JsonAdapter<FriendState>() {
 
-    override fun fromJson(reader: JsonReader): Boolean {
+    override fun fromJson(reader: JsonReader): FriendState {
         return if (reader.peek() == JsonReader.Token.NULL) {
             reader.nextNull<Unit>()
-            false
+            FriendState.UNKNOWN
         } else {
-            reader.nextBoolean()
+            FriendState.byId(reader.nextString())
         }
     }
 
-    override fun toJson(writer: JsonWriter, value: Boolean?) {
-        writer.value(value ?: false)
+    override fun toJson(writer: JsonWriter, value: FriendState?) {
+        writer.value(value?.id)
     }
 }

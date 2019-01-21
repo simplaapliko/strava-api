@@ -14,60 +14,72 @@
  * limitations under the License.
  */
 
-package com.simplaapliko.strava.gson
+package com.simplaapliko.strava.json
 
 import com.google.common.truth.Truth.assertThat
-import com.simplaapliko.strava.model.DetailedGear
-import com.simplaapliko.strava.model.ResourceState
+import com.simplaapliko.strava.model.Athlete
+import com.simplaapliko.strava.model.Sex
 import org.junit.Test
 
-class ResourceStateTest {
+class SexTest {
 
     @Test
-    fun emptyResourceState_shouldBeConvertedToUnknown() {
+    fun emptyJson_sexShouldBeConvertedToUnknown() {
         val json = "{}"
 
         val model = JsonUtils.moshi()
-                .adapter(DetailedGear::class.java)
+                .adapter(Athlete::class.java)
                 .fromJson(json)
 
         assertThat(model!!).isNotNull()
-        assertThat(model.resourceState).isEqualTo(ResourceState.UNKNOWN)
+        assertThat(model.sex).isEqualTo(Sex.UNKNOWN)
     }
 
     @Test
-    fun resourceState0_shouldBeConvertedToUnknown() {
-        val json = """{"resource_state" : 0}"""
+    fun emptySex_shouldBeConvertedToUnknown() {
+        val json = """{"sex" : ""}"""
 
         val model = JsonUtils.moshi()
-                .adapter(DetailedGear::class.java)
+                .adapter(Athlete::class.java)
                 .fromJson(json)
 
         assertThat(model!!).isNotNull()
-        assertThat(model.resourceState).isEqualTo(ResourceState.UNKNOWN)
+        assertThat(model.sex).isEqualTo(Sex.UNKNOWN)
     }
 
     @Test
-    fun resourceState3_shouldBeConvertedToDetail() {
-        val json = """{"resource_state" : 3}"""
+    fun nullSex_shouldBeConvertedToUnknown() {
+        val json = """{"sex" : null}"""
 
         val model = JsonUtils.moshi()
-                .adapter(DetailedGear::class.java)
+                .adapter(Athlete::class.java)
                 .fromJson(json)
 
         assertThat(model!!).isNotNull()
-        assertThat(model.resourceState).isEqualTo(ResourceState.DETAIL)
+        assertThat(model.sex).isEqualTo(Sex.UNKNOWN)
     }
 
     @Test
-    fun resourceState5_shouldBeConvertedToUnknown() {
-        val json = """{"resource_state" : 5}"""
+    fun sexM_shouldBeConvertedToM() {
+        val json = """{"sex" : "M"}"""
 
         val model = JsonUtils.moshi()
-                .adapter(DetailedGear::class.java)
+                .adapter(Athlete::class.java)
                 .fromJson(json)
 
         assertThat(model!!).isNotNull()
-        assertThat(model.resourceState).isEqualTo(ResourceState.UNKNOWN)
+        assertThat(model.sex).isEqualTo(Sex.M)
+    }
+
+    @Test
+    fun sexUnknown_shouldBeConvertedToUnknown() {
+        val json = """{"sex" : "unknown_sex"}"""
+
+        val model = JsonUtils.moshi()
+                .adapter(Athlete::class.java)
+                .fromJson(json)
+
+        assertThat(model!!).isNotNull()
+        assertThat(model.sex).isEqualTo(Sex.UNKNOWN)
     }
 }

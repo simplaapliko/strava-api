@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package com.simplaapliko.strava.gson
+package com.simplaapliko.strava.json
 
-import com.simplaapliko.strava.gson.serializer.FrameTypeAdapter
-import com.simplaapliko.strava.gson.serializer.FriendStateAdapter
-import com.simplaapliko.strava.gson.serializer.MeasurementPreferenceAdapter
-import com.simplaapliko.strava.gson.serializer.NullBooleanAdapter
-import com.simplaapliko.strava.gson.serializer.NullDoubleAdapter
-import com.simplaapliko.strava.gson.serializer.NullIntAdapter
-import com.simplaapliko.strava.gson.serializer.NullStringAdapter
-import com.simplaapliko.strava.gson.serializer.ResourceStateAdapter
-import com.simplaapliko.strava.gson.serializer.SexAdapter
-import com.simplaapliko.strava.gson.serializer.SportTypeAdapter
+import com.simplaapliko.strava.json.adapter.FrameTypeAdapter
+import com.simplaapliko.strava.json.adapter.FriendStateAdapter
+import com.simplaapliko.strava.json.adapter.MeasurementPreferenceAdapter
+import com.simplaapliko.strava.json.adapter.NullBooleanAdapter
+import com.simplaapliko.strava.json.adapter.NullDoubleAdapter
+import com.simplaapliko.strava.json.adapter.NullIntAdapter
+import com.simplaapliko.strava.json.adapter.NullStringAdapter
+import com.simplaapliko.strava.json.adapter.ResourceStateAdapter
+import com.simplaapliko.strava.json.adapter.SexAdapter
+import com.simplaapliko.strava.json.adapter.SportTypeAdapter
 import com.simplaapliko.strava.model.FrameType
 import com.simplaapliko.strava.model.FriendState
 import com.simplaapliko.strava.model.MeasurementPreference

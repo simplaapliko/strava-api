@@ -14,25 +14,25 @@
  * limitations under the License.
  */
 
-package com.simplaapliko.strava.gson.serializer
+package com.simplaapliko.strava.json.adapter
 
-import com.simplaapliko.strava.model.ResourceState
+import com.simplaapliko.strava.model.Sex
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 
-class ResourceStateAdapter : JsonAdapter<ResourceState>() {
+class SexAdapter : JsonAdapter<Sex>() {
 
-    override fun fromJson(reader: JsonReader): ResourceState {
+    override fun fromJson(reader: JsonReader): Sex {
         return if (reader.peek() == JsonReader.Token.NULL) {
             reader.nextNull<Unit>()
-            ResourceState.UNKNOWN
+            Sex.UNKNOWN
         } else {
-            ResourceState.byId(reader.nextInt())
+            Sex.byId(reader.nextString())
         }
     }
 
-    override fun toJson(writer: JsonWriter, value: ResourceState?) {
+    override fun toJson(writer: JsonWriter, value: Sex?) {
         writer.value(value?.id)
     }
 }

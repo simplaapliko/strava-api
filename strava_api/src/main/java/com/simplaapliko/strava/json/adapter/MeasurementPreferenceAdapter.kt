@@ -14,25 +14,25 @@
  * limitations under the License.
  */
 
-package com.simplaapliko.strava.gson.serializer
+package com.simplaapliko.strava.json.adapter
 
-import com.simplaapliko.strava.model.SportType
+import com.simplaapliko.strava.model.MeasurementPreference
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 
-class SportTypeAdapter : JsonAdapter<SportType>() {
+class MeasurementPreferenceAdapter : JsonAdapter<MeasurementPreference>() {
 
-    override fun fromJson(reader: JsonReader): SportType {
+    override fun fromJson(reader: JsonReader): MeasurementPreference {
         return if (reader.peek() == JsonReader.Token.NULL) {
             reader.nextNull<Unit>()
-            SportType.UNKNOWN
+            MeasurementPreference.UNKNOWN
         } else {
-            SportType.byId(reader.nextString())
+            MeasurementPreference.byId(reader.nextString())
         }
     }
 
-    override fun toJson(writer: JsonWriter, value: SportType?) {
+    override fun toJson(writer: JsonWriter, value: MeasurementPreference?) {
         writer.value(value?.id)
     }
 }

@@ -17,7 +17,7 @@
 package com.simplaapliko.strava.model
 
 import com.google.common.truth.Truth.assertThat
-import com.simplaapliko.strava.gson.JsonUtils
+import com.simplaapliko.strava.json.JsonUtils
 import org.junit.Test
 
 class PowerZoneRangesTest {

@@ -14,24 +14,25 @@
  * limitations under the License.
  */
 
-package com.simplaapliko.strava.gson.serializer
+package com.simplaapliko.strava.json.adapter
 
+import com.simplaapliko.strava.model.FrameType
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 
-class NullIntAdapter : JsonAdapter<Int>() {
+class FrameTypeAdapter : JsonAdapter<FrameType>() {
 
-    override fun fromJson(reader: JsonReader): Int {
+    override fun fromJson(reader: JsonReader): FrameType {
         return if (reader.peek() == JsonReader.Token.NULL) {
             reader.nextNull<Unit>()
-            0
+            FrameType.UNKNOWN
         } else {
-            reader.nextInt()
+            FrameType.byId(reader.nextInt())
         }
     }
 
-    override fun toJson(writer: JsonWriter, value: Int?) {
-        writer.value(value ?: 0)
+    override fun toJson(writer: JsonWriter, value: FrameType?) {
+        writer.value(value?.id)
     }
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.simplaapliko.strava.gson
+package com.simplaapliko.strava.json
 
 import com.google.common.truth.Truth.assertThat
 import com.simplaapliko.strava.model.SportType

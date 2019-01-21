@@ -19,6 +19,10 @@ package com.simplaapliko.strava.gson
 import com.simplaapliko.strava.gson.serializer.FrameTypeAdapter
 import com.simplaapliko.strava.gson.serializer.FriendStateAdapter
 import com.simplaapliko.strava.gson.serializer.MeasurementPreferenceAdapter
+import com.simplaapliko.strava.gson.serializer.NullBooleanAdapter
+import com.simplaapliko.strava.gson.serializer.NullDoubleAdapter
+import com.simplaapliko.strava.gson.serializer.NullIntAdapter
+import com.simplaapliko.strava.gson.serializer.NullStringAdapter
 import com.simplaapliko.strava.gson.serializer.ResourceStateAdapter
 import com.simplaapliko.strava.gson.serializer.SexAdapter
 import com.simplaapliko.strava.gson.serializer.SportTypeAdapter
@@ -39,6 +43,12 @@ object JsonUtils {
         return Moshi.Builder()
                 .add(KotlinJsonAdapterFactory())
                 .add(Date::class.java, Rfc3339DateJsonAdapter())
+
+                .add(Boolean::class.java, NullBooleanAdapter())
+                .add(Int::class.java, NullIntAdapter())
+                .add(Double::class.java, NullDoubleAdapter())
+                .add(String::class.java, NullStringAdapter())
+
                 .add(FrameType::class.java, FrameTypeAdapter())
                 .add(FriendState::class.java, FriendStateAdapter())
                 .add(MeasurementPreference::class.java, MeasurementPreferenceAdapter())

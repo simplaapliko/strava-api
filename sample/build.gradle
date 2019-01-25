@@ -60,8 +60,6 @@ dependencies {
 
   implementation deps.reactivex.rxAndroid
 
-  api deps.retrofit.converterScalars
-
   implementation deps.dagger.runtime
   kapt deps.dagger.compiler
   compileOnly deps.javaxannotation

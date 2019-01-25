@@ -69,3 +69,5 @@ captures/
 target/
 
 /keystore.properties
+
+sample/src/main/res/values/strava-api.xml

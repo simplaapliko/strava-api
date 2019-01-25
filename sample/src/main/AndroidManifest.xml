@@ -31,11 +31,41 @@
         tools:ignore="GoogleAppIndexingWarning"
         >
 
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".app.ui.LauncherActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".app.ui.AuthorizeActivity"
+            android:launchMode="singleTask"
+            />
+
+        <activity
+            android:name=".app.ui.AuthorizationCallbackActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            >
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:scheme="https"
+                    android:host="localhost.com"
+                    android:pathPrefix="/token-exchange"
+                    />
+
             </intent-filter>
         </activity>
 

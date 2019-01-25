@@ -40,17 +40,17 @@ android {
 dependencies {
   implementation deps.kotlin.stdlib.jdk
 
-  implementation deps.moshi.adapters
-  implementation deps.moshi.kotlin
-  implementation deps.moshi.runtime
+  api deps.moshi.adapters
+  api deps.moshi.kotlin
+  api deps.moshi.runtime
   kapt deps.moshi.compiler
 
-  implementation deps.okhttp.client
-  implementation deps.okhttp.logging
+  api deps.okhttp.client
+  api deps.okhttp.logging
 
-  implementation deps.retrofit.client
-  implementation deps.retrofit.adapterRxJava
-  implementation deps.retrofit.converterMoshi
+  api deps.retrofit.adapterRxJava
+  api deps.retrofit.client
+  api deps.retrofit.converterMoshi
 
   testImplementation deps.test.junit
   testImplementation deps.truth

@@ -45,7 +45,7 @@ class AuthorizeActivity : AppCompatActivity() {
     private fun authorize() {
         val clientId = resources.getInteger(R.integer.client_id)
         val redirectUri = getString(R.string.redirect_url)
-        val scopes = listOf(Auth.Scope.READ_ALL, Auth.Scope.PROFILE_READ_ALL, Auth.Scope.ACTIVITY_READ_ALL)
+        val scopes = getScopes()
 
         val url = Auth.UrlBuilder.build(clientId = clientId, redirectUri = redirectUri, scopes = scopes)
 
@@ -57,5 +57,32 @@ class AuthorizeActivity : AppCompatActivity() {
         customTabsIntent.launchUrl(this, Uri.parse(url))
 
         finish()
+    }
+
+    private fun getScopes(): List<Auth.Scope> {
+        val list = mutableListOf<Auth.Scope>()
+
+        if (read.isChecked) {
+            list.add(Auth.Scope.READ)
+        }
+        if (read_all.isChecked) {
+            list.add(Auth.Scope.READ_ALL)
+        }
+        if (profile_read_all.isChecked) {
+            list.add(Auth.Scope.PROFILE_READ_ALL)
+        }
+        if (profile_write.isChecked) {
+            list.add(Auth.Scope.PROFILE_WRITE)
+        }
+        if (activity_read.isChecked) {
+            list.add(Auth.Scope.ACTIVITY_READ)
+        }
+        if (activity_read_all.isChecked) {
+            list.add(Auth.Scope.ACTIVITY_READ_ALL)
+        }
+        if (activity_write.isChecked) {
+            list.add(Auth.Scope.ACTIVITY_WRITE)
+        }
+        return list
     }
 }

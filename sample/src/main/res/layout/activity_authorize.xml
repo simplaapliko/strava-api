@@ -23,6 +23,79 @@
     android:gravity="center"
     >
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/read"
+            style="@style/CheckBoxScope"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="read"
+            />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/read_all"
+            style="@style/CheckBoxScope"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="read_all"
+            />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/profile_read_all"
+            style="@style/CheckBoxScope"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="profile:read_all"
+            />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/profile_write"
+            style="@style/CheckBoxScope"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="profile:write"
+            />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/activity_read"
+            style="@style/CheckBoxScope"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="activity:read"
+            />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/activity_read_all"
+            style="@style/CheckBoxScope"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="activity:read_all"
+            />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/activity_write"
+            style="@style/CheckBoxScope"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="activity:write"
+            />
+
+    </LinearLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/authorize"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -33,10 +106,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toTopOf="parent"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,7 +18,7 @@ package com.simplaapliko.stravaapi.app.ui
 
 import android.os.Bundle
 import com.simplaapliko.stravaapi.R
-import kotlinx.android.synthetic.main.activity_authorize.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 

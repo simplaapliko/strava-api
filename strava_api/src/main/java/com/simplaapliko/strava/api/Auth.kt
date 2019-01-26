@@ -48,7 +48,7 @@ object Auth {
          * update the user's weight and Functional Threshold Power (FTP),
          * and access to star or unstar segments on their behalf
          */
-        PROFILE_READ_WRITE("profile:write"),
+        PROFILE_WRITE("profile:write"),
 
         /**
          * read the user's activity data for activities that are visible to Everyone and Followers,

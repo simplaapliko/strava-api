@@ -19,12 +19,15 @@ package com.simplaapliko.stravaapi.app.ui
 import android.os.Bundle
 import com.simplaapliko.strava.api.Auth
 import com.simplaapliko.stravaapi.R
+import kotlinx.android.synthetic.main.activity_authorization_callback.*
 
 class AuthorizationCallbackActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_authorized)
+        setContentView(R.layout.activity_authorization_callback)
+
+        done.setOnClickListener { finish() }
 
         val code = intent?.data?.getQueryParameter(Auth.Response.CODE)
         val scope = intent?.data?.getQueryParameter(Auth.Response.SCOPE)

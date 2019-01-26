@@ -25,6 +25,7 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
 import com.simplaapliko.strava.api.Auth
 import com.simplaapliko.stravaapi.R
+import kotlinx.android.synthetic.main.activity_authorize.*
 
 class AuthorizeActivity : AppCompatActivity() {
 
@@ -36,7 +37,12 @@ class AuthorizeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_authorize)
 
+        authorize.setOnClickListener { authorize() }
+    }
+
+    private fun authorize() {
         val clientId = resources.getInteger(R.integer.client_id)
         val redirectUri = getString(R.string.redirect_url)
         val scopes = listOf(Auth.Scope.READ_ALL, Auth.Scope.PROFILE_READ_ALL, Auth.Scope.ACTIVITY_READ_ALL)

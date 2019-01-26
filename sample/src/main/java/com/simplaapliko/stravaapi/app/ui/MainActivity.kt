@@ -17,27 +17,21 @@
 package com.simplaapliko.stravaapi.app.ui
 
 import android.os.Bundle
+import com.simplaapliko.stravaapi.R
+import kotlinx.android.synthetic.main.activity_authorize.*
 
-class LauncherActivity : BaseActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        if (authRepository().getCode().isEmpty()) {
-            goToAuthorizeScreen()
-        } else {
-            goToAuthorizedScreen()
-        }
+        authorize.setOnClickListener { goToAuthorizeScreen() }
     }
 
     private fun goToAuthorizeScreen() {
         val intent = AuthorizeActivity.getStartIntent(this)
         startActivity(intent)
-        finish()
-    }
-
-    private fun goToAuthorizedScreen() {
-        //TODO
         finish()
     }
 }

@@ -23,10 +23,14 @@ class AuthSharedPreferencesRepository(context: Context) : AuthRepository {
 
     companion object {
         const val DEFAULT_CODE = ""
+        const val DEFAULT_SCOPE = ""
+        const val DEFAULT_STATE = ""
 
         private const val PREFERENCES = "com.simplaapliko.stravaapi.auth"
 
         private const val PREF_CODE = "code"
+        private const val PREF_SCOPE = "scope"
+        private const val PREF_STATE = "state"
     }
 
     private val sharedPreferences: SharedPreferences
@@ -45,9 +49,29 @@ class AuthSharedPreferencesRepository(context: Context) : AuthRepository {
         return sharedPreferences.getString(PREF_CODE, DEFAULT_CODE) ?: DEFAULT_CODE
     }
 
-    override fun setCode(code: String) {
+    override fun setCode(value: String?) {
         sharedPreferences.edit()
-            .putString(PREF_CODE, code)
+            .putString(PREF_CODE, value)
             .apply()
+    }
+
+    override fun getScope(): String {
+        return sharedPreferences.getString(PREF_SCOPE, DEFAULT_CODE) ?: DEFAULT_SCOPE
+    }
+
+    override fun setScope(value: String?) {
+        sharedPreferences.edit()
+                .putString(PREF_SCOPE, value)
+                .apply()
+    }
+
+    override fun getState(): String {
+        return sharedPreferences.getString(PREF_STATE, DEFAULT_CODE) ?: DEFAULT_STATE
+    }
+
+    override fun setState(value: String?) {
+        sharedPreferences.edit()
+                .putString(PREF_STATE, value)
+                .apply()
     }
 }

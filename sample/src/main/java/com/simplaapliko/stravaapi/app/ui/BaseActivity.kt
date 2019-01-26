@@ -22,7 +22,7 @@ import com.simplaapliko.stravaapi.app.data.AuthSharedPreferencesRepository
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    fun authRepository(): AuthRepository {
-        return AuthSharedPreferencesRepository(applicationContext)
-    }
+    val authRepository: AuthRepository
+        get() = AuthSharedPreferencesRepository(applicationContext)
+
 }

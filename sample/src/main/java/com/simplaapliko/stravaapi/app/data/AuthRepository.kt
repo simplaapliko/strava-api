@@ -22,5 +22,13 @@ interface AuthRepository {
 
     fun getCode(): String
 
-    fun setCode(code: String)
+    fun setCode(value: String?)
+
+    fun getScope(): String
+
+    fun setScope(value: String?)
+
+    fun getState(): String
+
+    fun setState(value: String?)
 }

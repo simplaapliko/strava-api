@@ -15,16 +15,11 @@
   ~ limitations under the License.
   -->
 
-<resources>
-
-    <!--
-    FIXME
-    move me into main/res/values folder and
-    set your client id and redirect url
-    -->
-
-    <integer name="client_id">1</integer>
-    <string name="client_secret">"secret"</string>
-    <string name="redirect_url">https://localhost.com/token-exchange</string>
-
-</resources>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/response"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:textIsSelectable="true"
+    />

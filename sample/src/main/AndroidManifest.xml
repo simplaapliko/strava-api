@@ -44,11 +44,6 @@
         </activity>
 
         <activity
-            android:name=".app.ui.AuthorizeActivity"
-            android:launchMode="singleTask"
-            />
-
-        <activity
             android:name=".app.ui.AuthorizationCallbackActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
@@ -68,6 +63,16 @@
 
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".app.ui.AuthorizeActivity"
+            android:launchMode="singleTask"
+            />
+
+        <activity
+            android:name=".app.ui.GetTokenActivity"
+            android:launchMode="singleTask"
+            />
 
     </application>
 

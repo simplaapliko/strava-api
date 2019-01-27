@@ -32,4 +32,12 @@
         android:text="Authorize"
         />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/get_token"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Token"
+        />
+
 </LinearLayout>

@@ -32,6 +32,5 @@ class MainActivity : BaseActivity() {
     private fun goToAuthorizeScreen() {
         val intent = AuthorizeActivity.getStartIntent(this)
         startActivity(intent)
-        finish()
     }
 }

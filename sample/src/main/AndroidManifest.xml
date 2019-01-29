@@ -67,11 +67,15 @@
         <activity
             android:name=".app.ui.AuthorizeActivity"
             android:launchMode="singleTask"
+            android:label="@string/activity_authorize"
+            android:parentActivityName=".app.ui.MainActivity"
             />
 
         <activity
             android:name=".app.ui.TokenActivity"
             android:launchMode="singleTask"
+            android:label="@string/activity_token"
+            android:parentActivityName=".app.ui.MainActivity"
             />
 
     </application>

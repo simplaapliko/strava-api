@@ -27,7 +27,7 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
 
         authorize.setOnClickListener { goToAuthorizeScreen() }
-        get_token.setOnClickListener { getTokenScreen() }
+        token.setOnClickListener { tokenScreen() }
     }
 
     private fun goToAuthorizeScreen() {
@@ -35,8 +35,8 @@ class MainActivity : BaseActivity() {
         startActivity(intent)
     }
 
-    private fun getTokenScreen() {
-        val intent = GetTokenActivity.getStartIntent(this)
+    private fun tokenScreen() {
+        val intent = TokenActivity.getStartIntent(this)
         startActivity(intent)
     }
 }

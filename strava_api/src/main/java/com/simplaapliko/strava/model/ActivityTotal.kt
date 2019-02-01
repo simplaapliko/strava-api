@@ -19,39 +19,39 @@ package com.simplaapliko.strava.model
 import com.squareup.moshi.Json
 
 data class ActivityTotal(
-    /**
-     * The number of activities considered in this total.
-     */
-    @Json(name ="count")
-    var count: Int = 0,
+        /**
+         * The number of activities considered in this total.
+         */
+        @Json(name = "count")
+        var count: Int = 0,
 
-    /**
-     * The total distance covered by the considered activities.
-     */
-    @Json(name ="distance")
-    var distance: Double = 0.0,
+        /**
+         * The total distance covered by the considered activities.
+         */
+        @Json(name = "distance")
+        var distance: Double = 0.0,
 
-    /**
-     * The total moving time of the considered activities.
-     */
-    @Json(name ="moving_time")
-    var movingTime: Int = 0,
+        /**
+         * The total moving time of the considered activities.
+         */
+        @Json(name = "moving_time")
+        var movingTime: Int = 0,
 
-    /**
-     * The total elapsed time of the considered activities.
-     */
-    @Json(name ="elapsed_time")
-    var elapsedTime: Int = 0,
+        /**
+         * The total elapsed time of the considered activities.
+         */
+        @Json(name = "elapsed_time")
+        var elapsedTime: Int = 0,
 
-    /**
-     * The total elevation gain of the considered activities.
-     */
-    @Json(name ="elevation_gain")
-    var elevationGain: Double = 0.0,
+        /**
+         * The total elevation gain of the considered activities.
+         */
+        @Json(name = "elevation_gain")
+        var elevationGain: Double = 0.0,
 
-    /**
-     * The total number of achievements of the considered activities.
-     */
-    @Json(name ="achievement_count")
-    var achievementCount: Int = 0
+        /**
+         * The total number of achievements of the considered activities.
+         */
+        @Json(name = "achievement_count")
+        var achievementCount: Int = 0
 )

@@ -20,21 +20,21 @@ import com.squareup.moshi.Json
 
 data class Token(
 
-    @Json(name ="token_type")
-    var tokenType: String = "",
+        @Json(name = "token_type")
+        var tokenType: String = "",
 
-    @Json(name ="access_token")
-    var accessToken: String = "",
+        @Json(name = "access_token")
+        var accessToken: String = "",
 
-    @Json(name ="athlete")
-    var athleteSummary: Athlete? = null,
+        @Json(name = "athlete")
+        var athleteSummary: Athlete? = null,
 
-    @Json(name ="refresh_token")
-    var refreshToken: String = "",
+        @Json(name = "refresh_token")
+        var refreshToken: String = "",
 
-    @Json(name ="expires_at")
-    var expiresAt: Int = 0,
+        @Json(name = "expires_at")
+        var expiresAt: Int = 0,
 
-    @Json(name ="state")
-    var state: String = ""
+        @Json(name = "state")
+        var state: String = ""
 )

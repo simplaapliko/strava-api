@@ -19,10 +19,10 @@ package com.simplaapliko.strava.model
 import com.squareup.moshi.Json
 
 data class PowerZoneRanges(
-    /**
-     * A collection of ZoneRange objects.
-     * @see com.simplaapliko.strava.model.ZoneRange
-     */
-    @Json(name ="zones")
-    var zones: List<ZoneRange> = emptyList()
+        /**
+         * A collection of ZoneRange objects.
+         * @see com.simplaapliko.strava.model.ZoneRange
+         */
+        @Json(name = "zones")
+        var zones: List<ZoneRange> = emptyList()
 )

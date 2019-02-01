@@ -32,7 +32,7 @@ class NetworkModule {
         }
 
         return OkHttpClient.Builder()
-            .addInterceptor(logging)
-            .build()
+                .addInterceptor(logging)
+                .build()
     }
 }

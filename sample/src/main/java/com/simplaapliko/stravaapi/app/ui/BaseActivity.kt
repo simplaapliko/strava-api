@@ -40,7 +40,6 @@ abstract class BaseActivity : AppCompatActivity() {
     val tokenRepository: TokenRepository
         get() = TokenSharedPreferencesRepository(applicationContext)
 
-
     override fun onDestroy() {
         disposables.dispose()
         super.onDestroy()

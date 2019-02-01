@@ -19,17 +19,17 @@ package com.simplaapliko.strava.model
 import com.squareup.moshi.Json
 
 data class Zones(
-    /**
-     * An instance of HeartRateZoneRanges.
-     * @see com.simplaapliko.strava.model.HeartRateZoneRanges
-     */
-    @Json(name ="heart_rate")
-    var heartRate: HeartRateZoneRanges? = null,
+        /**
+         * An instance of HeartRateZoneRanges.
+         * @see com.simplaapliko.strava.model.HeartRateZoneRanges
+         */
+        @Json(name = "heart_rate")
+        var heartRate: HeartRateZoneRanges? = null,
 
-    /**
-     * An instance of PowerZoneRanges.
-     * @see com.simplaapliko.strava.model.PowerZoneRanges
-     */
-    @Json(name ="power")
-    var power: PowerZoneRanges? = null
+        /**
+         * An instance of PowerZoneRanges.
+         * @see com.simplaapliko.strava.model.PowerZoneRanges
+         */
+        @Json(name = "power")
+        var power: PowerZoneRanges? = null
 ) : StravaResponse()

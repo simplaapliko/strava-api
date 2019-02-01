@@ -27,7 +27,7 @@ class AuthUrlBuilderTest {
         val redirectUri = "http://localhost/token_exchange"
         val scope = Auth.Scope.READ_ALL
 
-        val url = Auth.UrlBuilder.build( clientId, redirectUri, scope)
+        val url = Auth.UrlBuilder.build(clientId, redirectUri, scope)
 
         val expectedUrl = "https://www.strava.com/oauth/mobile/authorize?response_type=code" +
                 "&client_id=101&redirect_uri=http://localhost/token_exchange&approval_prompt=auto" +
@@ -74,8 +74,12 @@ class AuthUrlBuilderTest {
         val scope = Auth.Scope.READ_ALL
         val approvalPrompt = Auth.ApprovalPrompt.FORCE
 
-        val url = Auth.UrlBuilder.build(clientId = clientId, redirectUri = redirectUri, scope = scope,
-            approvalPrompt = approvalPrompt)
+        val url = Auth.UrlBuilder.build(
+                clientId = clientId,
+                redirectUri = redirectUri,
+                scope = scope,
+                approvalPrompt = approvalPrompt
+        )
 
         val expectedUrl = "https://www.strava.com/oauth/mobile/authorize?response_type=code" +
                 "&client_id=101&redirect_uri=http://localhost/token_exchange&approval_prompt=force" +

@@ -48,7 +48,7 @@ class MeasurementPreferenceTest {
     }
 
     @Test
-    fun  measurementPreferenceMeters_shouldBeConvertedToMeters() {
+    fun measurementPreferenceMeters_shouldBeConvertedToMeters() {
         val json = """{"measurement_preference" : "meters"}"""
 
         val model = JsonUtils.moshi()

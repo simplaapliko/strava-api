@@ -41,8 +41,8 @@ class AuthSharedPreferencesRepository(context: Context) : AuthRepository {
 
     override fun clear() {
         sharedPreferences.edit()
-            .clear()
-            .apply()
+                .clear()
+                .apply()
     }
 
     override fun getCode(): String {
@@ -51,8 +51,8 @@ class AuthSharedPreferencesRepository(context: Context) : AuthRepository {
 
     override fun setCode(value: String?) {
         sharedPreferences.edit()
-            .putString(PREF_CODE, value)
-            .apply()
+                .putString(PREF_CODE, value)
+                .apply()
     }
 
     override fun getScope(): String {

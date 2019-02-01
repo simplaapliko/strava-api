@@ -40,10 +40,10 @@ interface TokenApi {
     @POST("token")
     @FormUrlEncoded
     fun token(
-        @Field("client_id") clientId: Int,
-        @Field("client_secret") clientSecret: String,
-        @Field("code") code: String,
-        @Field("grant_type") grantType : String = "authorization_code"
+            @Field("client_id") clientId: Int,
+            @Field("client_secret") clientSecret: String,
+            @Field("code") code: String,
+            @Field("grant_type") grantType: String = "authorization_code"
     ): Single<Token>
 
     /**
@@ -57,11 +57,11 @@ interface TokenApi {
     @FormUrlEncoded
     @POST("token")
     fun refreshToken(
-        @Field("client_id") clientId: Int,
-        @Field("client_secret") clientSecret: String,
-        @Field("refresh_token") refreshToken  : String,
-        @Field("grant_type") grantType : String = "refresh_token"
-        ): Single<RefreshToken>
+            @Field("client_id") clientId: Int,
+            @Field("client_secret") clientSecret: String,
+            @Field("refresh_token") refreshToken: String,
+            @Field("grant_type") grantType: String = "refresh_token"
+    ): Single<RefreshToken>
 
     /**
      * @param accessToken Responds with the refresh tokens that were revoked.
@@ -69,6 +69,6 @@ interface TokenApi {
     @FormUrlEncoded
     @POST("deauthorize")
     fun deauthorize(
-        @Field("access_token") accessToken : String
+            @Field("access_token") accessToken: String
     ): Completable
 }

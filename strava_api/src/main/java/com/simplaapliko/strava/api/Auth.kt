@@ -18,7 +18,7 @@ package com.simplaapliko.strava.api
 
 object Auth {
 
-    enum class ApprovalPrompt (val id: String) {
+    enum class ApprovalPrompt(val id: String) {
         AUTO("auto"),
         FORCE("force");
 
@@ -96,11 +96,11 @@ object Auth {
          * Useful if the authentication is done from various points in an app.
          */
         fun build(
-            clientId: Int,
-            redirectUri: String,
-            scope: Scope,
-            approvalPrompt: ApprovalPrompt = ApprovalPrompt.AUTO,
-            state: String = "authorize"
+                clientId: Int,
+                redirectUri: String,
+                scope: Scope,
+                approvalPrompt: ApprovalPrompt = ApprovalPrompt.AUTO,
+                state: String = "authorize"
         ): String {
             return build(clientId, redirectUri, listOf(scope), approvalPrompt, state)
         }
@@ -118,11 +118,11 @@ object Auth {
          * Useful if the authentication is done from various points in an app.
          */
         fun build(
-            clientId: Int,
-            redirectUri: String,
-            scopes: List<Scope>,
-            approvalPrompt: ApprovalPrompt = ApprovalPrompt.AUTO,
-            state: String = "authorize"
+                clientId: Int,
+                redirectUri: String,
+                scopes: List<Scope>,
+                approvalPrompt: ApprovalPrompt = ApprovalPrompt.AUTO,
+                state: String = "authorize"
         ): String {
             val commaSeparatedScope = scopes.joinToString(separator = ",") { it -> it.id }
 

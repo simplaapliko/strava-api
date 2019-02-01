@@ -19,70 +19,70 @@ package com.simplaapliko.strava.model
 import com.squareup.moshi.Json
 
 data class ActivityStats(
-    /**
-     * The longest distance ridden by the athlete.
-     */
-    @Json(name = "biggest_ride_distance")
-    var biggestRideDistance: Double = 0.0,
+        /**
+         * The longest distance ridden by the athlete.
+         */
+        @Json(name = "biggest_ride_distance")
+        var biggestRideDistance: Double = 0.0,
 
-    /**
-     * The highest climb ridden by the athlete.
-     */
-    @Json(name ="biggest_climb_elevation_gain")
-    var biggestClimbElevationGain: Double = 0.0,
+        /**
+         * The highest climb ridden by the athlete.
+         */
+        @Json(name = "biggest_climb_elevation_gain")
+        var biggestClimbElevationGain: Double = 0.0,
 
-    /**
-     * The recent (last 4 weeks) ride stats for the athlete.
-     */
-    @Json(name ="recent_ride_totals")
-    var recentRideTotals: ActivityTotal? = null,
+        /**
+         * The recent (last 4 weeks) ride stats for the athlete.
+         */
+        @Json(name = "recent_ride_totals")
+        var recentRideTotals: ActivityTotal? = null,
 
-    /**
-     * The recent (last 4 weeks) run stats for the athlete.
-     */
-    @Json(name ="recent_run_totals")
-    var recentRunTotals: ActivityTotal? = null,
+        /**
+         * The recent (last 4 weeks) run stats for the athlete.
+         */
+        @Json(name = "recent_run_totals")
+        var recentRunTotals: ActivityTotal? = null,
 
-    /**
-     * The recent (last 4 weeks) swim stats for the athlete.
-     */
-    @Json(name ="recent_swim_totals")
-    var recentSwimTotals: ActivityTotal? = null,
+        /**
+         * The recent (last 4 weeks) swim stats for the athlete.
+         */
+        @Json(name = "recent_swim_totals")
+        var recentSwimTotals: ActivityTotal? = null,
 
-    /**
-     * The year to date ride stats for the athlete.
-     */
-    @Json(name ="ytd_ride_totals")
-    var ytdRideTotals: ActivityTotal? = null,
+        /**
+         * The year to date ride stats for the athlete.
+         */
+        @Json(name = "ytd_ride_totals")
+        var ytdRideTotals: ActivityTotal? = null,
 
-    /**
-     * The year to date run stats for the athlete.
-     */
-    @Json(name ="ytd_run_totals")
-    var ytdRunTotals: ActivityTotal? = null,
+        /**
+         * The year to date run stats for the athlete.
+         */
+        @Json(name = "ytd_run_totals")
+        var ytdRunTotals: ActivityTotal? = null,
 
-    /**
-     * The year to date swim stats for the athlete.
-     */
-    @Json(name ="ytd_swim_totals")
-    var ytdSwimTotals: ActivityTotal? = null,
+        /**
+         * The year to date swim stats for the athlete.
+         */
+        @Json(name = "ytd_swim_totals")
+        var ytdSwimTotals: ActivityTotal? = null,
 
-    /**
-     * The all time ride stats for the athlete.
-     */
-    @Json(name ="all_ride_totals")
-    var allRideTotals: ActivityTotal? = null,
+        /**
+         * The all time ride stats for the athlete.
+         */
+        @Json(name = "all_ride_totals")
+        var allRideTotals: ActivityTotal? = null,
 
-    /**
-     * The all time run stats for the athlete.
-     */
-    @Json(name ="all_run_totals")
-    var allRunTotals: ActivityTotal? = null,
+        /**
+         * The all time run stats for the athlete.
+         */
+        @Json(name = "all_run_totals")
+        var allRunTotals: ActivityTotal? = null,
 
-    /**
-     * The all time swim stats for the athlete.
-     */
-    @Json(name ="all_swim_totals")
-    var allSwimTotals: ActivityTotal? = null
+        /**
+         * The all time swim stats for the athlete.
+         */
+        @Json(name = "all_swim_totals")
+        var allSwimTotals: ActivityTotal? = null
 
 ) : StravaResponse()

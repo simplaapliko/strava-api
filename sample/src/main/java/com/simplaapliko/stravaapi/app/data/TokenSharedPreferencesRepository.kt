@@ -40,8 +40,8 @@ class TokenSharedPreferencesRepository(context: Context) : TokenRepository {
 
     override fun clear() {
         sharedPreferences.edit()
-            .clear()
-            .apply()
+                .clear()
+                .apply()
     }
 
     override fun getAccessToken(): String {
@@ -50,8 +50,8 @@ class TokenSharedPreferencesRepository(context: Context) : TokenRepository {
 
     override fun setAccessToken(token: String) {
         sharedPreferences.edit()
-            .putString(PREF_ACCESS_TOKEN, token)
-            .apply()
+                .putString(PREF_ACCESS_TOKEN, token)
+                .apply()
     }
 
     override fun getRefreshToken(): String {
@@ -60,8 +60,8 @@ class TokenSharedPreferencesRepository(context: Context) : TokenRepository {
 
     override fun setRefreshToken(token: String) {
         sharedPreferences.edit()
-            .putString(PREF_REFRESH_TOKEN, token)
-            .apply()
+                .putString(PREF_REFRESH_TOKEN, token)
+                .apply()
     }
 
     override fun getExpiresAt(): Int {

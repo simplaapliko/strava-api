@@ -21,6 +21,7 @@ import com.simplaapliko.strava.model.Athlete
 import com.simplaapliko.strava.model.Zones
 import io.reactivex.Single
 import retrofit2.http.GET
+import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -53,4 +54,14 @@ interface AthleteApi {
      */
     @GET("athlete/zones")
     fun getZones(): Single<Zones>
+
+    /**
+     * Update the currently authenticated athlete.
+     * Requires profile:write scope.
+     * @param weight The weight of the athlete in kilograms.
+     */
+    @PUT("athlete")
+    fun updateAthlete(
+            @Query("weight") weight: Double
+    ): Single<Athlete>
 }

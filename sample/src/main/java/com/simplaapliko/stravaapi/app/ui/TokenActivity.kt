@@ -61,6 +61,7 @@ class TokenActivity : BaseActivity() {
     private fun onGetTokedSuccess(token: Token) {
         setProgressVisibility(false)
 
+        token.athleteSummary?.let { tokenRepository.setAthlete(it) }
         tokenRepository.setAccessToken(token.accessToken)
         tokenRepository.setExpiresAt(token.expiresAt)
         tokenRepository.setRefreshToken(token.refreshToken)

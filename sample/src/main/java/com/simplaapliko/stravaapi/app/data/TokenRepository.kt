@@ -16,9 +16,15 @@
 
 package com.simplaapliko.stravaapi.app.data
 
+import com.simplaapliko.strava.model.Athlete
+
 interface TokenRepository {
 
     fun clear()
+
+    fun getAthlete(): Athlete?
+
+    fun setAthlete(athlete: Athlete)
 
     fun getAccessToken(): String
 

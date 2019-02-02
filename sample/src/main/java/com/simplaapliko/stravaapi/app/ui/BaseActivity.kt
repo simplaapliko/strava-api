@@ -18,6 +18,8 @@ package com.simplaapliko.stravaapi.app.ui
 
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.simplaapliko.strava.api.AthleteApi
+import com.simplaapliko.strava.api.StravaApiV3
 import com.simplaapliko.strava.api.TokenApi
 import com.simplaapliko.strava.json.JsonUtils
 import com.simplaapliko.stravaapi.app.data.AuthRepository
@@ -57,8 +59,17 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
+    fun provideAthleteApi(): AthleteApi {
+        return provideApi(provideAuthorizedOkHttpClient(), StravaApiV3.BASE_URL)
+    }
+
     fun provideTokenApi(): TokenApi {
         return provideApi(NetworkModule().provideOkHttpClient(), TokenApi.BASE_URL)
+    }
+
+    private fun provideAuthorizedOkHttpClient(): OkHttpClient {
+        val token = tokenRepository.getAccessToken()
+        return NetworkModule().provideOkHttpClient(token)
     }
 
     private inline fun <reified T> provideApi(client: OkHttpClient, baseUrl: String): T {

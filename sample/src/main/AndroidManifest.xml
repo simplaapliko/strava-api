@@ -65,6 +65,13 @@
         </activity>
 
         <activity
+            android:name=".app.ui.AthleteActivity"
+            android:launchMode="singleTask"
+            android:label="@string/activity_athlete"
+            android:parentActivityName=".app.ui.MainActivity"
+            />
+
+        <activity
             android:name=".app.ui.AuthorizeActivity"
             android:launchMode="singleTask"
             android:label="@string/activity_authorize"

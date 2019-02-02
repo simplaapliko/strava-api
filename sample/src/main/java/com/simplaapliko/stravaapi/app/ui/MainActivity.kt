@@ -26,8 +26,14 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        athlete.setOnClickListener { goToAthleteScreen() }
         authorize.setOnClickListener { goToAuthorizeScreen() }
         token.setOnClickListener { tokenScreen() }
+    }
+
+    private fun goToAthleteScreen() {
+        val intent = AthleteActivity.getStartIntent(this)
+        startActivity(intent)
     }
 
     private fun goToAuthorizeScreen() {

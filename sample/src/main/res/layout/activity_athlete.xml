@@ -25,27 +25,37 @@
     >
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/authorize"
+        android:id="@+id/get_authenticated_athlete"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Authorize"
+        android:text="Get Authenticated Athlete"
         />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/token"
+        android:id="@+id/get_athlete_stats"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Token"
+        android:text="Get Athlete Stats"
         />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/athlete"
+        android:id="@+id/get_zones"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Athlete"
+        android:text="Get Zones"
         />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/update_athlete"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Athlete"
+        />
+
+    <include layout="@layout/include_response" />
 
 </LinearLayout>

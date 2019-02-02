@@ -17,10 +17,36 @@
 package com.simplaapliko.stravaapi.app.di
 
 import com.simplaapliko.stravaapi.BuildConfig
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
 class NetworkModule {
+
+    fun provideOkHttpClient(token: String): OkHttpClient {
+
+        val logging = HttpLoggingInterceptor()
+        if (BuildConfig.DEBUG) {
+            logging.level = HttpLoggingInterceptor.Level.BODY
+        } else {
+            logging.level = HttpLoggingInterceptor.Level.NONE
+        }
+
+        val interceptor = Interceptor { chain ->
+            val original = chain.request()
+
+            val request = original.newBuilder()
+                    .header("Authorization", "Bearer $token")
+                    .build()
+
+            chain.proceed(request)
+        }
+
+        return OkHttpClient.Builder()
+                .addInterceptor(logging)
+                .addNetworkInterceptor(interceptor)
+                .build()
+    }
 
     fun provideOkHttpClient(): OkHttpClient {
 

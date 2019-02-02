@@ -64,7 +64,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     fun provideTokenApi(): TokenApi {
-        return provideApi(NetworkModule().provideOkHttpClient(), TokenApi.BASE_URL)
+        return provideApi(NetworkModule().provideOkHttpClient(), StravaApiV3.BASE_OAUTH_URL)
     }
 
     private fun provideAuthorizedOkHttpClient(): OkHttpClient {

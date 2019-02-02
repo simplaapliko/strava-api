@@ -26,10 +26,6 @@ import retrofit2.http.POST
 
 interface TokenApi {
 
-    companion object {
-        const val BASE_URL = "https://www.strava.com/oauth/"
-    }
-
     /**
      * @param clientId The application’s ID, obtained during registration.
      * @param clientSecret The application’s secret, obtained during registration.

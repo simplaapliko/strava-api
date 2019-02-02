@@ -18,5 +18,8 @@ package com.simplaapliko.strava.api
 
 object StravaApiV3 {
     const val BASE_URL = "https://www.strava.com/api/v3/"
+
+    const val BASE_OAUTH_URL = "https://www.strava.com/oauth/"
+    const val AUTHORIZE_URL = "$BASE_OAUTH_URL/mobile/authorize"
 }
 

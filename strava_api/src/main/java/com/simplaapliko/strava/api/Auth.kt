@@ -80,9 +80,6 @@ object Auth {
     }
 
     object UrlBuilder {
-        const val BASE_URL = "https://www.strava.com/oauth/mobile/"
-        const val AUTHORIZE = "authorize"
-
         /**
          * @param clientId The application’s ID, obtained during registration.
          * @param redirectUri URL to which the user will be redirected after authentication.
@@ -124,9 +121,9 @@ object Auth {
                 approvalPrompt: ApprovalPrompt = ApprovalPrompt.AUTO,
                 state: String = "authorize"
         ): String {
-            val commaSeparatedScope = scopes.joinToString(separator = ",") { it -> it.id }
+            val commaSeparatedScope = scopes.joinToString(separator = ",") { it.id }
 
-            return "$BASE_URL$AUTHORIZE" +
+            return StravaApiV3.AUTHORIZE_URL +
                     "?response_type=code" +
                     "&client_id=$clientId" +
                     "&redirect_uri=$redirectUri" +

@@ -16,6 +16,7 @@
 
 package com.simplaapliko.stravaapi.app.ui
 
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.simplaapliko.strava.api.TokenApi
 import com.simplaapliko.strava.json.JsonUtils
@@ -25,6 +26,7 @@ import com.simplaapliko.stravaapi.app.data.TokenRepository
 import com.simplaapliko.stravaapi.app.data.TokenSharedPreferencesRepository
 import com.simplaapliko.stravaapi.app.di.NetworkModule
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.android.synthetic.main.include_response.*
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -40,24 +42,34 @@ abstract class BaseActivity : AppCompatActivity() {
     val tokenRepository: TokenRepository
         get() = TokenSharedPreferencesRepository(applicationContext)
 
+    fun setProgressVisibility(isVisible: Boolean) {
+        progress.visibility = if (isVisible) View.VISIBLE else View.GONE
+    }
+
+    fun errorHandler(throwable: Throwable) {
+        setProgressVisibility(false)
+
+        response.text = throwable.message
+    }
+
     override fun onDestroy() {
         disposables.dispose()
         super.onDestroy()
     }
 
     fun provideTokenApi(): TokenApi {
-        return provideTokenApi(NetworkModule().provideOkHttpClient())
+        return provideApi(NetworkModule().provideOkHttpClient(), TokenApi.BASE_URL)
     }
 
-    fun provideTokenApi(client: OkHttpClient): TokenApi {
+    private inline fun <reified T> provideApi(client: OkHttpClient, baseUrl: String): T {
         val moshi = JsonUtils.moshi()
 
         return Retrofit.Builder()
                 .client(client)
-                .baseUrl(TokenApi.BASE_URL)
+                .baseUrl(baseUrl)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(MoshiConverterFactory.create(moshi))
                 .build()
-                .create(TokenApi::class.java)
+                .create(T::class.java)
     }
 }

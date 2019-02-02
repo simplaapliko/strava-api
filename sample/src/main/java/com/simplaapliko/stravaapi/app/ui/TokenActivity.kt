@@ -19,13 +19,13 @@ package com.simplaapliko.stravaapi.app.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import com.simplaapliko.strava.model.RefreshToken
 import com.simplaapliko.strava.model.Token
 import com.simplaapliko.stravaapi.R
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_token.*
+import kotlinx.android.synthetic.main.include_response.*
 
 class TokenActivity : BaseActivity() {
 
@@ -111,15 +111,5 @@ class TokenActivity : BaseActivity() {
         tokenRepository.clear()
 
         response.text = "Deauthorized"
-    }
-
-    private fun errorHandler(throwable: Throwable) {
-        setProgressVisibility(false)
-
-        response.text = throwable.message
-    }
-
-    private fun setProgressVisibility(isVisible: Boolean) {
-        progress.visibility = if (isVisible) View.VISIBLE else View.GONE
     }
 }

@@ -59,6 +59,8 @@ class AthleteActivity : BaseActivity() {
     private fun onAuthenticatedAthleteSuccess(athlete: Athlete) {
         setProgressVisibility(false)
 
+        dataRepository.setAuthenticatedAthlete(athlete)
+
         response.text = athlete.toString()
     }
 
@@ -83,6 +85,8 @@ class AthleteActivity : BaseActivity() {
     private fun onGetAthleteStatsSuccess(activityStats: ActivityStats) {
         setProgressVisibility(false)
 
+        dataRepository.setAthleteStats(activityStats)
+
         response.text = activityStats.toString()
     }
 
@@ -98,6 +102,8 @@ class AthleteActivity : BaseActivity() {
 
     private fun onGetZonesSuccess(zones: Zones) {
         setProgressVisibility(false)
+
+        dataRepository.setZones(zones)
 
         response.text = zones.toString()
     }

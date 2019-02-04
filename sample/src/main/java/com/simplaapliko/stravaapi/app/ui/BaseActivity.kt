@@ -24,6 +24,8 @@ import com.simplaapliko.strava.api.TokenApi
 import com.simplaapliko.strava.json.JsonUtils
 import com.simplaapliko.stravaapi.app.data.AuthRepository
 import com.simplaapliko.stravaapi.app.data.AuthSharedPreferencesRepository
+import com.simplaapliko.stravaapi.app.data.DataRepository
+import com.simplaapliko.stravaapi.app.data.DataSharedPreferencesRepository
 import com.simplaapliko.stravaapi.app.data.TokenRepository
 import com.simplaapliko.stravaapi.app.data.TokenSharedPreferencesRepository
 import com.simplaapliko.stravaapi.app.di.NetworkModule
@@ -40,6 +42,9 @@ abstract class BaseActivity : AppCompatActivity() {
 
     val authRepository: AuthRepository
         get() = AuthSharedPreferencesRepository(applicationContext)
+
+    val dataRepository: DataRepository
+        get() = DataSharedPreferencesRepository(applicationContext)
 
     val tokenRepository: TokenRepository
         get() = TokenSharedPreferencesRepository(applicationContext)

@@ -19,6 +19,7 @@ package com.simplaapliko.stravaapi.app.ui
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.simplaapliko.strava.api.AthleteApi
+import com.simplaapliko.strava.api.GearApi
 import com.simplaapliko.strava.api.StravaApiV3
 import com.simplaapliko.strava.api.TokenApi
 import com.simplaapliko.strava.json.JsonUtils
@@ -65,6 +66,10 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     fun provideAthleteApi(): AthleteApi {
+        return provideApi(provideAuthorizedOkHttpClient(), StravaApiV3.BASE_URL)
+    }
+
+    fun provideGearApi(): GearApi {
         return provideApi(provideAuthorizedOkHttpClient(), StravaApiV3.BASE_URL)
     }
 

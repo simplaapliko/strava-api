@@ -79,6 +79,13 @@
             />
 
         <activity
+            android:name=".app.ui.GearActivity"
+            android:launchMode="singleTask"
+            android:label="@string/activity_gear"
+            android:parentActivityName=".app.ui.MainActivity"
+            />
+
+        <activity
             android:name=".app.ui.TokenActivity"
             android:launchMode="singleTask"
             android:label="@string/activity_token"

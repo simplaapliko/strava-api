@@ -21,6 +21,7 @@ import android.content.SharedPreferences
 import com.simplaapliko.strava.json.JsonUtils
 import com.simplaapliko.strava.model.ActivityStats
 import com.simplaapliko.strava.model.Athlete
+import com.simplaapliko.strava.model.DetailedGear
 import com.simplaapliko.strava.model.Zones
 import com.squareup.moshi.JsonAdapter
 
@@ -31,12 +32,14 @@ class DataSharedPreferencesRepository(context: Context) : DataRepository {
 
         private const val PREF_ATHLETE_STATS = "athlete_stats"
         private const val PREF_AUTHENTICATED_ATHLETE = "authenticated_athlete"
+        private const val PREF_DETAILED_GEAR = "detailed_gear"
         private const val PREF_ZONES = "zones"
     }
 
     private val moshi = JsonUtils.moshi()
     private val athleteAdapter: JsonAdapter<Athlete> = moshi.adapter(Athlete::class.java)
     private val activityStatsAdapter: JsonAdapter<ActivityStats> = moshi.adapter(ActivityStats::class.java)
+    private val detailedGearAdapter: JsonAdapter<DetailedGear> = moshi.adapter(DetailedGear::class.java)
     private val zonesAdapter: JsonAdapter<Zones> = moshi.adapter(Zones::class.java)
 
     private val sharedPreferences: SharedPreferences
@@ -84,6 +87,20 @@ class DataSharedPreferencesRepository(context: Context) : DataRepository {
 
         sharedPreferences.edit()
                 .putString(PREF_ZONES, json)
+                .apply()
+    }
+
+    override fun getDetailedGear(): DetailedGear? {
+        val json = sharedPreferences.getString(PREF_DETAILED_GEAR, null)
+
+        return if (json == null) null else detailedGearAdapter.fromJson(json)
+    }
+
+    override fun setDetailedGear(detailedGear: DetailedGear) {
+        val json = detailedGearAdapter.toJson(detailedGear)
+
+        sharedPreferences.edit()
+                .putString(PREF_DETAILED_GEAR, json)
                 .apply()
     }
 }

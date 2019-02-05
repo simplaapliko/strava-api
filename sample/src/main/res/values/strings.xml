@@ -20,6 +20,7 @@
 
     <string name="activity_athlete">Athlete API</string>
     <string name="activity_authorize">Authorize API</string>
+    <string name="activity_gear">Gear API</string>
     <string name="activity_token">Token API</string>
 
 </resources>

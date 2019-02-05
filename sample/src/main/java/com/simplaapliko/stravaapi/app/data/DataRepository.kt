@@ -18,10 +18,12 @@ package com.simplaapliko.stravaapi.app.data
 
 import com.simplaapliko.strava.model.ActivityStats
 import com.simplaapliko.strava.model.Athlete
+import com.simplaapliko.strava.model.DetailedGear
 import com.simplaapliko.strava.model.Zones
 
 interface DataRepository {
 
+    //region Athlete
     fun getAthleteStats(): ActivityStats?
 
     fun setAthleteStats(activityStats: ActivityStats)
@@ -33,4 +35,11 @@ interface DataRepository {
     fun getZones(): Zones?
 
     fun setZones(zones: Zones)
+    //endregion Athlete
+
+    //region Gear
+    fun getDetailedGear(): DetailedGear?
+
+    fun setDetailedGear(detailedGear: DetailedGear)
+    //endregion Gear
 }

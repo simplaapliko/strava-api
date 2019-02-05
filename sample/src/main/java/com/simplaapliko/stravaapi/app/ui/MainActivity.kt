@@ -28,7 +28,8 @@ class MainActivity : BaseActivity() {
 
         athlete.setOnClickListener { goToAthleteScreen() }
         authorize.setOnClickListener { goToAuthorizeScreen() }
-        token.setOnClickListener { tokenScreen() }
+        gear.setOnClickListener { goToGearScreen() }
+        token.setOnClickListener { goTokenScreen() }
     }
 
     private fun goToAthleteScreen() {
@@ -41,7 +42,12 @@ class MainActivity : BaseActivity() {
         startActivity(intent)
     }
 
-    private fun tokenScreen() {
+    private fun goToGearScreen() {
+        val intent = GearActivity.getStartIntent(this)
+        startActivity(intent)
+    }
+
+    private fun goTokenScreen() {
         val intent = TokenActivity.getStartIntent(this)
         startActivity(intent)
     }

@@ -25,35 +25,13 @@
     >
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/authorize"
+        android:id="@+id/get_gear"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Authorize"
+        android:text="Get Gear"
         />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/token"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Token"
-        />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/athlete"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Athlete"
-        />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/gear"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gear"
-        />
+    <include layout="@layout/include_response" />
 
 </LinearLayout>

@@ -33,7 +33,7 @@ interface TokenApi {
      * @param grantType The grant type for the request.
      *      For initial authentication, must always be "authorization_code".
      */
-    @POST("token")
+    @POST("oauth/token")
     @FormUrlEncoded
     fun token(
             @Field("client_id") clientId: Int,
@@ -51,7 +51,7 @@ interface TokenApi {
      *      When refreshing an access token, must always be "refresh_token".
      */
     @FormUrlEncoded
-    @POST("token")
+    @POST("oauth/token")
     fun refreshToken(
             @Field("client_id") clientId: Int,
             @Field("client_secret") clientSecret: String,
@@ -63,7 +63,7 @@ interface TokenApi {
      * @param accessToken Responds with the refresh tokens that were revoked.
      */
     @FormUrlEncoded
-    @POST("deauthorize")
+    @POST("oauth/deauthorize")
     fun deauthorize(
             @Field("access_token") accessToken: String
     ): Completable

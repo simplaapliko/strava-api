@@ -35,6 +35,6 @@ data class Token(
         @Json(name = "expires_at")
         var expiresAt: Int = 0,
 
-        @Json(name = "state")
-        var state: String = ""
+        @Json(name = "expires_in")
+        var expiresIn: Int = 0
 )

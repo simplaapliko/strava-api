@@ -44,6 +44,9 @@ android {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
   }
+  kotlinOptions {
+    jvmTarget = JavaVersion.VERSION_1_8.toString()
+  }
 }
 
 dependencies {
@@ -63,6 +66,11 @@ dependencies {
   implementation deps.dagger.runtime
   kapt deps.dagger.compiler
   compileOnly deps.javaxannotation
+
+  implementation deps.okhttp.client
+  implementation deps.okhttp.logging
+
+  implementation deps.retrofit.adapterRxJava
 
   testImplementation deps.test.junit
 }

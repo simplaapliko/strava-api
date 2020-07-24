@@ -35,22 +35,24 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
+  compileOptions {
+    encoding "UTF-8"
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
 }
 
 dependencies {
   implementation deps.kotlin.stdlib.jdk
 
-  api deps.moshi.adapters
-  api deps.moshi.kotlin
-  api deps.moshi.runtime
-  kapt deps.moshi.compiler
+  implementation deps.moshi.adapters
+  implementation deps.moshi.kotlin
+  implementation deps.moshi.runtime
 
-  api deps.okhttp.client
-  api deps.okhttp.logging
-
-  api deps.retrofit.adapterRxJava
   api deps.retrofit.client
   api deps.retrofit.converterMoshi
+
+  api deps.reactivex.rxJava2
 
   testImplementation deps.test.junit
   testImplementation deps.truth

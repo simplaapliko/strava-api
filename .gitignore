@@ -50,6 +50,7 @@ captures/
 .idea/compiler.xml
 .idea/encodings.xml
 .idea/gradle.xml
+.idea/jarRepositories.xml
 .idea/kotlinc.xml
 .idea/markdown-navigator/profiles_settings.xml
 .idea/markdown-exported-files.xml

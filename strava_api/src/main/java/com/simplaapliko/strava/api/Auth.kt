@@ -87,17 +87,17 @@ object Auth {
          * localhost and 127.0.0.1 are white-listed.
          * @param approvalPrompt force or auto, use force to always show the authorization prompt
          * even if the user has already authorized the current application, default is auto.
-         * @param scope Requested scopes, as a comma delimited string,
-         * e.g. "activity:read_all,activity:write".
+         * @param scope Requested scope,
+         * @see Auth.Scope
          * @param state Returned in the redirect URI.
          * Useful if the authentication is done from various points in an app.
          */
         fun build(
-                clientId: Int,
-                redirectUri: String,
-                scope: Scope,
-                approvalPrompt: ApprovalPrompt = ApprovalPrompt.AUTO,
-                state: String = "authorize"
+            clientId: Int,
+            redirectUri: String,
+            scope: Scope,
+            approvalPrompt: ApprovalPrompt = ApprovalPrompt.AUTO,
+            state: String = "authorize"
         ): String {
             return build(clientId, redirectUri, listOf(scope), approvalPrompt, state)
         }
@@ -115,21 +115,21 @@ object Auth {
          * Useful if the authentication is done from various points in an app.
          */
         fun build(
-                clientId: Int,
-                redirectUri: String,
-                scopes: List<Scope>,
-                approvalPrompt: ApprovalPrompt = ApprovalPrompt.AUTO,
-                state: String = "authorize"
+            clientId: Int,
+            redirectUri: String,
+            scopes: List<Scope>,
+            approvalPrompt: ApprovalPrompt = ApprovalPrompt.AUTO,
+            state: String = "authorize"
         ): String {
             val commaSeparatedScope = scopes.joinToString(separator = ",") { it.id }
 
             return StravaApiV3.AUTHORIZE_URL +
-                    "?response_type=code" +
-                    "&client_id=$clientId" +
-                    "&redirect_uri=$redirectUri" +
-                    "&approval_prompt=$approvalPrompt" +
-                    "&scope=$commaSeparatedScope" +
-                    "&state=$state"
+                "?response_type=code" +
+                "&client_id=$clientId" +
+                "&redirect_uri=$redirectUri" +
+                "&approval_prompt=$approvalPrompt" +
+                "&scope=$commaSeparatedScope" +
+                "&state=$state"
         }
     }
 }

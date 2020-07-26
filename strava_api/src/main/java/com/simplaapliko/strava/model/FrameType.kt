@@ -17,11 +17,7 @@
 package com.simplaapliko.strava.model
 
 enum class FrameType(val id: Int?) {
-    UNKNOWN(null),
-    MOUNTAIN(1),
-    CROSS(2),
-    ROAD(3),
-    TIME_TRIAL(4);
+    UNKNOWN(null), MOUNTAIN(1), CROSS(2), ROAD(3), TIME_TRIAL(4);
 
     companion object {
         fun byId(id: Int): FrameType {

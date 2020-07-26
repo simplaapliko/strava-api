@@ -18,12 +18,11 @@ package com.simplaapliko.stravaapi.app.data
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.simplaapliko.strava.json.JsonUtils
+import com.google.gson.Gson
 import com.simplaapliko.strava.model.ActivityStats
 import com.simplaapliko.strava.model.Athlete
 import com.simplaapliko.strava.model.DetailedGear
 import com.simplaapliko.strava.model.Zones
-import com.squareup.moshi.JsonAdapter
 
 class DataSharedPreferencesRepository(context: Context) : DataRepository {
 
@@ -36,13 +35,8 @@ class DataSharedPreferencesRepository(context: Context) : DataRepository {
         private const val PREF_ZONES = "zones"
     }
 
-    private val moshi = JsonUtils.moshi()
-    private val athleteAdapter: JsonAdapter<Athlete> = moshi.adapter(Athlete::class.java)
-    private val activityStatsAdapter: JsonAdapter<ActivityStats> = moshi.adapter(ActivityStats::class.java)
-    private val detailedGearAdapter: JsonAdapter<DetailedGear> = moshi.adapter(DetailedGear::class.java)
-    private val zonesAdapter: JsonAdapter<Zones> = moshi.adapter(Zones::class.java)
-
     private val sharedPreferences: SharedPreferences
+    private val gson = Gson()
 
     init {
         sharedPreferences = context.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE)
@@ -51,56 +45,56 @@ class DataSharedPreferencesRepository(context: Context) : DataRepository {
     override fun getAthleteStats(): ActivityStats? {
         val json = sharedPreferences.getString(PREF_ATHLETE_STATS, null)
 
-        return if (json == null) null else activityStatsAdapter.fromJson(json)
+        return if (json == null) null else gson.fromJson(json, ActivityStats::class.java)
     }
 
     override fun setAthleteStats(activityStats: ActivityStats) {
-        val json = activityStatsAdapter.toJson(activityStats)
+        val json = gson.toJson(activityStats)
 
         sharedPreferences.edit()
-                .putString(PREF_ATHLETE_STATS, json)
-                .apply()
+            .putString(PREF_ATHLETE_STATS, json)
+            .apply()
     }
 
     override fun getAuthenticatedAthlete(): Athlete? {
         val json = sharedPreferences.getString(PREF_AUTHENTICATED_ATHLETE, null)
 
-        return if (json == null) null else athleteAdapter.fromJson(json)
+        return if (json == null) null else gson.fromJson(json, Athlete::class.java)
     }
 
     override fun setAuthenticatedAthlete(athlete: Athlete) {
-        val json = athleteAdapter.toJson(athlete)
+        val json = gson.toJson(athlete)
 
         sharedPreferences.edit()
-                .putString(PREF_AUTHENTICATED_ATHLETE, json)
-                .apply()
+            .putString(PREF_AUTHENTICATED_ATHLETE, json)
+            .apply()
     }
 
     override fun getZones(): Zones? {
         val json = sharedPreferences.getString(PREF_ZONES, null)
 
-        return if (json == null) null else zonesAdapter.fromJson(json)
+        return if (json == null) null else gson.fromJson(json, Zones::class.java)
     }
 
     override fun setZones(zones: Zones) {
-        val json = zonesAdapter.toJson(zones)
+        val json = gson.toJson(zones)
 
         sharedPreferences.edit()
-                .putString(PREF_ZONES, json)
-                .apply()
+            .putString(PREF_ZONES, json)
+            .apply()
     }
 
     override fun getDetailedGear(): DetailedGear? {
         val json = sharedPreferences.getString(PREF_DETAILED_GEAR, null)
 
-        return if (json == null) null else detailedGearAdapter.fromJson(json)
+        return if (json == null) null else gson.fromJson(json, DetailedGear::class.java)
     }
 
     override fun setDetailedGear(detailedGear: DetailedGear) {
-        val json = detailedGearAdapter.toJson(detailedGear)
+        val json = gson.toJson(detailedGear)
 
         sharedPreferences.edit()
-                .putString(PREF_DETAILED_GEAR, json)
-                .apply()
+            .putString(PREF_DETAILED_GEAR, json)
+            .apply()
     }
 }

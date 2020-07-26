@@ -16,19 +16,19 @@
 
 package com.simplaapliko.strava.model
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 data class HeartRateZoneRanges(
-        /**
-         * Whether the athlete has set their own custom heart rate zones
-         */
-        @Json(name = "custom_zones")
-        var customZones: Boolean = false,
+    /**
+     * Whether the athlete has set their own custom heart rate zones
+     */
+    @SerializedName("custom_zones")
+    var customZones: Boolean = false,
 
-        /**
-         * A collection of ZoneRange objects.
-         * @see com.simplaapliko.strava.model.ZoneRange
-         */
-        @Json(name = "zones")
-        var zones: List<ZoneRange> = emptyList()
+    /**
+     * A collection of ZoneRange objects.
+     * @see com.simplaapliko.strava.model.ZoneRange
+     */
+    @SerializedName("zones")
+    var zones: List<ZoneRange> = emptyList()
 )

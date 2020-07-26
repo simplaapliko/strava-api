@@ -18,9 +18,8 @@ package com.simplaapliko.stravaapi.app.data
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.simplaapliko.strava.json.JsonUtils
+import com.google.gson.Gson
 import com.simplaapliko.strava.model.Athlete
-import com.squareup.moshi.JsonAdapter
 
 class TokenSharedPreferencesRepository(context: Context) : TokenRepository {
 
@@ -36,8 +35,8 @@ class TokenSharedPreferencesRepository(context: Context) : TokenRepository {
         private const val PREF_REFRESH_TOKEN = "refresh_token"
     }
 
-    private val athleteAdapter: JsonAdapter<Athlete> = JsonUtils.moshi().adapter(Athlete::class.java)
     private val sharedPreferences: SharedPreferences
+    private val gson = Gson()
 
     init {
         sharedPreferences = context.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE)
@@ -45,22 +44,22 @@ class TokenSharedPreferencesRepository(context: Context) : TokenRepository {
 
     override fun clear() {
         sharedPreferences.edit()
-                .clear()
-                .apply()
+            .clear()
+            .apply()
     }
 
     override fun getAthlete(): Athlete? {
         val json = sharedPreferences.getString(PREF_ATHLETE, null)
 
-        return if (json == null) null else athleteAdapter.fromJson(json)
+        return if (json == null) null else gson.fromJson(json, Athlete::class.java)
     }
 
     override fun setAthlete(athlete: Athlete) {
-        val json = athleteAdapter.toJson(athlete)
+        val json = gson.toJson(athlete)
 
         sharedPreferences.edit()
-                .putString(PREF_ATHLETE, json)
-                .apply()
+            .putString(PREF_ATHLETE, json)
+            .apply()
     }
 
     override fun getAccessToken(): String {
@@ -69,8 +68,8 @@ class TokenSharedPreferencesRepository(context: Context) : TokenRepository {
 
     override fun setAccessToken(token: String) {
         sharedPreferences.edit()
-                .putString(PREF_ACCESS_TOKEN, token)
-                .apply()
+            .putString(PREF_ACCESS_TOKEN, token)
+            .apply()
     }
 
     override fun getRefreshToken(): String {
@@ -79,8 +78,8 @@ class TokenSharedPreferencesRepository(context: Context) : TokenRepository {
 
     override fun setRefreshToken(token: String) {
         sharedPreferences.edit()
-                .putString(PREF_REFRESH_TOKEN, token)
-                .apply()
+            .putString(PREF_REFRESH_TOKEN, token)
+            .apply()
     }
 
     override fun getExpiresAt(): Int {
@@ -89,8 +88,8 @@ class TokenSharedPreferencesRepository(context: Context) : TokenRepository {
 
     override fun setExpiresAt(value: Int) {
         sharedPreferences.edit()
-                .putInt(PREF_EXPIRES_AT, value)
-                .apply()
+            .putInt(PREF_EXPIRES_AT, value)
+            .apply()
     }
 
     override fun isExpired(): Boolean {

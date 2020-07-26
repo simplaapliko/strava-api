@@ -52,9 +52,9 @@ class TokenActivity : BaseActivity() {
         val code = authRepository.getCode()
 
         val disposable = provideTokenApi().token(clientId, clientSecret, code)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ t -> onGetTokedSuccess(t) }, { t -> errorHandler(t) })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ t -> onGetTokedSuccess(t) }, { t -> errorHandler(t) })
         disposables.add(disposable)
     }
 
@@ -77,9 +77,9 @@ class TokenActivity : BaseActivity() {
         val refreshToken = tokenRepository.getRefreshToken()
 
         val disposable = provideTokenApi().refreshToken(clientId, clientSecret, refreshToken)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ t -> onRefreshTokedSuccess(t) }, { t -> errorHandler(t) })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ t -> onRefreshTokedSuccess(t) }, { t -> errorHandler(t) })
         disposables.add(disposable)
     }
 
@@ -99,9 +99,9 @@ class TokenActivity : BaseActivity() {
         val accessToken = tokenRepository.getAccessToken()
 
         val disposable = provideTokenApi().deauthorize(accessToken)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ onDeauthorizeSuccess() }, { t -> errorHandler(t) })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ onDeauthorizeSuccess() }, { t -> errorHandler(t) })
         disposables.add(disposable)
     }
 

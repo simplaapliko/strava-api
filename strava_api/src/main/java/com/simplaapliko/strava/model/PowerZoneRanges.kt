@@ -16,13 +16,13 @@
 
 package com.simplaapliko.strava.model
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 data class PowerZoneRanges(
-        /**
-         * A collection of ZoneRange objects.
-         * @see com.simplaapliko.strava.model.ZoneRange
-         */
-        @Json(name = "zones")
-        var zones: List<ZoneRange> = emptyList()
+    /**
+     * A collection of ZoneRange objects.
+     * @see com.simplaapliko.strava.model.ZoneRange
+     */
+    @SerializedName("zones")
+    var zones: List<ZoneRange> = emptyList()
 )

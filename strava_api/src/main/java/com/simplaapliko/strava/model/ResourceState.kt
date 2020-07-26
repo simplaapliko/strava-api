@@ -17,10 +17,7 @@
 package com.simplaapliko.strava.model
 
 enum class ResourceState(val id: Int?) {
-    UNKNOWN(null),
-    META(1),
-    SUMMARY(2),
-    DETAIL(3);
+    UNKNOWN(null), META(1), SUMMARY(2), DETAIL(3);
 
     companion object {
         fun byId(id: Int): ResourceState {

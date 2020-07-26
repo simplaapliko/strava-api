@@ -50,9 +50,9 @@ class AthleteActivity : BaseActivity() {
         setProgressVisibility(true)
 
         val disposable = provideAthleteApi().getAuthenticatedAthlete()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ t -> onAuthenticatedAthleteSuccess(t) }, { t -> errorHandler(t) })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ t -> onAuthenticatedAthleteSuccess(t) }, { t -> errorHandler(t) })
         disposables.add(disposable)
     }
 
@@ -76,9 +76,9 @@ class AthleteActivity : BaseActivity() {
         }
 
         val disposable = provideAthleteApi().getAthleteStats(athlete.id)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ t -> onGetAthleteStatsSuccess(t) }, { t -> errorHandler(t) })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ t -> onGetAthleteStatsSuccess(t) }, { t -> errorHandler(t) })
         disposables.add(disposable)
     }
 
@@ -94,9 +94,9 @@ class AthleteActivity : BaseActivity() {
         setProgressVisibility(true)
 
         val disposable = provideAthleteApi().getZones()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ t -> onGetZonesSuccess(t) }, { t -> errorHandler(t) })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ t -> onGetZonesSuccess(t) }, { t -> errorHandler(t) })
         disposables.add(disposable)
     }
 
@@ -112,9 +112,9 @@ class AthleteActivity : BaseActivity() {
         setProgressVisibility(true)
 
         val disposable = provideAthleteApi().updateAthlete(71.0)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ t -> onUpdateAthleteSuccess(t) }, { t -> errorHandler(t) })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ t -> onUpdateAthleteSuccess(t) }, { t -> errorHandler(t) })
         disposables.add(disposable)
     }
 

@@ -52,22 +52,20 @@ class GearActivity : BaseActivity() {
             return
         }
 
-        val gearId: String
-
-        when {
-            athlete.shoes.isNotEmpty() -> gearId = athlete.shoes[0].id
-            athlete.bikes.isNotEmpty() -> gearId = athlete.bikes[0].id
+        val gearId = when {
+            athlete.shoes.isNullOrEmpty().not() -> athlete.shoes?.firstOrNull()?.id
+            athlete.bikes.isNullOrEmpty().not() -> athlete.bikes?.firstOrNull()?.id
             else -> {
                 response.text = "athlete doesn't have shoes/bikes"
                 setProgressVisibility(false)
                 return
             }
-        }
+        } ?: return
 
         val disposable = provideGearApi().getGear(gearId)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ t -> onGetGearSuccess(t) }, { t -> errorHandler(t) })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ t -> onGetGearSuccess(t) }, { t -> errorHandler(t) })
         disposables.add(disposable)
     }
 

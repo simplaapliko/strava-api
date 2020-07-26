@@ -30,8 +30,8 @@ class AuthUrlBuilderTest {
         val url = Auth.UrlBuilder.build(clientId, redirectUri, scope)
 
         val expectedUrl = "https://www.strava.com/oauth/mobile/authorize?response_type=code" +
-                "&client_id=101&redirect_uri=http://localhost/token_exchange&approval_prompt=auto" +
-                "&scope=read_all&state=authorize"
+            "&client_id=101&redirect_uri=http://localhost/token_exchange&approval_prompt=auto" +
+            "&scope=read_all&state=authorize"
 
         assertThat(url).isEqualTo(expectedUrl)
     }
@@ -45,8 +45,8 @@ class AuthUrlBuilderTest {
         val url = Auth.UrlBuilder.build(clientId, redirectUri, scopes)
 
         val expectedUrl = "https://www.strava.com/oauth/mobile/authorize?response_type=code" +
-                "&client_id=101&redirect_uri=http://localhost/token_exchange&approval_prompt=auto" +
-                "&scope=read_all,profile:read_all&state=authorize"
+            "&client_id=101&redirect_uri=http://localhost/token_exchange&approval_prompt=auto" +
+            "&scope=read_all,profile:read_all&state=authorize"
 
         assertThat(url).isEqualTo(expectedUrl)
     }
@@ -58,11 +58,16 @@ class AuthUrlBuilderTest {
         val scope = Auth.Scope.READ_ALL
         val state = "state"
 
-        val url = Auth.UrlBuilder.build(clientId = clientId, redirectUri = redirectUri, scope = scope, state = state)
+        val url = Auth.UrlBuilder.build(
+            clientId = clientId,
+            redirectUri = redirectUri,
+            scope = scope,
+            state = state
+        )
 
         val expectedUrl = "https://www.strava.com/oauth/mobile/authorize?response_type=code" +
-                "&client_id=101&redirect_uri=http://localhost/token_exchange&approval_prompt=auto" +
-                "&scope=read_all&state=state"
+            "&client_id=101&redirect_uri=http://localhost/token_exchange&approval_prompt=auto" +
+            "&scope=read_all&state=state"
 
         assertThat(url).isEqualTo(expectedUrl)
     }
@@ -75,15 +80,15 @@ class AuthUrlBuilderTest {
         val approvalPrompt = Auth.ApprovalPrompt.FORCE
 
         val url = Auth.UrlBuilder.build(
-                clientId = clientId,
-                redirectUri = redirectUri,
-                scope = scope,
-                approvalPrompt = approvalPrompt
+            clientId = clientId,
+            redirectUri = redirectUri,
+            scope = scope,
+            approvalPrompt = approvalPrompt
         )
 
         val expectedUrl = "https://www.strava.com/oauth/mobile/authorize?response_type=code" +
-                "&client_id=101&redirect_uri=http://localhost/token_exchange&approval_prompt=force" +
-                "&scope=read_all&state=authorize"
+            "&client_id=101&redirect_uri=http://localhost/token_exchange&approval_prompt=force" +
+            "&scope=read_all&state=authorize"
 
         assertThat(url).isEqualTo(expectedUrl)
     }

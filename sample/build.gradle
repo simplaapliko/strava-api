@@ -71,6 +71,7 @@ dependencies {
   implementation deps.okhttp.logging
 
   implementation deps.retrofit.adapterRxJava
+  implementation deps.retrofit.converterGson
 
   testImplementation deps.test.junit
 }

@@ -16,164 +16,167 @@
 
 package com.simplaapliko.strava.model
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 import java.util.Date
 
 data class Athlete(
-        // region Summary Athlete
-        /**
-         * The unique identifier of the athlete
-         */
-        @Json(name = "id")
-        var id: Int = 0,
+    // region Summary Athlete
+    /**
+     * The unique identifier of the athlete
+     */
+    @SerializedName("id")
+    var id: Int = 0,
 
-        /**
-         * Resource state, indicates level of detail.
-         * Possible values: 1 -> "meta", 2 -> "summary", 3 -> "detail"
-         */
-        @Json(name = "resource_state")
-        var resourceState: ResourceState = ResourceState.UNKNOWN,
+    /**
+     * Resource state, indicates level of detail.
+     * Possible values: 1 -> "meta", 2 -> "summary", 3 -> "detail"
+     */
+    @SerializedName("resource_state")
+    var resourceState: String? = null,
 
-        /**
-         * The athlete's first name.
-         */
-        @Json(name = "firstname")
-        var firstName: String = "",
+    /**
+     * The athlete's first name.
+     */
+    @SerializedName("firstname")
+    var firstName: String = "",
 
-        /**
-         * The athlete's last name.
-         */
-        @Json(name = "lastname")
-        var lastName: String = "",
+    /**
+     * The athlete's last name.
+     */
+    @SerializedName("lastname")
+    var lastName: String = "",
 
-        /**
-         * URL to a 62x62 pixel profile picture.
-         */
-        @Json(name = "profile_medium")
-        var profileMedium: String = "",
+    /**
+     * URL to a 62x62 pixel profile picture.
+     */
+    @SerializedName("profile_medium")
+    var profileMedium: String = "",
 
-        /**
-         * URL to a 124x124 pixel profile picture.
-         */
-        @Json(name = "profile")
-        var profile: String = "",
+    /**
+     * URL to a 124x124 pixel profile picture.
+     */
+    @SerializedName("profile")
+    var profile: String = "",
 
-        /**
-         * The athlete's city.
-         */
-        @Json(name = "city")
-        var city: String = "",
+    /**
+     * The athlete's city.
+     */
+    @SerializedName("city")
+    var city: String? = null,
 
-        /**
-         * The athlete's state or geographical region.
-         */
-        @Json(name = "state")
-        var state: String = "",
+    /**
+     * The athlete's state or geographical region.
+     */
+    @SerializedName("state")
+    var state: String? = null,
 
-        /**
-         * The athlete's country.
-         */
-        @Json(name = "country")
-        var country: String = "",
+    /**
+     * The athlete's country.
+     */
+    @SerializedName("country")
+    var country: String? = null,
 
-        /**
-         * The athlete's sex. May take one of the following values: M, F
-         */
-        @Json(name = "sex")
-        var sex: Sex = Sex.UNKNOWN,
+    /**
+     * The athlete's sex. May take one of the following values: M, F
+     */
+    @SerializedName("sex")
+    var sex: String? = null,
 
-        /**
-         * Whether the currently logged-in athlete follows this athlete.
-         * May take one of the following values: pending, accepted, blocked
-         */
-        @Json(name = "friend")
-        var friend: FriendState = FriendState.UNKNOWN,
+    /**
+     * Whether the currently logged-in athlete follows this athlete.
+     * May take one of the following values: pending, accepted, blocked
+     */
+    @SerializedName("friend")
+    var friend: String? = null,
 
-        /**
-         * Whether this athlete follows the currently logged-in athlete.
-         * May take one of the following values: pending, accepted, blocked
-         */
-        @Json(name = "follower")
-        var follower: FriendState = FriendState.UNKNOWN,
+    /**
+     * Whether this athlete follows the currently logged-in athlete.
+     * May take one of the following values: pending, accepted, blocked
+     */
+    @SerializedName("follower")
+    var follower: String? = null,
 
-        /**
-         * Deprecated. Use summit field instead. Whether the athlete has any Summit subscription.
-         */
-        @Json(name = "premium")
-        var premium: Boolean = false,
+    /**
+     * Deprecated. Use summit field instead. Whether the athlete has any Summit subscription.
+     */
+    @SerializedName("premium")
+    var premium: Boolean = false,
 
-        /**
-         * Whether the athlete has any Summit subscription.
-         */
-        @Json(name = "summit")
-        var summit: Boolean = false,
+    /**
+     * Whether the athlete has any Summit subscription.
+     */
+    @SerializedName("summit")
+    var summit: Boolean = false,
 
-        /**
-         * The time at which the athlete was created.
-         */
-        @Json(name = "created_at")
-        var createdAt: Date? = null,
+    /**
+     * The time at which the athlete was created.
+     */
+    @SerializedName("created_at")
+    var createdAt: Date? = null,
 
-        /**
-         * The time at which the athlete was last updated.
-         */
-        @Json(name = "updated_at")
-        var updatedAt: Date? = null,
-        // endregion Summary Athlete
+    /**
+     * The time at which the athlete was last updated.
+     */
+    @SerializedName("updated_at")
+    var updatedAt: Date? = null,
 
-        // region Detailed Athlete
-        /**
-         * The athlete's follower count.
-         */
-        @Json(name = "follower_count")
-        var followerCount: Int = 0,
+    @SerializedName("badge_type_id")
+    var badgeTypeId: Int = 0,
+    // endregion Summary Athlete
 
-        /**
-         * The athlete's friend count.
-         */
-        @Json(name = "friend_count")
-        var friendCount: Int = 0,
+    // region Detailed Athlete
+    /**
+     * The athlete's follower count.
+     */
+    @SerializedName("follower_count")
+    var followerCount: Int = 0,
 
-        /**
-         * The number or athletes mutually followed by this athlete and the currently logged-in athlete.
-         */
-        @Json(name = "mutual_friend_count")
-        var mutualFriendCount: Int = 0,
+    /**
+     * The athlete's friend count.
+     */
+    @SerializedName("friend_count")
+    var friendCount: Int = 0,
 
-        /**
-         * The athlete's preferred unit system. May take one of the following values: feet, meters
-         */
-        @Json(name = "measurement_preference")
-        var measurementPreference: MeasurementPreference = MeasurementPreference.UNKNOWN,
+    /**
+     * The number or athletes mutually followed by this athlete and the currently logged-in athlete.
+     */
+    @SerializedName("mutual_friend_count")
+    var mutualFriendCount: Int = 0,
 
-        /**
-         * The athlete's FTP (Functional Threshold Power).
-         */
-        @Json(name = "ftp")
-        var ftp: Int = 0,
+    /**
+     * The athlete's preferred unit system. May take one of the following values: feet, meters
+     */
+    @SerializedName("measurement_preference")
+    var measurementPreference: String? = null,
 
-        /**
-         * The athlete's weight.
-         */
-        @Json(name = "weight")
-        var weight: Double = 0.0,
+    /**
+     * The athlete's FTP (Functional Threshold Power).
+     */
+    @SerializedName("ftp")
+    var ftp: Int = 0,
 
-        /**
-         * The athlete's clubs.
-         */
-        @Json(name = "clubs")
-        var clubs: List<SummaryClub> = emptyList(),
+    /**
+     * The athlete's weight.
+     */
+    @SerializedName("weight")
+    var weight: Double = 0.0,
 
-        /**
-         * The athlete's bikes.
-         */
-        @Json(name = "bikes")
-        var bikes: List<SummaryGear> = emptyList(),
+    /**
+     * The athlete's clubs.
+     */
+    @SerializedName("clubs")
+    var clubs: List<SummaryClub>? = null,
 
-        /**
-         * The athlete's shoes.
-         */
-        @Json(name = "shoes")
-        var shoes: List<SummaryGear> = emptyList()
-        // endregion Detailed Athlete
+    /**
+     * The athlete's bikes.
+     */
+    @SerializedName("bikes")
+    var bikes: List<SummaryGear>? = null,
+
+    /**
+     * The athlete's shoes.
+     */
+    @SerializedName("shoes")
+    var shoes: List<SummaryGear>? = null
+    // endregion Detailed Athlete
 ) : StravaResponse()

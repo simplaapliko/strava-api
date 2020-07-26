@@ -69,12 +69,7 @@ buildscript {
               'jdk': "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
           ],
       ],
-      'moshi'         : [
-          'adapters'   : "com.squareup.moshi:moshi-adapters:${versions.moshi}",
-          'compiler'   : "com.squareup.moshi:moshi-kotlin-codegen:${versions.moshi}",
-          'kotlin'     : "com.squareup.moshi:moshi-kotlin:${versions.moshi}",
-          'runtime'    : "com.squareup.moshi:moshi:${versions.moshi}",
-      ],
+      'gson' : "com.google.code.gson:gson:2.8.6",
       'okhttp'         : [
           'client' : "com.squareup.okhttp3:okhttp:${versions.okHttp}",
           'logging': "com.squareup.okhttp3:logging-interceptor:${versions.okHttp}",
@@ -86,7 +81,7 @@ buildscript {
       'retrofit'       : [
           'client'       :    "com.squareup.retrofit2:retrofit:${versions.retrofit}",
           'adapterRxJava':    "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}",
-          'converterMoshi':   "com.squareup.retrofit2:converter-moshi:${versions.retrofit}",
+          'converterGson':   "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
           'converterScalars': "com.squareup.retrofit2:converter-scalars:${versions.retrofit}",
       ],
       'test'           : [

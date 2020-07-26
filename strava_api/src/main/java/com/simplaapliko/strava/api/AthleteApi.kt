@@ -35,9 +35,9 @@ interface AthleteApi {
      */
     @GET("athletes/{id}/stats")
     fun getAthleteStats(
-            @Path("id") id: Int,
-            @Query("page ") page: Int = 1,
-            @Query("per_page ") perPage: Int = 30
+        @Path("id") id: Int,
+        @Query("page ") page: Int = 1,
+        @Query("per_page ") perPage: Int = 30
     ): Single<ActivityStats>
 
     /**
@@ -62,6 +62,6 @@ interface AthleteApi {
      */
     @PUT("athlete")
     fun updateAthlete(
-            @Query("weight") weight: Double
+        @Query("weight") weight: Double
     ): Single<Athlete>
 }

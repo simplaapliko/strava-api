@@ -22,7 +22,6 @@ import com.simplaapliko.strava.api.AthleteApi
 import com.simplaapliko.strava.api.GearApi
 import com.simplaapliko.strava.api.StravaApiV3
 import com.simplaapliko.strava.api.TokenApi
-import com.simplaapliko.strava.json.JsonUtils
 import com.simplaapliko.stravaapi.app.data.AuthRepository
 import com.simplaapliko.stravaapi.app.data.AuthSharedPreferencesRepository
 import com.simplaapliko.stravaapi.app.data.DataRepository
@@ -35,7 +34,7 @@ import kotlinx.android.synthetic.main.include_response.*
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 abstract class BaseActivity : AppCompatActivity() {
 
@@ -83,14 +82,12 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     private inline fun <reified T> provideApi(client: OkHttpClient, baseUrl: String): T {
-        val moshi = JsonUtils.moshi()
-
         return Retrofit.Builder()
-                .client(client)
-                .baseUrl(baseUrl)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(MoshiConverterFactory.create(moshi))
-                .build()
-                .create(T::class.java)
+            .client(client)
+            .baseUrl(baseUrl)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(T::class.java)
     }
 }

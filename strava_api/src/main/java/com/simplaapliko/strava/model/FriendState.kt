@@ -17,10 +17,7 @@
 package com.simplaapliko.strava.model
 
 enum class FriendState(val id: String?) {
-    UNKNOWN(null),
-    ACCEPTED("accepted"),
-    BLOCKED("blocked"),
-    PENDING("pending");
+    UNKNOWN(null), ACCEPTED("accepted"), BLOCKED("blocked"), PENDING("pending");
 
     companion object {
         fun byId(id: String): FriendState {

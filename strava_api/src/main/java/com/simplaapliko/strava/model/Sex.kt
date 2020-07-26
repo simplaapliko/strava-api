@@ -17,9 +17,7 @@
 package com.simplaapliko.strava.model
 
 enum class Sex(val id: String?) {
-    UNKNOWN(null),
-    F("F"),
-    M("M");
+    UNKNOWN(null), F("F"), M("M");
 
     companion object {
         fun byId(id: String): Sex {

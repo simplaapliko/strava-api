@@ -29,6 +29,6 @@ interface GearApi {
      */
     @GET("gear/{id}")
     fun getGear(
-            @Path("id") id: String
+        @Path("id") id: String
     ): Single<DetailedGear>
 }

@@ -47,13 +47,17 @@ class AuthorizeActivity : AppCompatActivity() {
         val redirectUri = getString(R.string.redirect_url)
         val scopes = getScopes()
 
-        val url = Auth.UrlBuilder.build(clientId = clientId, redirectUri = redirectUri, scopes = scopes)
+        val url = Auth.UrlBuilder.build(
+            clientId = clientId,
+            redirectUri = redirectUri,
+            scopes = scopes
+        )
 
         val customTabsIntent = CustomTabsIntent.Builder()
-                .addDefaultShareMenuItem()
-                .setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary))
-                .setShowTitle(true)
-                .build()
+            .addDefaultShareMenuItem()
+            .setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary))
+            .setShowTitle(true)
+            .build()
         customTabsIntent.launchUrl(this, Uri.parse(url))
 
         finish()

@@ -17,11 +17,7 @@
 package com.simplaapliko.strava.model
 
 enum class SportType(val id: String?) {
-    UNKNOWN(null),
-    CYCLING("cycling"),
-    RUNNING("running"),
-    TRIATHLON("triathlon"),
-    OTHER("other");
+    UNKNOWN(null), CYCLING("cycling"), RUNNING("running"), TRIATHLON("triathlon"), OTHER("other");
 
     companion object {
         fun byId(id: String): SportType {

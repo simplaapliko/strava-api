@@ -48,13 +48,9 @@ android {
 dependencies {
   implementation deps.kotlin.stdlib.jdk
 
-  implementation deps.moshi.adapters
-  implementation deps.moshi.kotlin
-  implementation deps.moshi.runtime
+  api deps.gson
 
   api deps.retrofit.client
-  api deps.retrofit.converterMoshi
-
   api deps.reactivex.rxJava2
 
   testImplementation deps.test.junit

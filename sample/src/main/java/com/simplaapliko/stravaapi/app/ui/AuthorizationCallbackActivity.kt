@@ -33,7 +33,7 @@ class AuthorizationCallbackActivity : BaseActivity() {
         val scope = intent?.data?.getQueryParameter(Auth.Response.SCOPE)
         val state = intent?.data?.getQueryParameter(Auth.Response.STATE)
 
-        authRepository.run {
+        authRepository.apply {
             setCode(code)
             setScope(scope)
             setState(state)

@@ -36,16 +36,16 @@ class NetworkModule {
             val original = chain.request()
 
             val request = original.newBuilder()
-                    .header("Authorization", "Bearer $token")
-                    .build()
+                .header("Authorization", "Bearer $token")
+                .build()
 
             chain.proceed(request)
         }
 
         return OkHttpClient.Builder()
-                .addInterceptor(logging)
-                .addNetworkInterceptor(interceptor)
-                .build()
+            .addInterceptor(logging)
+            .addNetworkInterceptor(interceptor)
+            .build()
     }
 
     fun provideOkHttpClient(): OkHttpClient {
@@ -58,7 +58,7 @@ class NetworkModule {
         }
 
         return OkHttpClient.Builder()
-                .addInterceptor(logging)
-                .build()
+            .addInterceptor(logging)
+            .build()
     }
 }

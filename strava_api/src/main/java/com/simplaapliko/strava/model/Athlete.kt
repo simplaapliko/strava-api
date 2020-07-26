@@ -17,7 +17,6 @@
 package com.simplaapliko.strava.model
 
 import com.google.gson.annotations.SerializedName
-import java.util.Date
 
 data class Athlete(
     // region Summary Athlete
@@ -25,7 +24,13 @@ data class Athlete(
      * The unique identifier of the athlete
      */
     @SerializedName("id")
-    var id: Int = 0,
+    var id: Long = 0,
+
+    /**
+     * The unique identifier of the athlete
+     */
+    @SerializedName("username")
+    var username: String = "",
 
     /**
      * Resource state, indicates level of detail.
@@ -112,13 +117,13 @@ data class Athlete(
      * The time at which the athlete was created.
      */
     @SerializedName("created_at")
-    var createdAt: Date? = null,
+    var createdAt: String? = null,
 
     /**
      * The time at which the athlete was last updated.
      */
     @SerializedName("updated_at")
-    var updatedAt: Date? = null,
+    var updatedAt: String? = null,
 
     @SerializedName("badge_type_id")
     var badgeTypeId: Int = 0,

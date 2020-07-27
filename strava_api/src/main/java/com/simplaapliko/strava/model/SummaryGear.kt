@@ -30,7 +30,7 @@ data class SummaryGear(
      * Possible values: 2 -> "summary", 3 -> "detail"
      */
     @SerializedName("resource_state")
-    var resourceState: ResourceState = ResourceState.UNKNOWN,
+    var resourceState: String = "",
 
     /**
      * Whether this gear's is the owner's default one.
@@ -42,7 +42,7 @@ data class SummaryGear(
      * The gear's name.
      */
     @SerializedName("name")
-    var name: String = "",
+    var name: String? = null,
 
     /**
      * The distance logged with this gear.

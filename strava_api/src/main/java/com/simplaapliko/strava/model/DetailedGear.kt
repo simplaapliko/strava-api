@@ -26,10 +26,11 @@ data class DetailedGear(
     var id: String = "",
 
     /**
-     * Resource state, indicates level of detail. Possible values: 2 -> "summary", 3 -> "detail"
+     * Resource state, indicates level of detail.
+     * Possible values: 2 -> "summary", 3 -> "detail"
      */
     @SerializedName("resource_state")
-    var resourceState: ResourceState = ResourceState.UNKNOWN,
+    var resourceState: String = "",
 
     /**
      * Whether this gear's is the owner's default one.
@@ -41,7 +42,7 @@ data class DetailedGear(
      * The gear's name.
      */
     @SerializedName("name")
-    var name: String = "",
+    var name: String? = null,
 
     /**
      * The distance logged with this gear.
@@ -65,11 +66,11 @@ data class DetailedGear(
      * The gear's frame type (bike only).
      */
     @SerializedName("frame_type")
-    var frameType: FrameType? = FrameType.UNKNOWN,
+    var frameType: Int? = null,
 
     /**
      * The gear's description.
      */
     @SerializedName("description")
-    var description: String = ""
+    var description: String? = null
 ) : StravaResponse()

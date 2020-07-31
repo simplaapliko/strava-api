@@ -25,6 +25,7 @@ interface GearApi {
 
     /**
      * Returns an equipment using its identifier.
+     *
      * @param id The identifier of the gear.
      */
     @GET("gear/{id}")

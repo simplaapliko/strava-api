@@ -24,109 +24,110 @@ data class Athlete(
      * The unique identifier of the athlete
      */
     @SerializedName("id")
-    var id: Long = 0,
+    var id: Long,
 
     /**
      * The unique identifier of the athlete
      */
     @SerializedName("username")
-    var username: String = "",
+    var username: String,
 
     /**
      * Resource state, indicates level of detail.
      * Possible values: 1 -> "meta", 2 -> "summary", 3 -> "detail"
+     * @see com.simplaapliko.strava.model.ResourceState
      */
     @SerializedName("resource_state")
-    var resourceState: String? = null,
+    var resourceState: Int,
 
     /**
      * The athlete's first name.
      */
     @SerializedName("firstname")
-    var firstName: String = "",
+    var firstName: String,
 
     /**
      * The athlete's last name.
      */
     @SerializedName("lastname")
-    var lastName: String = "",
+    var lastName: String,
 
     /**
      * URL to a 62x62 pixel profile picture.
      */
     @SerializedName("profile_medium")
-    var profileMedium: String = "",
+    var profileMedium: String,
 
     /**
      * URL to a 124x124 pixel profile picture.
      */
     @SerializedName("profile")
-    var profile: String = "",
+    var profile: String,
 
     /**
      * The athlete's city.
      */
     @SerializedName("city")
-    var city: String? = null,
+    var city: String?,
 
     /**
      * The athlete's state or geographical region.
      */
     @SerializedName("state")
-    var state: String? = null,
+    var state: String?,
 
     /**
      * The athlete's country.
      */
     @SerializedName("country")
-    var country: String? = null,
+    var country: String?,
 
     /**
      * The athlete's sex. May take one of the following values: M, F
      */
     @SerializedName("sex")
-    var sex: String? = null,
+    var sex: String?,
 
     /**
      * Whether the currently logged-in athlete follows this athlete.
      * May take one of the following values: pending, accepted, blocked
      */
     @SerializedName("friend")
-    var friend: String? = null,
+    var friend: String?,
 
     /**
      * Whether this athlete follows the currently logged-in athlete.
      * May take one of the following values: pending, accepted, blocked
      */
     @SerializedName("follower")
-    var follower: String? = null,
+    var follower: String?,
 
     /**
      * Deprecated. Use summit field instead. Whether the athlete has any Summit subscription.
      */
     @SerializedName("premium")
-    var premium: Boolean = false,
+    var premium: Boolean,
 
     /**
      * Whether the athlete has any Summit subscription.
      */
     @SerializedName("summit")
-    var summit: Boolean = false,
+    var summit: Boolean,
 
     /**
      * The time at which the athlete was created.
      */
     @SerializedName("created_at")
-    var createdAt: String? = null,
+    var createdAt: String?,
 
     /**
      * The time at which the athlete was last updated.
      */
     @SerializedName("updated_at")
-    var updatedAt: String? = null,
+    var updatedAt: String? ,
 
     @SerializedName("badge_type_id")
-    var badgeTypeId: Int = 0,
+    var badgeTypeId: Int,
     // endregion Summary Athlete
 
     // region Detailed Athlete
@@ -134,54 +135,55 @@ data class Athlete(
      * The athlete's follower count.
      */
     @SerializedName("follower_count")
-    var followerCount: Int = 0,
+    var followerCount: Int,
 
     /**
      * The athlete's friend count.
      */
     @SerializedName("friend_count")
-    var friendCount: Int = 0,
+    var friendCount: Int,
 
     /**
      * The number or athletes mutually followed by this athlete and the currently logged-in athlete.
      */
     @SerializedName("mutual_friend_count")
-    var mutualFriendCount: Int = 0,
+    var mutualFriendCount: Int,
 
     /**
      * The athlete's preferred unit system. May take one of the following values: feet, meters
+     * @see com.simplaapliko.strava.model.MeasurementPreference
      */
     @SerializedName("measurement_preference")
-    var measurementPreference: String? = null,
+    var measurementPreference: String?,
 
     /**
      * The athlete's FTP (Functional Threshold Power).
      */
     @SerializedName("ftp")
-    var ftp: Int = 0,
+    var ftp: Int?,
 
     /**
      * The athlete's weight.
      */
     @SerializedName("weight")
-    var weight: Double = 0.0,
+    var weight: Double,
 
     /**
      * The athlete's clubs.
      */
     @SerializedName("clubs")
-    var clubs: List<SummaryClub>? = null,
+    var clubs: List<SummaryClub>?,
 
     /**
      * The athlete's bikes.
      */
     @SerializedName("bikes")
-    var bikes: List<SummaryGear>? = null,
+    var bikes: List<SummaryGear>?,
 
     /**
      * The athlete's shoes.
      */
     @SerializedName("shoes")
-    var shoes: List<SummaryGear>? = null
+    var shoes: List<SummaryGear>?
     // endregion Detailed Athlete
 ) : StravaResponse()

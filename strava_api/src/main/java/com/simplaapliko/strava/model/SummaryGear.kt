@@ -23,30 +23,31 @@ data class SummaryGear(
      * The gear's unique identifier.
      */
     @SerializedName("id")
-    var id: String = "",
+    var id: String,
 
     /**
      * Resource state, indicates level of detail.
      * Possible values: 2 -> "summary", 3 -> "detail"
+     * @see com.simplaapliko.strava.model.ResourceState
      */
     @SerializedName("resource_state")
-    var resourceState: String = "",
+    var resourceState: Int,
 
     /**
      * Whether this gear's is the owner's default one.
      */
     @SerializedName("primary")
-    var primary: Boolean = false,
+    var primary: Boolean,
 
     /**
      * The gear's name.
      */
     @SerializedName("name")
-    var name: String? = null,
+    var name: String,
 
     /**
      * The distance logged with this gear.
      */
     @SerializedName("distance")
-    var distance: Double = 0.0
+    var distance: Double
 )

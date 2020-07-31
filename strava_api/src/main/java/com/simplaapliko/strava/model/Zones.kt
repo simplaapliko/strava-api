@@ -24,12 +24,12 @@ data class Zones(
      * @see com.simplaapliko.strava.model.HeartRateZoneRanges
      */
     @SerializedName("heart_rate")
-    var heartRate: HeartRateZoneRanges? = null,
+    var heartRate: HeartRateZoneRanges?,
 
     /**
      * An instance of PowerZoneRanges.
      * @see com.simplaapliko.strava.model.PowerZoneRanges
      */
     @SerializedName("power")
-    var power: PowerZoneRanges? = null
+    var power: PowerZoneRanges?
 ) : StravaResponse()

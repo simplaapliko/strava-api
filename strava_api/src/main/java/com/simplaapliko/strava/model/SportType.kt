@@ -16,8 +16,8 @@
 
 package com.simplaapliko.strava.model
 
-enum class SportType(val id: String?) {
-    UNKNOWN(null), CYCLING("cycling"), RUNNING("running"), TRIATHLON("triathlon"), OTHER("other");
+enum class SportType(private val id: String) {
+    CYCLING("cycling"), RUNNING("running"), TRIATHLON("triathlon"), OTHER("other");
 
     companion object {
         fun byId(id: String): SportType {
@@ -26,7 +26,11 @@ enum class SportType(val id: String?) {
                     return type
                 }
             }
-            return UNKNOWN
+            throw IllegalArgumentException("unknown id: $id")
         }
+    }
+
+    override fun toString(): String {
+        return id
     }
 }

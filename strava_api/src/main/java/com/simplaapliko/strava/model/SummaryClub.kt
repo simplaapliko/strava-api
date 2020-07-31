@@ -23,90 +23,92 @@ data class SummaryClub(
      * The club's unique identifier.
      */
     @SerializedName("id")
-    var id: Int = 0,
+    var id: Int,
 
     /**
      * Resource state, indicates level of detail.
      * Possible values: 1 -> "meta", 2 -> "summary", 3 -> "detail"
+     * @see com.simplaapliko.strava.model.ResourceState
      */
     @SerializedName("resource_state")
-    var resourceState: ResourceState = ResourceState.UNKNOWN,
+    var resourceState: Int,
 
     /**
      * The club's name.
      */
     @SerializedName("name")
-    var name: String = "",
+    var name: String,
 
     /**
      * URL to a 60x60 pixel profile picture.
      */
     @SerializedName("profile_medium")
-    var profileMedium: String = "",
+    var profileMedium: String,
 
     /**
      * URL to a ~1185x580 pixel cover photo.
      */
     @SerializedName("cover_photo")
-    var coverPhoto: String = "",
+    var coverPhoto: String,
 
     /**
      * URL to a ~360x176 pixel cover photo.
      */
     @SerializedName("cover_photo_small")
-    var coverPhotoSmall: String = "",
+    var coverPhotoSmall: String,
 
     /**
      * May take one of the following values: cycling, running, triathlon, other
+     * @see com.simplaapliko.strava.model.SportType
      */
     @SerializedName("sport_type")
-    var sportType: SportType = SportType.UNKNOWN,
+    var sportType: String,
 
     /**
      * The club's city.
      */
     @SerializedName("city")
-    var city: String = "",
+    var city: String,
 
     /**
      * The club's state or geographical region.
      */
     @SerializedName("state")
-    var state: String = "",
+    var state: String,
 
     /**
      * The club's country.
      */
     @SerializedName("country")
-    var country: String = "",
+    var country: String,
 
     /**
      * Whether the club is private.
      */
     @SerializedName("private")
-    var private: Boolean = false,
+    var private: Boolean,
 
     /**
      * The club's member count.
      */
     @SerializedName("member_count")
-    var memberCount: Int = 0,
+    var memberCount: Int,
 
     /**
      * Whether the club is featured or not.
      */
     @SerializedName("featured")
-    var featured: Boolean = false,
+    var featured: Boolean,
 
     /**
      * Whether the club is verified or not.
      */
     @SerializedName("verified")
-    var verified: Boolean = false,
+    var verified: Boolean,
 
     /**
      * The club's vanity URL.
      */
     @SerializedName("url")
-    var url: String = ""
+    var url: String
 )

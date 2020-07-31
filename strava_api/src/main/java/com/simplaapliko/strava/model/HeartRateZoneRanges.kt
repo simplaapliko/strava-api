@@ -23,12 +23,12 @@ data class HeartRateZoneRanges(
      * Whether the athlete has set their own custom heart rate zones
      */
     @SerializedName("custom_zones")
-    var customZones: Boolean = false,
+    var customZones: Boolean,
 
     /**
      * A collection of ZoneRange objects.
      * @see com.simplaapliko.strava.model.ZoneRange
      */
     @SerializedName("zones")
-    var zones: List<ZoneRange> = emptyList()
+    var zones: List<ZoneRange>
 )

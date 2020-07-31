@@ -23,35 +23,35 @@ data class ActivityTotal(
      * The number of activities considered in this total.
      */
     @SerializedName("count")
-    var count: Int = 0,
+    var count: Int,
 
     /**
      * The total distance covered by the considered activities.
      */
     @SerializedName("distance")
-    var distance: Double = 0.0,
+    var distance: Double,
 
     /**
      * The total moving time of the considered activities.
      */
     @SerializedName("moving_time")
-    var movingTime: Int = 0,
+    var movingTime: Int,
 
     /**
      * The total elapsed time of the considered activities.
      */
     @SerializedName("elapsed_time")
-    var elapsedTime: Int = 0,
+    var elapsedTime: Int,
 
     /**
      * The total elevation gain of the considered activities.
      */
     @SerializedName("elevation_gain")
-    var elevationGain: Double = 0.0,
+    var elevationGain: Double,
 
     /**
      * The total number of achievements of the considered activities.
      */
     @SerializedName("achievement_count")
-    var achievementCount: Int = 0
+    var achievementCount: Int
 )

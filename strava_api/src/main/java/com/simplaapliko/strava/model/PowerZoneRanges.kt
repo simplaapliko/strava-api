@@ -24,5 +24,5 @@ data class PowerZoneRanges(
      * @see com.simplaapliko.strava.model.ZoneRange
      */
     @SerializedName("zones")
-    var zones: List<ZoneRange> = emptyList()
+    var zones: List<ZoneRange>
 )

@@ -23,11 +23,11 @@ data class ZoneRange(
      * The minimum value in the range.
      */
     @SerializedName("min")
-    var min: Int = 0,
+    var min: Int,
 
     /**
      * The maximum value in the range.
      */
     @SerializedName("max")
-    var max: Int = 0
+    var max: Int
 )

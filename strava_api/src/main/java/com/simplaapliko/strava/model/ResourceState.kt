@@ -16,8 +16,8 @@
 
 package com.simplaapliko.strava.model
 
-enum class ResourceState(val id: Int?) {
-    UNKNOWN(null), META(1), SUMMARY(2), DETAIL(3);
+enum class ResourceState(val id: Int) {
+    META(1), SUMMARY(2), DETAIL(3);
 
     companion object {
         fun byId(id: Int): ResourceState {
@@ -26,7 +26,7 @@ enum class ResourceState(val id: Int?) {
                     return frameType
                 }
             }
-            return UNKNOWN
+            throw IllegalArgumentException("unknown id $id")
         }
     }
 }

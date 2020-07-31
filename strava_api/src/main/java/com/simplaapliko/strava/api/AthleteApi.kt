@@ -29,15 +29,12 @@ interface AthleteApi {
 
     /**
      * Returns the activity stats of an athlete.
+     *
      * @param id The identifier of the athlete. Must match the authenticated athlete.
-     * @param page Page number.
-     * @param perPage Number of items per page. Defaults to 30.
      */
     @GET("athletes/{id}/stats")
     fun getAthleteStats(
-        @Path("id") id: Long,
-        @Query("page ") page: Int = 1,
-        @Query("per_page ") perPage: Int = 30
+        @Path("id") id: Long
     ): Single<ActivityStats>
 
     /**
@@ -58,6 +55,7 @@ interface AthleteApi {
     /**
      * Update the currently authenticated athlete.
      * Requires profile:write scope.
+     *
      * @param weight The weight of the athlete in kilograms.
      */
     @PUT("athlete")

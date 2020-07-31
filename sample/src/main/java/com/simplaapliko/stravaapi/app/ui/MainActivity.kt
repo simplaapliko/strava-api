@@ -26,10 +26,16 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        activity.setOnClickListener { goToActivityScreen() }
         athlete.setOnClickListener { goToAthleteScreen() }
         authorize.setOnClickListener { goToAuthorizeScreen() }
         gear.setOnClickListener { goToGearScreen() }
         token.setOnClickListener { goTokenScreen() }
+    }
+
+    private fun goToActivityScreen() {
+        val intent = ActivityActivity.getStartIntent(this)
+        startActivity(intent)
     }
 
     private fun goToAthleteScreen() {

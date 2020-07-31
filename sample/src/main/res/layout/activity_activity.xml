@@ -25,43 +25,69 @@
     >
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/authorize"
+        android:id="@+id/list_athlete_activities"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Authorize"
+        android:text="List Athlete Activities"
         />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/token"
+        android:id="@+id/create_activity"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Token"
+        android:text="Create an Activity"
         />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/athlete"
+        android:id="@+id/get_activity"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Athlete"
+        android:text="Get Activity"
         />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/gear"
+        android:id="@+id/get_activity_comments"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gear"
+        android:text="Get Activity Comments"
         />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/activity"
+        android:id="@+id/get_activity_kudos"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Activity"
+        android:text="Get Activity Kudos"
         />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/get_activity_laps"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Activity Laps"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/get_activity_zones"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Activity Zones"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/update_activity"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Activity"
+        />
+
+    <include layout="@layout/include_response" />
 
 </LinearLayout>

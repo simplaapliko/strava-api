@@ -18,6 +18,7 @@
 <resources>
     <string name="app_name">strava-api</string>
 
+    <string name="activity_activity">Activity API</string>
     <string name="activity_athlete">Athlete API</string>
     <string name="activity_authorize">Authorize API</string>
     <string name="activity_gear">Gear API</string>

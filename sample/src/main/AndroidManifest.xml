@@ -68,6 +68,13 @@
         </activity>
 
         <activity
+            android:name=".app.ui.ActivityActivity"
+            android:launchMode="singleTask"
+            android:label="@string/activity_activity"
+            android:parentActivityName=".app.ui.MainActivity"
+            />
+
+        <activity
             android:name=".app.ui.AthleteActivity"
             android:launchMode="singleTask"
             android:label="@string/activity_athlete"

@@ -19,9 +19,16 @@ package com.simplaapliko.stravaapi.app.data
 import com.simplaapliko.strava.model.ActivityStats
 import com.simplaapliko.strava.model.Athlete
 import com.simplaapliko.strava.model.DetailedGear
+import com.simplaapliko.strava.model.SummaryActivity
 import com.simplaapliko.strava.model.Zones
 
 interface DataRepository {
+
+    //region Activity
+    fun getActivities(): List<SummaryActivity>?
+
+    fun setActivities(activities: List<SummaryActivity>)
+    //endregion Activity
 
     //region Athlete
     fun getAthleteStats(): ActivityStats?

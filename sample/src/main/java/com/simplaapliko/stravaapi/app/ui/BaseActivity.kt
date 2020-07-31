@@ -18,6 +18,7 @@ package com.simplaapliko.stravaapi.app.ui
 
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.simplaapliko.strava.api.ActivityApi
 import com.simplaapliko.strava.api.AthleteApi
 import com.simplaapliko.strava.api.GearApi
 import com.simplaapliko.strava.api.StravaApiV3
@@ -62,6 +63,10 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onDestroy() {
         disposables.dispose()
         super.onDestroy()
+    }
+
+    fun provideActivityApi(): ActivityApi {
+        return provideApi(provideAuthorizedOkHttpClient(), StravaApiV3.BASE_URL)
     }
 
     fun provideAthleteApi(): AthleteApi {

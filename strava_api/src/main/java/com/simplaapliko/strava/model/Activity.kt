@@ -18,7 +18,7 @@ package com.simplaapliko.strava.model
 
 import com.google.gson.annotations.SerializedName
 
-data class DetailedActivity(
+data class Activity(
 
     /**
      * Resource state, indicates level of detail.
@@ -28,6 +28,7 @@ data class DetailedActivity(
     @SerializedName("resource_state")
     var resourceState: Int,
 
+    // region Summary
     /**
      * The unique identifier of the activity
      */
@@ -138,6 +139,12 @@ data class DetailedActivity(
     val achievementCount: Int,
 
     /**
+     * The number of PRs gained during this activity
+     */
+    @SerializedName("pr_count")
+    val prCount: Int,
+
+    /**
      * The number of kudos given for this activity
      */
     @SerializedName("kudos_count")
@@ -207,25 +214,25 @@ data class DetailedActivity(
      * The activity's workout type
      */
     @SerializedName("workout_type")
-    val workoutType: Int,
+    val workoutType: Int?,
 
     /**
      * The unique identifier of the upload in string format
      */
     @SerializedName("upload_id_str")
-    val uploadIdString: String,
+    val uploadIdString: String?,
 
     /**
      * The activity's average speed, in meters per second
      */
     @SerializedName("average_speed")
-    val averageSpeed: Double,
+    val averageSpeed: Double?,
 
     /**
      * The activity's max speed, in meters per second
      */
     @SerializedName("max_speed")
-    val maxSpeed: Double,
+    val maxSpeed: Double?,
 
     /**
      * Whether the logged-in athlete has kudoed this activity
@@ -237,25 +244,25 @@ data class DetailedActivity(
      * The id of the gear for the activity
      */
     @SerializedName("gear_id")
-    val gearId: String,
+    val gearId: String?,
 
     /**
      * The total work done in kilojoules during this activity. Rides only
      */
     @SerializedName("kilojoules")
-    val kilojoules: Double,
+    val kilojoules: Double?,
 
     /**
      * Average power output in watts during this activity. Rides only
      */
     @SerializedName("average_watts")
-    val averageWatts: Double,
+    val averageWatts: Double?,
 
     /**
      * Whether the watts are from a power meter, false if estimated
      */
     @SerializedName("device_watts")
-    val device_watts: Boolean,
+    val deviceWatts: Boolean?,
 
     /**
      * Rides with power meter data only
@@ -263,6 +270,20 @@ data class DetailedActivity(
     @SerializedName("max_watts")
     val maxWatts: Int?,
 
+    @SerializedName("location_city")
+    val locationCity: String?,
+
+    @SerializedName("location_state")
+    val locationState: String?,
+
+    @SerializedName("location_country")
+    val locationCountry: String?,
+
+    @SerializedName("suffer_score")
+    val sufferScore: Int?,
+    // endregion Summary
+
+    // region Detailed
     /**
      * Similar to Normalized Power. Rides with power meter data only
      */
@@ -275,15 +296,9 @@ data class DetailedActivity(
     @SerializedName("description")
     val description: String,
 
-    /**
-     * An instance of PhotosSummary.
-     */
     @SerializedName("photos")
     val photos: PhotosSummary,
 
-    /**
-     *	An instance of SummaryGear.
-     */
     @SerializedName("gear")
     val gear: SummaryGear,
 
@@ -291,47 +306,39 @@ data class DetailedActivity(
      * The number of kilocalories consumed during this activity
      */
     @SerializedName("calories")
-    val calories: Double,
+    val calories: Double?,
 
-    /**
-     * A collection of DetailedSegmentEffort objects.
-     */
     @SerializedName("segment_efforts")
-    val segmentEfforts: List<DetailedSegmentEffort>,
+    val segmentEfforts: List<DetailedSegmentEffort>?,
 
     /**
      * The name of the device used to record the activity
      */
     @SerializedName("device_name")
-    val deviceName: String,
+    val deviceName: String?,
 
     /**
      * The token used to embed a Strava activity
      */
     @SerializedName("embed_token")
-    val embedToken: String,
+    val embedToken: String?,
 
     /**
      * The splits of this activity in metric units (for runs)
      */
     @SerializedName("splits_metric")
-    val splitsMetric: List<Split>,
+    val splitsMetric: List<Split>?,
 
     /**
      * The splits of this activity in imperial units (for runs)
      */
     @SerializedName("splits_standard")
-    val splitsStandard: List<Split>,
+    val splitsStandard: List<Split>?,
 
-    /**
-     * A collection of Lap objects.
-     */
     @SerializedName("laps")
-    val laps: List<Lap>,
+    val laps: List<Lap>?,
 
-    /**
-     * A collection of DetailedSegmentEffort objects.
-     */
     @SerializedName("best_efforts")
-    val bestEfforts: List<DetailedSegmentEffort>
+    val bestEfforts: List<DetailedSegmentEffort>?
+    // endregion Detailed
 ) : StravaResponse()

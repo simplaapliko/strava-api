@@ -27,40 +27,12 @@ data class DetailedSegmentEffort(
     val id: Long,
 
     /**
-     * The unique identifier of the activity related to this effort
+     * Resource state, indicates level of detail.
+     * Possible values: 1 -> "meta", 2 -> "summary", 3 -> "detail"
+     * @see com.simplaapliko.strava.model.ResourceState
      */
-    @SerializedName("activity_id")
-    val activityId: Long,
-
-    /**
-     * The effort's elapsed time
-     */
-    @SerializedName("elapsed_time")
-    val elapsedTime: Int,
-
-    /**
-     * The time at which the effort was started.
-     */
-    @SerializedName("start_date")
-    val startDate: String,
-
-    /**
-     * The time at which the effort was started in the local timezone.
-     */
-    @SerializedName("start_date_local")
-    val startDateLocal: String,
-
-    /**
-     * The effort's distance in meters
-     */
-    @SerializedName("distance")
-    val distance: Double?,
-
-    /**
-     * 	Whether this effort is the current best on the leaderboard
-     */
-    @SerializedName("is_kom")
-    val isKom: Boolean,
+    @SerializedName("resource_state")
+    var resourceState: Int,
 
     /**
      * The name of the segment on which this effort was performed
@@ -81,10 +53,34 @@ data class DetailedSegmentEffort(
     val athlete: MetaAthlete,
 
     /**
+     * The effort's elapsed time
+     */
+    @SerializedName("elapsed_time")
+    val elapsedTime: Int,
+
+    /**
      * The effort's moving time
      */
     @SerializedName("moving_time")
     val movingTime: Int,
+
+    /**
+     * The time at which the effort was started.
+     */
+    @SerializedName("start_date")
+    val startDate: String,
+
+    /**
+     * The time at which the effort was started in the local timezone.
+     */
+    @SerializedName("start_date_local")
+    val startDateLocal: String,
+
+    /**
+     * The effort's distance in meters
+     */
+    @SerializedName("distance")
+    val distance: Double?,
 
     /**
      * The start index of this effort in its activity's stream
@@ -97,6 +93,18 @@ data class DetailedSegmentEffort(
      */
     @SerializedName("end_index")
     val endIndex: Int?,
+
+    /**
+     * The rank of the effort on the athlete's leaderboard if it belongs in the top 3 at the time of upload
+     */
+    @SerializedName("pr_rank")
+    val prRank: Int?,
+
+    /**
+     * 	Whether this effort is the current best on the leaderboard
+     */
+    @SerializedName("is_kom")
+    val isKom: Boolean,
 
     /**
      * The effort's average cadence
@@ -141,14 +149,11 @@ data class DetailedSegmentEffort(
     val komRank: Int?,
 
     /**
-     * The rank of the effort on the athlete's leaderboard if it belongs in the top 3 at the time of upload
-     */
-    @SerializedName("pr_rank")
-    val prRank: Int?,
-
-    /**
      * Whether this effort should be hidden when viewed within an activity
      */
     @SerializedName("hidden")
-    val hidden: Boolean
+    val hidden: Boolean,
+
+    @SerializedName("achievements")
+    val achievements: List<Achievement>
 )

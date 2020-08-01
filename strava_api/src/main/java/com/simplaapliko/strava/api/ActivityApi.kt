@@ -16,12 +16,11 @@
 
 package com.simplaapliko.strava.api
 
+import com.simplaapliko.strava.model.Activity
 import com.simplaapliko.strava.model.ActivityZone
 import com.simplaapliko.strava.model.Athlete
 import com.simplaapliko.strava.model.Comment
-import com.simplaapliko.strava.model.DetailedActivity
 import com.simplaapliko.strava.model.Lap
-import com.simplaapliko.strava.model.SummaryActivity
 import com.simplaapliko.strava.model.UpdatableActivity
 import io.reactivex.Single
 import retrofit2.http.Body
@@ -51,7 +50,7 @@ interface ActivityApi {
         @Query("after") after: Int? = null,
         @Query("page") page: Int? = null,
         @Query("per_page") perPage: Int? = null
-    ): Single<List<SummaryActivity>>
+    ): Single<List<Activity>>
 
     /**
      * Creates a manual activity for an athlete.
@@ -78,7 +77,7 @@ interface ActivityApi {
         @Query("distance") distance: Float? = null,
         @Query("trainer") trainer: Int? = null,
         @Query("commute") commute: Int? = null
-    ): Single<DetailedActivity>
+    ): Single<Activity>
 
     /**
      * Returns the given activity that is owned by the authenticated athlete.
@@ -90,7 +89,7 @@ interface ActivityApi {
     @GET("activities/{id}")
     fun getActivity(
         @Path("id") id: Long
-    ): Single<DetailedActivity>
+    ): Single<Activity>
 
     /**
      * Returns the comments on the given activity.
@@ -159,5 +158,5 @@ interface ActivityApi {
     fun updateActivity(
         @Path("id") id: Long,
         @Body body: UpdatableActivity
-    ): Single<DetailedActivity>
+    ): Single<Activity>
 }

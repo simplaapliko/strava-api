@@ -18,17 +18,11 @@ package com.simplaapliko.strava.model
 
 import com.google.gson.annotations.SerializedName
 
-data class PhotosSummaryPrimary(
+data class Urls(
 
-    @SerializedName("id")
-    val id: Long,
+    @SerializedName("100")
+    val s100: String,
 
-    @SerializedName("source")
-    val source: Int,
-
-    @SerializedName("unique_id")
-    val uniqueId: String,
-
-    @SerializedName("urls")
-    val urls: Urls
+    @SerializedName("600")
+    val s600: String
 )

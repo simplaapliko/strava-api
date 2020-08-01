@@ -20,10 +20,10 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.simplaapliko.strava.model.Activity
 import com.simplaapliko.strava.model.ActivityStats
 import com.simplaapliko.strava.model.Athlete
 import com.simplaapliko.strava.model.DetailedGear
-import com.simplaapliko.strava.model.SummaryActivity
 import com.simplaapliko.strava.model.Zones
 
 class DataSharedPreferencesRepository(context: Context) : DataRepository {
@@ -45,14 +45,14 @@ class DataSharedPreferencesRepository(context: Context) : DataRepository {
         sharedPreferences = context.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE)
     }
 
-    override fun getActivities(): List<SummaryActivity>? {
+    override fun getActivities(): List<Activity>? {
         val json = sharedPreferences.getString(PREF_ACTIVITIES, null)
 
-        val type = object : TypeToken<List<SummaryActivity>>() {}.type
+        val type = object : TypeToken<List<Activity>>() {}.type
         return if (json == null) null else gson.fromJson(json, type)
     }
 
-    override fun setActivities(activities: List<SummaryActivity>) {
+    override fun setActivities(activities: List<Activity>) {
         val json = gson.toJson(activities)
 
         sharedPreferences.edit()

@@ -16,19 +16,21 @@
 
 package com.simplaapliko.strava.model
 
-import com.google.gson.annotations.SerializedName
+enum class AchievementType(private val id: String) {
+    OVERALL("overall"), PR("pr");
 
-data class PhotosSummaryPrimary(
+    companion object {
+        fun byId(id: String): AchievementType {
+            for (frameType in values()) {
+                if (frameType.id == id) {
+                    return frameType
+                }
+            }
+            throw IllegalArgumentException("unknown id: $id")
+        }
+    }
 
-    @SerializedName("id")
-    val id: Long,
-
-    @SerializedName("source")
-    val source: Int,
-
-    @SerializedName("unique_id")
-    val uniqueId: String,
-
-    @SerializedName("urls")
-    val urls: Urls
-)
+    override fun toString(): String {
+        return id
+    }
+}

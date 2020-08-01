@@ -21,9 +21,9 @@ enum class ActivityZoneType(private val id: String) {
 
     companion object {
         fun byId(id: String): ActivityZoneType {
-            for (frameType in values()) {
-                if (frameType.id == id) {
-                    return frameType
+            for (type in values()) {
+                if (type.id == id) {
+                    return type
                 }
             }
             throw IllegalArgumentException("unknown id: $id")

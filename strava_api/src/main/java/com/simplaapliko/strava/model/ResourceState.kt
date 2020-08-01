@@ -21,9 +21,9 @@ enum class ResourceState(val id: Int) {
 
     companion object {
         fun byId(id: Int): ResourceState {
-            for (frameType in values()) {
-                if (frameType.id == id) {
-                    return frameType
+            for (type in values()) {
+                if (type.id == id) {
+                    return type
                 }
             }
             throw IllegalArgumentException("unknown id $id")

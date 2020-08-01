@@ -21,9 +21,9 @@ enum class FrameType(val id: Int) {
 
     companion object {
         fun byId(id: Int): FrameType {
-            for (frameType in values()) {
-                if (frameType.id == id) {
-                    return frameType
+            for (type in values()) {
+                if (type.id == id) {
+                    return type
                 }
             }
             throw IllegalArgumentException("unknown id: $id")

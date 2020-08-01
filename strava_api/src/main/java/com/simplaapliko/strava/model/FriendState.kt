@@ -16,8 +16,8 @@
 
 package com.simplaapliko.strava.model
 
-enum class FriendState(val id: String?) {
-    UNKNOWN(null), ACCEPTED("accepted"), BLOCKED("blocked"), PENDING("pending");
+enum class FriendState(val id: String) {
+    ACCEPTED("accepted"), BLOCKED("blocked"), PENDING("pending");
 
     companion object {
         fun byId(id: String): FriendState {
@@ -26,7 +26,7 @@ enum class FriendState(val id: String?) {
                     return type
                 }
             }
-            return UNKNOWN
+            throw IllegalArgumentException("unknown id: $id")
         }
     }
 }

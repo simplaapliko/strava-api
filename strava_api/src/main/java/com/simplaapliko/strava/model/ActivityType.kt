@@ -57,9 +57,9 @@ enum class ActivityType(private val id: String) {
 
     companion object {
         fun byId(id: String): ActivityType {
-            for (frameType in values()) {
-                if (frameType.id == id) {
-                    return frameType
+            for (type in values()) {
+                if (type.id == id) {
+                    return type
                 }
             }
             throw IllegalArgumentException("unknown id: $id")

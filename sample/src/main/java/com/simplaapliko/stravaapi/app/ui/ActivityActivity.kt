@@ -19,13 +19,12 @@ package com.simplaapliko.stravaapi.app.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import com.simplaapliko.strava.model.Activity
 import com.simplaapliko.strava.model.ActivityType
 import com.simplaapliko.strava.model.ActivityZone
 import com.simplaapliko.strava.model.Athlete
 import com.simplaapliko.strava.model.Comment
-import com.simplaapliko.strava.model.DetailedActivity
 import com.simplaapliko.strava.model.Lap
-import com.simplaapliko.strava.model.SummaryActivity
 import com.simplaapliko.strava.model.UpdatableActivity
 import com.simplaapliko.stravaapi.R
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -70,7 +69,7 @@ class ActivityActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onListAthleteActivitiesSuccess(activities: List<SummaryActivity>) {
+    private fun onListAthleteActivitiesSuccess(activities: List<Activity>) {
         setProgressVisibility(false)
 
         dataRepository.setActivities(activities)
@@ -97,7 +96,7 @@ class ActivityActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onCreateActivitySuccess(activity: DetailedActivity) {
+    private fun onCreateActivitySuccess(activity: Activity) {
         setProgressVisibility(false)
 
         response.text = activity.toString()
@@ -121,7 +120,7 @@ class ActivityActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onGetActivitySuccess(activity: DetailedActivity) {
+    private fun onGetActivitySuccess(activity: Activity) {
         setProgressVisibility(false)
 
         response.text = activity.toString()
@@ -245,7 +244,7 @@ class ActivityActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onUpdateActivitySuccess(activity: DetailedActivity) {
+    private fun onUpdateActivitySuccess(activity: Activity) {
         setProgressVisibility(false)
 
         response.text = activity.toString()

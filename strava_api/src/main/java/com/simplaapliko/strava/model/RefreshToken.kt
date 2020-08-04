@@ -30,5 +30,8 @@ data class RefreshToken(
     var refreshToken: String = "",
 
     @SerializedName("expires_at")
-    var expiresAt: Int = 0
+    var expiresAt: Int = 0,
+
+    @SerializedName("expires_in")
+    var expiresIn: Int = 0
 )

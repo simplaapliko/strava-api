@@ -38,7 +38,7 @@ data class PolylineMap(
      * The polyline of the map, only returned on detailed representation of an object
      */
     @SerializedName("polyline")
-    val polyline: String,
+    val polyline: String?,
 
     /**
      * The summary polyline of the map

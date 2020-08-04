@@ -124,13 +124,13 @@ data class Activity(
      * An instance of LatLng.
      */
     @SerializedName("start_latlng")
-    val startLatLng: List<Float>?,
+    val startLatLng: List<Double>?,
 
     /**
      * An instance of LatLng.
      */
     @SerializedName("end_latlng")
-    val endLatLng: List<Float>?,
+    val endLatLng: List<Double>?,
 
     /**
      * The number of achievements gained during this activity
@@ -281,6 +281,9 @@ data class Activity(
 
     @SerializedName("suffer_score")
     val sufferScore: Int?,
+
+    @SerializedName("average_temp")
+    val averageTemp: Int?,
     // endregion Summary
 
     // region Detailed
@@ -294,13 +297,13 @@ data class Activity(
      * The description of the activity
      */
     @SerializedName("description")
-    val description: String,
+    val description: String?,
 
     @SerializedName("photos")
-    val photos: PhotosSummary,
+    val photos: PhotosSummary?,
 
     @SerializedName("gear")
-    val gear: SummaryGear,
+    val gear: SummaryGear?,
 
     /**
      * The number of kilocalories consumed during this activity

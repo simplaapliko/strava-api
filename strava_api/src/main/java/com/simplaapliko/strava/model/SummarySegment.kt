@@ -79,7 +79,7 @@ data class SummarySegment(
      * An instance of LatLng.
      */
     @SerializedName("end_latlng")
-    val endLatLng: List<Float>,
+    val endLatLng: List<Double>,
 
     /**
      * The category of the climb [0, 5]. Higher is harder ie. 5 is Hors catégorie, 0 is uncategorized in climb_category.

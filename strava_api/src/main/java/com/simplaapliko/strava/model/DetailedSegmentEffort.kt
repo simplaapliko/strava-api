@@ -80,31 +80,31 @@ data class DetailedSegmentEffort(
      * The effort's distance in meters
      */
     @SerializedName("distance")
-    val distance: Double?,
+    val distance: Double,
 
     /**
      * The start index of this effort in its activity's stream
      */
     @SerializedName("start_index")
-    val startIndex: Int?,
+    val startIndex: Int,
 
     /**
      * The end index of this effort in its activity's stream
      */
     @SerializedName("end_index")
-    val endIndex: Int?,
+    val endIndex: Int,
+
+    /**
+     * The rank of the effort on the global leaderboard if it belongs in the top 10 at the time of upload
+     */
+    @SerializedName("kom_rank")
+    val komRank: Int?,
 
     /**
      * The rank of the effort on the athlete's leaderboard if it belongs in the top 3 at the time of upload
      */
     @SerializedName("pr_rank")
     val prRank: Int?,
-
-    /**
-     * 	Whether this effort is the current best on the leaderboard
-     */
-    @SerializedName("is_kom")
-    val isKom: Boolean,
 
     /**
      * The effort's average cadence
@@ -136,17 +136,8 @@ data class DetailedSegmentEffort(
     @SerializedName("max_heartrate")
     val maxHeartRate: Double?,
 
-    /**
-     * An instance of SummarySegment.
-     */
     @SerializedName("segment")
-    val segment: SummarySegment,
-
-    /**
-     * The rank of the effort on the global leaderboard if it belongs in the top 10 at the time of upload
-     */
-    @SerializedName("kom_rank")
-    val komRank: Int?,
+    val segment: SummarySegment?,
 
     /**
      * Whether this effort should be hidden when viewed within an activity

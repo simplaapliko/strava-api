@@ -14,20 +14,18 @@
  * limitations under the License.
  */
 
-apply plugin: 'kotlin'
-apply plugin: 'com.github.dcendents.android-maven'
+package com.simplaapliko.strava.model
 
-dependencies {
-    implementation deps.kotlin.stdlib.jdk
+import com.google.gson.annotations.SerializedName
 
-    api deps.gson
+abstract class StravaResponse {
+    /**
+     * The set of specific errors associated with this fault, if any.
+     */
+    @SerializedName("errors") var errors: List<Error>? = null
 
-    api deps.retrofit.client
-    api deps.reactivex.rxJava2
-
-    testImplementation deps.test.junit
-    testImplementation deps.truth
+    /**
+     * The message of the fault.
+     */
+    @SerializedName("message") var errorMessage: String? = null
 }
-
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8

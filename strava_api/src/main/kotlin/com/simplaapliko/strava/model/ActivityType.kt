@@ -16,7 +16,7 @@
 
 package com.simplaapliko.strava.model
 
-enum class ActivityType(private val id: String) {
+enum class ActivityType(val id: String) {
     ALPINE_SKI("AlpineSki"),
     BACKCOUNTRY_SKI("BackcountrySki"),
     CANOEING("Canoeing"),
@@ -64,9 +64,5 @@ enum class ActivityType(private val id: String) {
             }
             throw IllegalArgumentException("unknown id: $id")
         }
-    }
-
-    override fun toString(): String {
-        return id
     }
 }

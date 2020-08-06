@@ -16,7 +16,7 @@
 
 package com.simplaapliko.strava.model
 
-enum class Sex(private val id: String) {
+enum class Sex(val id: String) {
     F("F"), M("M");
 
     companion object {
@@ -28,9 +28,5 @@ enum class Sex(private val id: String) {
             }
             throw IllegalArgumentException("unknown id: $id")
         }
-    }
-
-    override fun toString(): String {
-        return id
     }
 }

@@ -29,8 +29,4 @@ enum class MeasurementPreference(val id: String) {
             throw IllegalArgumentException("unknown id: $id")
         }
     }
-
-    override fun toString(): String {
-        return id
-    }
 }

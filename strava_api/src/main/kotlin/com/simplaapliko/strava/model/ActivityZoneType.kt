@@ -16,7 +16,7 @@
 
 package com.simplaapliko.strava.model
 
-enum class ActivityZoneType(private val id: String) {
+enum class ActivityZoneType(val id: String) {
     HEART_RATE("heartrate"), POWER("power");
 
     companion object {
@@ -28,9 +28,5 @@ enum class ActivityZoneType(private val id: String) {
             }
             throw IllegalArgumentException("unknown id: $id")
         }
-    }
-
-    override fun toString(): String {
-        return id
     }
 }

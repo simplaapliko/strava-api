@@ -16,7 +16,7 @@
 
 package com.simplaapliko.strava.model
 
-enum class AchievementType(private val id: String) {
+enum class AchievementType(val id: String) {
     OVERALL("overall"), PR("pr");
 
     companion object {
@@ -28,9 +28,5 @@ enum class AchievementType(private val id: String) {
             }
             throw IllegalArgumentException("unknown id: $id")
         }
-    }
-
-    override fun toString(): String {
-        return id
     }
 }

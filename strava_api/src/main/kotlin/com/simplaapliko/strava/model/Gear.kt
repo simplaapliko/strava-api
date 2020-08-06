@@ -18,7 +18,8 @@ package com.simplaapliko.strava.model
 
 import com.google.gson.annotations.SerializedName
 
-data class DetailedGear(
+data class Gear(
+    // region Summary Gear
     /**
      * The gear's unique identifier.
      */
@@ -50,7 +51,9 @@ data class DetailedGear(
      */
     @SerializedName("distance")
     var distance: Double,
+    // endregion Summary Gear
 
+    // region Detailed Gear
     /**
      * The gear's brand name.
      */
@@ -75,4 +78,5 @@ data class DetailedGear(
      */
     @SerializedName("description")
     var description: String?
+    // endregion Detailed Gear
 ) : StravaResponse()

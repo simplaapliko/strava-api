@@ -178,12 +178,12 @@ data class Athlete(
      * The athlete's bikes.
      */
     @SerializedName("bikes")
-    var bikes: List<SummaryGear>?,
+    var bikes: List<Gear>?,
 
     /**
      * The athlete's shoes.
      */
     @SerializedName("shoes")
-    var shoes: List<SummaryGear>?
+    var shoes: List<Gear>?
     // endregion Detailed Athlete
 ) : StravaResponse()

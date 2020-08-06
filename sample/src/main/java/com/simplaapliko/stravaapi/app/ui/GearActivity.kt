@@ -19,7 +19,7 @@ package com.simplaapliko.stravaapi.app.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.simplaapliko.strava.model.DetailedGear
+import com.simplaapliko.strava.model.Gear
 import com.simplaapliko.stravaapi.R
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -69,11 +69,11 @@ class GearActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onGetGearSuccess(detailedGear: DetailedGear) {
+    private fun onGetGearSuccess(gear: Gear) {
         setProgressVisibility(false)
 
-        dataRepository.setDetailedGear(detailedGear)
+        dataRepository.setDetailedGear(gear)
 
-        response.text = detailedGear.toString()
+        response.text = gear.toString()
     }
 }

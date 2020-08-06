@@ -23,7 +23,7 @@ import com.google.gson.reflect.TypeToken
 import com.simplaapliko.strava.model.Activity
 import com.simplaapliko.strava.model.ActivityStats
 import com.simplaapliko.strava.model.Athlete
-import com.simplaapliko.strava.model.DetailedGear
+import com.simplaapliko.strava.model.Gear
 import com.simplaapliko.strava.model.Zones
 
 class DataSharedPreferencesRepository(context: Context) : DataRepository {
@@ -102,14 +102,14 @@ class DataSharedPreferencesRepository(context: Context) : DataRepository {
             .apply()
     }
 
-    override fun getDetailedGear(): DetailedGear? {
+    override fun getDetailedGear(): Gear? {
         val json = sharedPreferences.getString(PREF_DETAILED_GEAR, null)
 
-        return if (json == null) null else gson.fromJson(json, DetailedGear::class.java)
+        return if (json == null) null else gson.fromJson(json, Gear::class.java)
     }
 
-    override fun setDetailedGear(detailedGear: DetailedGear) {
-        val json = gson.toJson(detailedGear)
+    override fun setDetailedGear(gear: Gear) {
+        val json = gson.toJson(gear)
 
         sharedPreferences.edit()
             .putString(PREF_DETAILED_GEAR, json)

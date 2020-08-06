@@ -303,7 +303,7 @@ data class Activity(
     val photos: PhotosSummary?,
 
     @SerializedName("gear")
-    val gear: SummaryGear?,
+    val gear: Gear?,
 
     /**
      * The number of kilocalories consumed during this activity

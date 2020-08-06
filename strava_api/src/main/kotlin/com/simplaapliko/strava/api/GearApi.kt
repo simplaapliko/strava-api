@@ -16,7 +16,7 @@
 
 package com.simplaapliko.strava.api
 
-import com.simplaapliko.strava.model.DetailedGear
+import com.simplaapliko.strava.model.Gear
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -31,5 +31,5 @@ interface GearApi {
     @GET("gear/{id}")
     fun getGear(
         @Path("id") id: String
-    ): Single<DetailedGear>
+    ): Single<Gear>
 }

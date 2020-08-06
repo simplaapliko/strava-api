@@ -19,7 +19,7 @@ package com.simplaapliko.stravaapi.app.data
 import com.simplaapliko.strava.model.Activity
 import com.simplaapliko.strava.model.ActivityStats
 import com.simplaapliko.strava.model.Athlete
-import com.simplaapliko.strava.model.DetailedGear
+import com.simplaapliko.strava.model.Gear
 import com.simplaapliko.strava.model.Zones
 
 interface DataRepository {
@@ -45,8 +45,8 @@ interface DataRepository {
     //endregion Athlete
 
     //region Gear
-    fun getDetailedGear(): DetailedGear?
+    fun getDetailedGear(): Gear?
 
-    fun setDetailedGear(detailedGear: DetailedGear)
+    fun setDetailedGear(gear: Gear)
     //endregion Gear
 }

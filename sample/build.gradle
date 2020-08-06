@@ -28,8 +28,8 @@ android {
     minSdkVersion buildConfig.minSdk
     targetSdkVersion buildConfig.targetSdk
 
-    versionCode appVersion.code
-    versionName appVersion.name
+    versionCode 1
+    versionName "1.0.0"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
   buildTypes {

@@ -55,13 +55,13 @@ data class DetailedGear(
      * The gear's brand name.
      */
     @SerializedName("brand_name")
-    var brandName: String,
+    var brandName: String?,
 
     /**
      * The gear's model name.
      */
     @SerializedName("model_name")
-    var modelName: String,
+    var modelName: String?,
 
     /**
      * The gear's frame type (bike only).

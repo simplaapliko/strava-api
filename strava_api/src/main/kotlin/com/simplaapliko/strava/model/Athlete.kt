@@ -30,7 +30,7 @@ data class Athlete(
      * The unique identifier of the athlete
      */
     @SerializedName("username")
-    var username: String,
+    var username: String?,
 
     /**
      * Resource state, indicates level of detail.

@@ -30,5 +30,8 @@ data class PhotosSummary(
      * An instance of PhotosSummary_primary.
      */
     @SerializedName("primary")
-    val primary: PhotosSummaryPrimary
+    val primary: Photo,
+
+    @SerializedName("use_primary_photo")
+    val usePrimaryPhoto: Boolean,
 )

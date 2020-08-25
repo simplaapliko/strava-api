@@ -25,6 +25,7 @@ import com.simplaapliko.strava.model.ActivityZone
 import com.simplaapliko.strava.model.Athlete
 import com.simplaapliko.strava.model.Comment
 import com.simplaapliko.strava.model.Lap
+import com.simplaapliko.strava.model.Photo
 import com.simplaapliko.strava.model.UpdatableActivity
 import com.simplaapliko.stravaapi.R
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -50,6 +51,7 @@ class ActivityActivity : BaseActivity() {
         get_activity_comments.setOnClickListener { getActivityComments() }
         get_activity_kudos.setOnClickListener { getActivityKudos() }
         get_activity_laps.setOnClickListener { getActivityLaps() }
+        get_activity_photos.setOnClickListener { getActivityPhotos() }
         get_activity_zones.setOnClickListener { getActivityZones() }
         update_activity.setOnClickListener { updateActivity() }
     }
@@ -196,6 +198,30 @@ class ActivityActivity : BaseActivity() {
         setProgressVisibility(false)
 
         response.text = laps.toString()
+    }
+
+    private fun getActivityPhotos() {
+        setProgressVisibility(true)
+
+        val activity = dataRepository.getActivities()?.firstOrNull()
+
+        if (activity == null) {
+            response.text = "activity is null, make List Athlete Activity service call"
+            setProgressVisibility(false)
+            return
+        }
+
+        val disposable = provideActivityApi().getActivityPhotos(activity.id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ onGetActivityPhotosSuccess(it) }, { errorHandler(it) })
+        disposables.add(disposable)
+    }
+
+    private fun onGetActivityPhotosSuccess(photos: List<Photo>) {
+        setProgressVisibility(false)
+
+        response.text = photos.toString()
     }
 
     private fun getActivityZones() {

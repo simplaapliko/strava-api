@@ -18,10 +18,11 @@ package com.simplaapliko.strava.model
 
 import com.google.gson.annotations.SerializedName
 
-data class PhotosSummaryPrimary(
+data class Photo(
 
+    // region Meta Photo
     @SerializedName("id")
-    val id: Long,
+    val id: Long?,
 
     @SerializedName("source")
     val source: Int,
@@ -30,5 +31,35 @@ data class PhotosSummaryPrimary(
     val uniqueId: String,
 
     @SerializedName("urls")
-    val urls: Urls
+    val urls: Map<String, String>,
+    // endregion Meta Photo
+
+    // region Summary Photo
+    @SerializedName("athlete_id")
+    val athleteId: Long?,
+
+    @SerializedName("activity_id")
+    val activityId: Long?,
+
+    @SerializedName("activity_name")
+    val activityName: String?,
+
+    @SerializedName("caption")
+    val caption: String?,
+
+    @SerializedName("uploaded_at")
+    val uploadedAt: String?,
+
+    @SerializedName("created_at")
+    val createdAt: String?,
+
+    @SerializedName("created_at_local")
+    val createdAtLocal: String?,
+
+    @SerializedName("sizes")
+    val sizes: Map<String, List<Int>>?,
+
+    @SerializedName("default_photo")
+    val defaultPhoto: Boolean?,
+    // endregion Summary Photo
 )

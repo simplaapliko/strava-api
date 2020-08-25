@@ -21,6 +21,7 @@ import com.simplaapliko.strava.model.ActivityZone
 import com.simplaapliko.strava.model.Athlete
 import com.simplaapliko.strava.model.Comment
 import com.simplaapliko.strava.model.Lap
+import com.simplaapliko.strava.model.Photo
 import com.simplaapliko.strava.model.UpdatableActivity
 import io.reactivex.Single
 import retrofit2.http.Body
@@ -134,6 +135,20 @@ interface ActivityApi {
     fun getActivityLaps(
         @Path("id") id: Long
     ): Single<List<Lap>>
+
+    /**
+     * Returns photos of an activity identified by an identifier.
+     * Requires activity:read for Everyone and Followers activities.
+     * Requires activity:read_all for Only Me activities.
+     *
+     * @param id The identifier of the activity.
+     * @param size The size of the photo, default value 5000.
+     */
+    @GET("activities/{id}/photos")
+    fun getActivityPhotos(
+        @Path("id") id: Long,
+        @Query("size") size: Int = 5000,
+    ): Single<List<Photo>>
 
     /**
      * Summit Feature. Returns the zones of a given activity.

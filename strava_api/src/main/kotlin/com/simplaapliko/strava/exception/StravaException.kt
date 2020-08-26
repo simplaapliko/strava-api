@@ -14,22 +14,6 @@
  * limitations under the License.
  */
 
-package com.simplaapliko.strava.model
+package com.simplaapliko.strava.exception
 
-import com.google.gson.annotations.SerializedName
-
-data class Zones(
-    /**
-     * An instance of HeartRateZoneRanges.
-     * @see com.simplaapliko.strava.model.HeartRateZoneRanges
-     */
-    @SerializedName("heart_rate")
-    var heartRate: HeartRateZoneRanges?,
-
-    /**
-     * An instance of PowerZoneRanges.
-     * @see com.simplaapliko.strava.model.PowerZoneRanges
-     */
-    @SerializedName("power")
-    var power: PowerZoneRanges?
-)
+class StravaException(message: String) : RuntimeException(message)

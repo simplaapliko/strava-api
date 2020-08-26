@@ -186,4 +186,4 @@ data class Athlete(
     @SerializedName("shoes")
     var shoes: List<Gear>?
     // endregion Detailed Athlete
-) : StravaResponse()
+)

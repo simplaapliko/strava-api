@@ -344,4 +344,4 @@ data class Activity(
     @SerializedName("best_efforts")
     val bestEfforts: List<DetailedSegmentEffort>?
     // endregion Detailed
-) : StravaResponse()
+)

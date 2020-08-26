@@ -79,4 +79,4 @@ data class Gear(
     @SerializedName("description")
     var description: String?
     // endregion Detailed Gear
-) : StravaResponse()
+)

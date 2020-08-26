@@ -22,6 +22,7 @@ import com.simplaapliko.strava.model.Athlete
 import com.simplaapliko.strava.model.Comment
 import com.simplaapliko.strava.model.Lap
 import com.simplaapliko.strava.model.Photo
+import com.simplaapliko.strava.model.StravaResponse
 import com.simplaapliko.strava.model.UpdatableActivity
 import io.reactivex.Single
 import retrofit2.http.Body
@@ -51,7 +52,7 @@ interface ActivityApi {
         @Query("after") after: Int? = null,
         @Query("page") page: Int? = null,
         @Query("per_page") perPage: Int? = null
-    ): Single<List<Activity>>
+    ): Single<StravaResponse<List<Activity>>>
 
     /**
      * Creates a manual activity for an athlete.
@@ -78,7 +79,7 @@ interface ActivityApi {
         @Query("distance") distance: Float? = null,
         @Query("trainer") trainer: Int? = null,
         @Query("commute") commute: Int? = null
-    ): Single<Activity>
+    ): Single<StravaResponse<Activity>>
 
     /**
      * Returns the given activity that is owned by the authenticated athlete.
@@ -90,7 +91,7 @@ interface ActivityApi {
     @GET("activities/{id}")
     fun getActivity(
         @Path("id") id: Long
-    ): Single<Activity>
+    ): Single<StravaResponse<Activity>>
 
     /**
      * Returns the comments on the given activity.
@@ -106,7 +107,7 @@ interface ActivityApi {
         @Path("id") id: Long,
         @Query("page") page: Int? = null,
         @Query("per_page") perPage: Int? = null
-    ): Single<List<Comment>>
+    ): Single<StravaResponse<List<Comment>>>
 
     /**
      * Returns the athletes who kudoed an activity identified by an identifier.
@@ -122,7 +123,7 @@ interface ActivityApi {
         @Path("id") id: Long,
         @Query("page") page: Int? = null,
         @Query("per_page") perPage: Int? = null
-    ): Single<List<Athlete>>
+    ): Single<StravaResponse<List<Athlete>>>
 
     /**
      * Returns the laps of an activity identified by an identifier.
@@ -134,7 +135,7 @@ interface ActivityApi {
     @GET("activities/{id}/laps")
     fun getActivityLaps(
         @Path("id") id: Long
-    ): Single<List<Lap>>
+    ): Single<StravaResponse<List<Lap>>>
 
     /**
      * Returns photos of an activity identified by an identifier.
@@ -148,7 +149,7 @@ interface ActivityApi {
     fun getActivityPhotos(
         @Path("id") id: Long,
         @Query("size") size: Int = 5000,
-    ): Single<List<Photo>>
+    ): Single<StravaResponse<List<Photo>>>
 
     /**
      * Summit Feature. Returns the zones of a given activity.
@@ -160,7 +161,7 @@ interface ActivityApi {
     @GET("activities/{id}/zones")
     fun getActivityZones(
         @Path("id") id: Long
-    ): Single<List<ActivityZone>>
+    ): Single<StravaResponse<List<ActivityZone>>>
 
     /**
      * Updates the given activity that is owned by the authenticated athlete.
@@ -173,5 +174,5 @@ interface ActivityApi {
     fun updateActivity(
         @Path("id") id: Long,
         @Body body: UpdatableActivity
-    ): Single<Activity>
+    ): Single<StravaResponse<Activity>>
 }

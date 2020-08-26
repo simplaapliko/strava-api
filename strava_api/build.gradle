@@ -20,6 +20,8 @@ apply plugin: 'com.github.dcendents.android-maven'
 dependencies {
     implementation deps.kotlin.stdlib.jdk
 
+    implementation deps.json
+
     api deps.gson
 
     api deps.retrofit.client

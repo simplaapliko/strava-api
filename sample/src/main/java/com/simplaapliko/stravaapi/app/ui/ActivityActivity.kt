@@ -26,6 +26,7 @@ import com.simplaapliko.strava.model.Athlete
 import com.simplaapliko.strava.model.Comment
 import com.simplaapliko.strava.model.Lap
 import com.simplaapliko.strava.model.Photo
+import com.simplaapliko.strava.model.StravaResponse
 import com.simplaapliko.strava.model.UpdatableActivity
 import com.simplaapliko.stravaapi.R
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -71,10 +72,10 @@ class ActivityActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onListAthleteActivitiesSuccess(activities: List<Activity>) {
+    private fun onListAthleteActivitiesSuccess(activities: StravaResponse<List<Activity>>) {
         setProgressVisibility(false)
 
-        dataRepository.setActivities(activities)
+        dataRepository.setActivities(activities.value)
 
         response.text = activities.toString()
     }
@@ -98,7 +99,7 @@ class ActivityActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onCreateActivitySuccess(activity: Activity) {
+    private fun onCreateActivitySuccess(activity: StravaResponse<Activity>) {
         setProgressVisibility(false)
 
         response.text = activity.toString()
@@ -122,7 +123,7 @@ class ActivityActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onGetActivitySuccess(activity: Activity) {
+    private fun onGetActivitySuccess(activity: StravaResponse<Activity>) {
         setProgressVisibility(false)
 
         response.text = activity.toString()
@@ -146,7 +147,7 @@ class ActivityActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onGetActivityCommentsSuccess(comments: List<Comment>) {
+    private fun onGetActivityCommentsSuccess(comments: StravaResponse<List<Comment>>) {
         setProgressVisibility(false)
 
         response.text = comments.toString()
@@ -170,7 +171,7 @@ class ActivityActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onGetActivityKudosSuccess(athlets: List<Athlete>) {
+    private fun onGetActivityKudosSuccess(athlets: StravaResponse<List<Athlete>>) {
         setProgressVisibility(false)
 
         response.text = athlets.toString()
@@ -194,7 +195,7 @@ class ActivityActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onGetActivityLapsSuccess(laps: List<Lap>) {
+    private fun onGetActivityLapsSuccess(laps: StravaResponse<List<Lap>>) {
         setProgressVisibility(false)
 
         response.text = laps.toString()
@@ -218,7 +219,7 @@ class ActivityActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onGetActivityPhotosSuccess(photos: List<Photo>) {
+    private fun onGetActivityPhotosSuccess(photos: StravaResponse<List<Photo>>) {
         setProgressVisibility(false)
 
         response.text = photos.toString()
@@ -242,7 +243,7 @@ class ActivityActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onGetActivityZonesSuccess(zones: List<ActivityZone>) {
+    private fun onGetActivityZonesSuccess(zones: StravaResponse<List<ActivityZone>>) {
         setProgressVisibility(false)
 
         response.text = zones.toString()
@@ -270,7 +271,7 @@ class ActivityActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onUpdateActivitySuccess(activity: Activity) {
+    private fun onUpdateActivitySuccess(activity: StravaResponse<Activity>) {
         setProgressVisibility(false)
 
         response.text = activity.toString()

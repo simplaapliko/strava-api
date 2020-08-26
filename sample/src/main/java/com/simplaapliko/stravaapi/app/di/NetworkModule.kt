@@ -16,8 +16,8 @@
 
 package com.simplaapliko.stravaapi.app.di
 
+import com.simplaapliko.strava.api.okHttpClientBuilder
 import com.simplaapliko.stravaapi.BuildConfig
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
@@ -32,19 +32,8 @@ class NetworkModule {
             logging.level = HttpLoggingInterceptor.Level.NONE
         }
 
-        val interceptor = Interceptor { chain ->
-            val original = chain.request()
-
-            val request = original.newBuilder()
-                .header("Authorization", "Bearer $token")
-                .build()
-
-            chain.proceed(request)
-        }
-
-        return OkHttpClient.Builder()
+        return okHttpClientBuilder(token)
             .addInterceptor(logging)
-            .addNetworkInterceptor(interceptor)
             .build()
     }
 

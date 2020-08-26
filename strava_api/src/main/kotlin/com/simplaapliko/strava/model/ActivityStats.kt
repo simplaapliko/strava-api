@@ -85,4 +85,4 @@ data class ActivityStats(
     @SerializedName("all_swim_totals")
     var allSwimTotals: ActivityTotal?
 
-) : StravaResponse()
+)

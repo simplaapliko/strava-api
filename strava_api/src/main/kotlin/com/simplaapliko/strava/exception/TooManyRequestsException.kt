@@ -14,22 +14,21 @@
  * limitations under the License.
  */
 
-package com.simplaapliko.strava.model
+package com.simplaapliko.strava.exception
 
-import com.google.gson.annotations.SerializedName
+class TooManyRequestsException(
+    val limit15Minute: Int?,
+    val limitDaily: Int?,
+    val usage15Minute: Int?,
+    val usageDaily: Int?,
+    message: String,
+) : RuntimeException(message) {
 
-data class Zones(
-    /**
-     * An instance of HeartRateZoneRanges.
-     * @see com.simplaapliko.strava.model.HeartRateZoneRanges
-     */
-    @SerializedName("heart_rate")
-    var heartRate: HeartRateZoneRanges?,
+    fun is15MinuteLimitReached(): Boolean {
+        return usage15Minute != null && limit15Minute != null && usage15Minute >= limit15Minute
+    }
 
-    /**
-     * An instance of PowerZoneRanges.
-     * @see com.simplaapliko.strava.model.PowerZoneRanges
-     */
-    @SerializedName("power")
-    var power: PowerZoneRanges?
-)
+    fun isDailyLimitReached(): Boolean {
+        return usageDaily != null && limitDaily != null && usageDaily >= limitDaily
+    }
+}

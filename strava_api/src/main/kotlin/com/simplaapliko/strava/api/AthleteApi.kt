@@ -18,6 +18,7 @@ package com.simplaapliko.strava.api
 
 import com.simplaapliko.strava.model.ActivityStats
 import com.simplaapliko.strava.model.Athlete
+import com.simplaapliko.strava.model.StravaResponse
 import com.simplaapliko.strava.model.Zones
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -35,7 +36,7 @@ interface AthleteApi {
     @GET("athletes/{id}/stats")
     fun getAthleteStats(
         @Path("id") id: Long
-    ): Single<ActivityStats>
+    ): Single<StravaResponse<ActivityStats>>
 
     /**
      * Returns the currently authenticated athlete.
@@ -43,14 +44,14 @@ interface AthleteApi {
      * all others will receive a summary representation.
      */
     @GET("athlete")
-    fun getAuthenticatedAthlete(): Single<Athlete>
+    fun getAuthenticatedAthlete(): Single<StravaResponse<Athlete>>
 
     /**
      * Returns the the authenticated athlete’s heart rate and power zones.
      * Requires profile:read_all.
      */
     @GET("athlete/zones")
-    fun getZones(): Single<Zones>
+    fun getZones(): Single<StravaResponse<Zones>>
 
     /**
      * Update the currently authenticated athlete.
@@ -61,5 +62,5 @@ interface AthleteApi {
     @PUT("athlete")
     fun updateAthlete(
         @Query("weight") weight: Double
-    ): Single<Athlete>
+    ): Single<StravaResponse<Athlete>>
 }

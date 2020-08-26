@@ -21,6 +21,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.simplaapliko.strava.model.ActivityStats
 import com.simplaapliko.strava.model.Athlete
+import com.simplaapliko.strava.model.StravaResponse
 import com.simplaapliko.strava.model.Zones
 import com.simplaapliko.stravaapi.R
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -56,10 +57,10 @@ class AthleteActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onAuthenticatedAthleteSuccess(athlete: Athlete) {
+    private fun onAuthenticatedAthleteSuccess(athlete: StravaResponse<Athlete>) {
         setProgressVisibility(false)
 
-        dataRepository.setAuthenticatedAthlete(athlete)
+        dataRepository.setAuthenticatedAthlete(athlete.value)
 
         response.text = athlete.toString()
     }
@@ -82,10 +83,10 @@ class AthleteActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onGetAthleteStatsSuccess(activityStats: ActivityStats) {
+    private fun onGetAthleteStatsSuccess(activityStats: StravaResponse<ActivityStats>) {
         setProgressVisibility(false)
 
-        dataRepository.setAthleteStats(activityStats)
+        dataRepository.setAthleteStats(activityStats.value)
 
         response.text = activityStats.toString()
     }
@@ -100,10 +101,10 @@ class AthleteActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onGetZonesSuccess(zones: Zones) {
+    private fun onGetZonesSuccess(zones: StravaResponse<Zones>) {
         setProgressVisibility(false)
 
-        dataRepository.setZones(zones)
+        dataRepository.setZones(zones.value)
 
         response.text = zones.toString()
     }
@@ -118,7 +119,7 @@ class AthleteActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-    private fun onUpdateAthleteSuccess(athlete: Athlete) {
+    private fun onUpdateAthleteSuccess(athlete: StravaResponse<Athlete>) {
         setProgressVisibility(false)
 
         response.text = athlete.toString()

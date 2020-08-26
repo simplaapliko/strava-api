@@ -58,6 +58,7 @@ buildscript {
           ],
       ],
       'gson' : "com.google.code.gson:gson:2.8.6",
+      'json' : "org.json:json:20200518",
       'okhttp'         : [
           'client' : "com.squareup.okhttp3:okhttp:${versions.okHttp}",
           'logging': "com.squareup.okhttp3:logging-interceptor:${versions.okHttp}",

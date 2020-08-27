@@ -32,7 +32,7 @@ class NetworkModule {
             logging.level = HttpLoggingInterceptor.Level.NONE
         }
 
-        return okHttpClientBuilder(token)
+        return okHttpClientBuilder { token }
             .addInterceptor(logging)
             .build()
     }

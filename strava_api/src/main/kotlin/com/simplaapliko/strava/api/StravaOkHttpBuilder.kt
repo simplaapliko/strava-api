@@ -30,19 +30,19 @@ import okhttp3.ResponseBody
 import org.json.JSONArray
 import org.json.JSONObject
 
-fun okHttpClientBuilder(bearer: String): OkHttpClient.Builder {
+fun okHttpClientBuilder(accessToken: () -> String): OkHttpClient.Builder {
     return OkHttpClient.Builder()
+        .addInterceptor(StravaAuthorizationInterceptor(accessToken))
         .addInterceptor(StravaResponseInterceptor())
-        .addNetworkInterceptor(StravaAuthorizationInterceptor(bearer))
 }
 
-private class StravaAuthorizationInterceptor(private val bearer: String) : Interceptor {
+private class StravaAuthorizationInterceptor(private val bearer: () -> String) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val original = chain.request()
 
         val request = original.newBuilder()
-            .header("Authorization", "Bearer $bearer")
+            .header("Authorization", "Bearer ${bearer()}")
             .build()
         return chain.proceed(request)
     }

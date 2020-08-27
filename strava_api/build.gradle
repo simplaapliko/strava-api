@@ -24,6 +24,7 @@ dependencies {
 
     api deps.gson
 
+    api deps.okhttp.client
     api deps.retrofit.client
     api deps.reactivex.rxJava2
 

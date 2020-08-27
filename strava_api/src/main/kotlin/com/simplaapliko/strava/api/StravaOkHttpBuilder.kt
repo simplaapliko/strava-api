@@ -27,6 +27,7 @@ import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.ResponseBody
+import okhttp3.ResponseBody.Companion.toResponseBody
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -54,12 +55,12 @@ private class StravaResponseInterceptor : Interceptor {
         val request = chain.request()
         val response = chain.proceed(request)
 
-        val limits = getLimits(response.headers())
+        val limits = getLimits(response.headers)
 
-        val responseBody = response.body() ?: throw StravaException("null body")
+        val responseBody = response.body ?: throw StravaException("null body")
         val responseString = responseBody.string()
 
-        when (response.code()) {
+        when (response.code) {
             200, 201 -> {
                 val jsonObject = JSONObject()
                 jsonObject.put("limit15Minute", limits.limit15Minute)
@@ -74,7 +75,7 @@ private class StravaResponseInterceptor : Interceptor {
                 }
 
                 val contentType: MediaType? = responseBody.contentType()
-                val body: ResponseBody = ResponseBody.create(contentType, jsonObject.toString())
+                val body: ResponseBody = jsonObject.toString().toResponseBody(contentType)
                 return response.newBuilder().body(body).build()
             }
             401 -> throw UnauthorizedException(responseString)

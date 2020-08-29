@@ -16,9 +16,9 @@ dependencies {
     ...
     
     // add specific version
-    implementation 'com.github.simplaapliko:strava-api:x.y.z@aar'
+    implementation 'com.github.simplaapliko:strava-api:x.y.z'
     
     // or a snapshot
-    // implementation 'com.github.simplaapliko:strava-api:master-SNAPSHOT@aar'
+    // implementation 'com.github.simplaapliko:strava-api:master-SNAPSHOT'
 }
 ```

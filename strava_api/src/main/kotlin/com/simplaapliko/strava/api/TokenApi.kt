@@ -33,8 +33,8 @@ interface TokenApi {
      * @param grantType The grant type for the request.
      *      For initial authentication, must always be "authorization_code".
      */
-    @POST("oauth/token")
     @FormUrlEncoded
+    @POST("oauth/token")
     fun token(
         @Field("client_id") clientId: Int,
         @Field("client_secret") clientSecret: String,

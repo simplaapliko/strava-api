@@ -20,12 +20,27 @@ import com.google.gson.annotations.SerializedName
 
 data class Achievement(
 
+    /**
+     * Possible known values:
+     * 2 -> overall,
+     * 3 -> pr,
+     * 7 -> segment_effort_count_leader
+     */
     @SerializedName("type_id")
     val typeId: Int,
 
+    /**
+     * Possible known values:
+     * pr,
+     * overall
+     * segment_effort_count_leader
+     */
     @SerializedName("type")
     val type: String,
 
     @SerializedName("rank")
-    val rank: Int
+    val rank: Int,
+
+    @SerializedName("effort_count")
+    val effortCount: Int?,
 )

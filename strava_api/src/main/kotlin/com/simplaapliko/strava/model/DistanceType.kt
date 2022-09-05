@@ -20,18 +20,18 @@ package com.simplaapliko.strava.model
  * A list of known distances.
  * Note: not from official documentation.
  */
-enum class DistanceType(val id: String) {
-    METER_400("400m"),
-    KM_1("1k"),
-    KM_5("5k"),
-    KM_10("10k"),
-    KM_15("15k"),
-    KM_20("20k"),
-    KM_30("30k"),
-    MILE_HALF("1/2 mile"),
-    MILE_1("1 mile"),
-    MILE_2("2 mile"),
-    MILE_10("10 mile"),
-    MARATHON_HALF("Half-Marathon"),
-    MARATHON("Marathon")
+enum class DistanceType(val id: String, val meters: Int) {
+    METER_400("400m", 400),
+    KM_1("1k", 1_000),
+    KM_5("5k", 5_000),
+    KM_10("10k", 10_000),
+    KM_15("15k", 15_000),
+    KM_20("20k", 20_000),
+    KM_30("30k", 30_000),
+    MILE_HALF("1/2 mile", 805),
+    MILE_1("1 mile", 1_609),
+    MILE_2("2 mile", 3_219),
+    MILE_10("10 mile", 16_090),
+    MARATHON_HALF("Half-Marathon", 21_097),
+    MARATHON("Marathon", 42_195)
 }

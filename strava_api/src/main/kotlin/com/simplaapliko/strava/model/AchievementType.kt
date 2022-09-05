@@ -16,17 +16,18 @@
 
 package com.simplaapliko.strava.model
 
-enum class AchievementType(val id: String) {
-    OVERALL("overall"), PR("pr");
+enum class AchievementType(val id: Int, val type: String) {
+    OVERALL(2, "overall"),
+    PR(3, "pr"),
+    LOCAL_LEGEND(7, "segment_effort_count_leader");
 
     companion object {
-        fun byId(id: String): AchievementType {
-            for (type in values()) {
-                if (type.id == id) {
-                    return type
-                }
-            }
-            throw IllegalArgumentException("unknown id: $id")
+        fun byId(id: Int): AchievementType? {
+            return values().firstOrNull { it.id == id }
+        }
+
+        fun byType(type: String): AchievementType? {
+            return values().firstOrNull { it.type == type }
         }
     }
 }

@@ -20,12 +20,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import com.simplaapliko.strava.model.Activity
-import com.simplaapliko.strava.model.ActivityType
 import com.simplaapliko.strava.model.ActivityZone
 import com.simplaapliko.strava.model.Athlete
 import com.simplaapliko.strava.model.Comment
 import com.simplaapliko.strava.model.Lap
 import com.simplaapliko.strava.model.Photo
+import com.simplaapliko.strava.model.SportType
 import com.simplaapliko.strava.model.StravaResponse
 import com.simplaapliko.strava.model.UpdatableActivity
 import com.simplaapliko.stravaapi.R
@@ -85,7 +85,7 @@ class ActivityActivity : BaseActivity() {
 
         val disposable = provideActivityApi().createActivity(
             name = "Test activity name",
-            type = ActivityType.RUN.name,
+            sportType = SportType.RUN.name,
             startDateLocal = "2020-07-30T12:00:00",
             elapsedTime = 600,
             description = "Test activity description",

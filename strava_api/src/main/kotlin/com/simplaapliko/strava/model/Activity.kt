@@ -99,8 +99,16 @@ data class Activity(
      * An instance of ActivityType.
      * @see com.simplaapliko.strava.model.ActivityType
      */
+    @Deprecated("Prefer to use sportType", replaceWith = ReplaceWith("sportType"))
     @SerializedName("type")
     val type: String,
+
+    /**
+     * An instance of SportType.
+     * @see com.simplaapliko.strava.model.SportType
+     */
+    @SerializedName("sport_type")
+    val sportType: String,
 
     /**
      * The time at which the activity was started.

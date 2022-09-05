@@ -60,7 +60,10 @@ interface ActivityApi {
      *
      * @param name The name of the activity.
      * @param type Type of activity. For example - Run, Ride etc.
+     *   deprecated, use sportType
      *   @see com.simplaapliko.strava.model.ActivityType
+     * @param sportType Sport type of activity. For example - Run, MountainBikeRide, Ride, etc.
+     *   @see com.simplaapliko.strava.model.SportType
      * @param startDateLocal ISO 8601 formatted date time.
      * @param elapsedTime In seconds.
      * @param description Description of the activity.
@@ -72,7 +75,8 @@ interface ActivityApi {
     @POST("activities")
     fun createActivity(
         @Query("name") name: String,
-        @Query("type") type: String,
+        @Query("type") type: String? = null,
+        @Query("sport_type") sportType: String,
         @Query("start_date_local") startDateLocal: String,
         @Query("elapsed_time") elapsedTime: Int,
         @Query("description") description: String? = null,

@@ -16,6 +16,7 @@
 
 package com.simplaapliko.strava.model
 
+@Deprecated("Prefer to use SportType", replaceWith = ReplaceWith("SportType"))
 enum class ActivityType(val id: String) {
     ALPINE_SKI("AlpineSki"),
     BACKCOUNTRY_SKI("BackcountrySki"),
@@ -56,13 +57,6 @@ enum class ActivityType(val id: String) {
     YOGA("Yoga");
 
     companion object {
-        fun byId(id: String): ActivityType {
-            for (type in values()) {
-                if (type.id == id) {
-                    return type
-                }
-            }
-            throw IllegalArgumentException("unknown id: $id")
-        }
+        fun byId(id: String): ActivityType? = values().firstOrNull { it.id == id }
     }
 }

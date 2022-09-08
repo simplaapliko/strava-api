@@ -21,8 +21,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.browser.customtabs.CustomTabsIntent
-import androidx.core.content.ContextCompat
 import com.simplaapliko.strava.api.Auth
 import com.simplaapliko.stravaapi.R
 import kotlinx.android.synthetic.main.activity_authorize.*
@@ -53,12 +51,9 @@ class AuthorizeActivity : AppCompatActivity() {
             scopes = scopes
         )
 
-        val customTabsIntent = CustomTabsIntent.Builder()
-            .addDefaultShareMenuItem()
-            .setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary))
-            .setShowTitle(true)
-            .build()
-        customTabsIntent.launchUrl(this, Uri.parse(url))
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(url)
+        startActivity(intent)
 
         finish()
     }

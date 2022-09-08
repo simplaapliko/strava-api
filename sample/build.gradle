@@ -55,7 +55,6 @@ dependencies {
   implementation deps.kotlin.stdlib.jdk
 
   implementation deps.android.support.annotations
-  implementation deps.android.support.browser
   implementation deps.android.support.cardview
   implementation deps.android.support.constraintLayout
   implementation deps.android.support.core

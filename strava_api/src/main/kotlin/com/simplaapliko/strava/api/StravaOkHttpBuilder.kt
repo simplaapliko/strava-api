@@ -16,6 +16,7 @@
 
 package com.simplaapliko.strava.api
 
+import com.simplaapliko.strava.exception.NotFoundException
 import com.simplaapliko.strava.exception.PaymentRequiredException
 import com.simplaapliko.strava.exception.StravaException
 import com.simplaapliko.strava.exception.TooManyRequestsException
@@ -80,6 +81,7 @@ private class StravaResponseInterceptor : Interceptor {
             }
             401 -> throw UnauthorizedException(responseString)
             402 -> throw PaymentRequiredException(responseString)
+            404 -> throw NotFoundException(responseString)
             429 -> {
                 throw TooManyRequestsException(
                     limit15Minute = limits.limit15Minute,

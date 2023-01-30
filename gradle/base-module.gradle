@@ -14,14 +14,31 @@
  * limitations under the License.
  */
 
-apply from: "$rootDir/gradle/base-module.gradle"
+apply plugin: 'kotlin'
+apply plugin: 'maven-publish'
+
+version = '0.5.3'
+group = 'com.github.simplaapliko'
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId project.group
+            artifactId project.name
+            version project.version
+            from components.java
+        }
+    }
+}
 
 dependencies {
-    implementation deps.json
+    implementation deps.kotlin.stdlib.jdk
 
-    api deps.gson
-
-    api deps.okhttp.client
-    api deps.retrofit.client
-    api deps.reactivex.rxJava2
+    testImplementation deps.test.junit
+    testImplementation deps.truth
 }

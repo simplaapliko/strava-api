@@ -17,12 +17,14 @@
 package com.simplaapliko.stravaapi.app.ui
 
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.simplaapliko.strava.api.ActivityApi
 import com.simplaapliko.strava.api.AthleteApi
 import com.simplaapliko.strava.api.GearApi
 import com.simplaapliko.strava.api.StravaApiV3
 import com.simplaapliko.strava.api.TokenApi
+import com.simplaapliko.stravaapi.R
 import com.simplaapliko.stravaapi.app.data.AuthRepository
 import com.simplaapliko.stravaapi.app.data.AuthSharedPreferencesRepository
 import com.simplaapliko.stravaapi.app.data.DataRepository
@@ -31,7 +33,6 @@ import com.simplaapliko.stravaapi.app.data.TokenRepository
 import com.simplaapliko.stravaapi.app.data.TokenSharedPreferencesRepository
 import com.simplaapliko.stravaapi.app.di.NetworkModule
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.include_response.*
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -51,13 +52,13 @@ abstract class BaseActivity : AppCompatActivity() {
         get() = TokenSharedPreferencesRepository(applicationContext)
 
     fun setProgressVisibility(isVisible: Boolean) {
-        progress.visibility = if (isVisible) View.VISIBLE else View.GONE
+        findViewById<View>(R.id.progress).visibility = if (isVisible) View.VISIBLE else View.GONE
     }
 
     fun errorHandler(throwable: Throwable) {
         setProgressVisibility(false)
 
-        response.text = throwable.message
+        findViewById<TextView>(R.id.response).text = throwable.message
     }
 
     override fun onDestroy() {

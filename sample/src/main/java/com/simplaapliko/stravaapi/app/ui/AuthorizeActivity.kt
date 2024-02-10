@@ -23,7 +23,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.simplaapliko.strava.api.Auth
 import com.simplaapliko.stravaapi.R
-import kotlinx.android.synthetic.main.activity_authorize.*
+import com.simplaapliko.stravaapi.databinding.ActivityAuthorizeBinding
 
 class AuthorizeActivity : AppCompatActivity() {
 
@@ -33,11 +33,14 @@ class AuthorizeActivity : AppCompatActivity() {
         }
     }
 
+    private lateinit var binding: ActivityAuthorizeBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_authorize)
+        binding = ActivityAuthorizeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        authorize.setOnClickListener { authorize() }
+        binding.authorize.setOnClickListener { authorize() }
     }
 
     private fun authorize() {
@@ -61,25 +64,25 @@ class AuthorizeActivity : AppCompatActivity() {
     private fun getScopes(): List<Auth.Scope> {
         val list = mutableListOf<Auth.Scope>()
 
-        if (read.isChecked) {
+        if (binding.read.isChecked) {
             list.add(Auth.Scope.READ)
         }
-        if (read_all.isChecked) {
+        if (binding.readAll.isChecked) {
             list.add(Auth.Scope.READ_ALL)
         }
-        if (profile_read_all.isChecked) {
+        if (binding.profileReadAll.isChecked) {
             list.add(Auth.Scope.PROFILE_READ_ALL)
         }
-        if (profile_write.isChecked) {
+        if (binding.profileWrite.isChecked) {
             list.add(Auth.Scope.PROFILE_WRITE)
         }
-        if (activity_read.isChecked) {
+        if (binding.activityRead.isChecked) {
             list.add(Auth.Scope.ACTIVITY_READ)
         }
-        if (activity_read_all.isChecked) {
+        if (binding.activityReadAll.isChecked) {
             list.add(Auth.Scope.ACTIVITY_READ_ALL)
         }
-        if (activity_write.isChecked) {
+        if (binding.activityWrite.isChecked) {
             list.add(Auth.Scope.ACTIVITY_WRITE)
         }
         return list

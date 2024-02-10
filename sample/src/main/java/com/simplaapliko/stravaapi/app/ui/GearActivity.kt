@@ -21,11 +21,9 @@ import android.content.Intent
 import android.os.Bundle
 import com.simplaapliko.strava.model.Gear
 import com.simplaapliko.strava.model.StravaResponse
-import com.simplaapliko.stravaapi.R
+import com.simplaapliko.stravaapi.databinding.ActivityGearBinding
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_gear.*
-import kotlinx.android.synthetic.main.include_response.*
 
 class GearActivity : BaseActivity() {
 
@@ -35,11 +33,14 @@ class GearActivity : BaseActivity() {
         }
     }
 
+    private lateinit var binding: ActivityGearBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_gear)
+        binding = ActivityGearBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        get_gear.setOnClickListener { getGear() }
+        binding.getGear.setOnClickListener { getGear() }
     }
 
     private fun getGear() {
@@ -48,7 +49,8 @@ class GearActivity : BaseActivity() {
         val athlete = dataRepository.getAuthenticatedAthlete()
 
         if (athlete == null) {
-            response.text = "athlete is null, make Athlete / GetAuthenticatedAthlete service call"
+            binding.response.response.text =
+                "athlete is null, make Athlete / GetAuthenticatedAthlete service call"
             setProgressVisibility(false)
             return
         }
@@ -57,7 +59,7 @@ class GearActivity : BaseActivity() {
             athlete.shoes.isNullOrEmpty().not() -> athlete.shoes?.firstOrNull()?.id
             athlete.bikes.isNullOrEmpty().not() -> athlete.bikes?.firstOrNull()?.id
             else -> {
-                response.text = "athlete doesn't have shoes/bikes"
+                binding.response.response.text = "athlete doesn't have shoes/bikes"
                 setProgressVisibility(false)
                 return
             }
@@ -75,6 +77,6 @@ class GearActivity : BaseActivity() {
 
         dataRepository.setDetailedGear(gear.value)
 
-        response.text = gear.toString()
+        binding.response.response.text = gear.toString()
     }
 }

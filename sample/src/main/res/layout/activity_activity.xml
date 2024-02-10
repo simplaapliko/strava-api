@@ -96,6 +96,8 @@
         android:text="Update Activity"
         />
 
-    <include layout="@layout/include_response" />
+    <include
+        android:id="@+id/response"
+        layout="@layout/include_response" />
 
 </LinearLayout>

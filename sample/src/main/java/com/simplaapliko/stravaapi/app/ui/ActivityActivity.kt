@@ -28,11 +28,9 @@ import com.simplaapliko.strava.model.Photo
 import com.simplaapliko.strava.model.SportType
 import com.simplaapliko.strava.model.StravaResponse
 import com.simplaapliko.strava.model.UpdatableActivity
-import com.simplaapliko.stravaapi.R
+import com.simplaapliko.stravaapi.databinding.ActivityActivityBinding
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_activity.*
-import kotlinx.android.synthetic.main.include_response.*
 
 class ActivityActivity : BaseActivity() {
 
@@ -42,19 +40,22 @@ class ActivityActivity : BaseActivity() {
         }
     }
 
+    private lateinit var binding: ActivityActivityBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_activity)
+        binding = ActivityActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        list_athlete_activities.setOnClickListener { listAthleteActivities() }
-        create_activity.setOnClickListener { createActivity() }
-        get_activity.setOnClickListener { getActivity() }
-        get_activity_comments.setOnClickListener { getActivityComments() }
-        get_activity_kudos.setOnClickListener { getActivityKudos() }
-        get_activity_laps.setOnClickListener { getActivityLaps() }
-        get_activity_photos.setOnClickListener { getActivityPhotos() }
-        get_activity_zones.setOnClickListener { getActivityZones() }
-        update_activity.setOnClickListener { updateActivity() }
+        binding.listAthleteActivities.setOnClickListener { listAthleteActivities() }
+        binding.createActivity.setOnClickListener { createActivity() }
+        binding.getActivity.setOnClickListener { getActivity() }
+        binding.getActivityComments.setOnClickListener { getActivityComments() }
+        binding.getActivityKudos.setOnClickListener { getActivityKudos() }
+        binding.getActivityLaps.setOnClickListener { getActivityLaps() }
+        binding.getActivityPhotos.setOnClickListener { getActivityPhotos() }
+        binding.getActivityZones.setOnClickListener { getActivityZones() }
+        binding.updateActivity.setOnClickListener { updateActivity() }
     }
 
     private fun listAthleteActivities() {
@@ -77,7 +78,7 @@ class ActivityActivity : BaseActivity() {
 
         dataRepository.setActivities(activities.value)
 
-        response.text = activities.toString()
+        binding.response.response.text = activities.toString()
     }
 
     private fun createActivity() {
@@ -102,7 +103,7 @@ class ActivityActivity : BaseActivity() {
     private fun onCreateActivitySuccess(activity: StravaResponse<Activity>) {
         setProgressVisibility(false)
 
-        response.text = activity.toString()
+        binding.response.response.text = activity.toString()
     }
 
     private fun getActivity() {
@@ -111,7 +112,8 @@ class ActivityActivity : BaseActivity() {
         val activity = dataRepository.getActivities()?.firstOrNull()
 
         if (activity == null) {
-            response.text = "activity is null, make List Athlete Activity service call"
+            binding.response.response.text =
+                "activity is null, make List Athlete Activity service call"
             setProgressVisibility(false)
             return
         }
@@ -126,7 +128,7 @@ class ActivityActivity : BaseActivity() {
     private fun onGetActivitySuccess(activity: StravaResponse<Activity>) {
         setProgressVisibility(false)
 
-        response.text = activity.toString()
+        binding.response.response.text = activity.toString()
     }
 
     private fun getActivityComments() {
@@ -135,7 +137,8 @@ class ActivityActivity : BaseActivity() {
         val activity = dataRepository.getActivities()?.firstOrNull()
 
         if (activity == null) {
-            response.text = "activity is null, make List Athlete Activity service call"
+            binding.response.response.text =
+                "activity is null, make List Athlete Activity service call"
             setProgressVisibility(false)
             return
         }
@@ -150,7 +153,7 @@ class ActivityActivity : BaseActivity() {
     private fun onGetActivityCommentsSuccess(comments: StravaResponse<List<Comment>>) {
         setProgressVisibility(false)
 
-        response.text = comments.toString()
+        binding.response.response.text = comments.toString()
     }
 
     private fun getActivityKudos() {
@@ -159,7 +162,8 @@ class ActivityActivity : BaseActivity() {
         val activity = dataRepository.getActivities()?.firstOrNull()
 
         if (activity == null) {
-            response.text = "activity is null, make List Athlete Activity service call"
+            binding.response.response.text =
+                "activity is null, make List Athlete Activity service call"
             setProgressVisibility(false)
             return
         }
@@ -174,7 +178,7 @@ class ActivityActivity : BaseActivity() {
     private fun onGetActivityKudosSuccess(athlets: StravaResponse<List<Athlete>>) {
         setProgressVisibility(false)
 
-        response.text = athlets.toString()
+        binding.response.response.text = athlets.toString()
     }
 
     private fun getActivityLaps() {
@@ -183,7 +187,8 @@ class ActivityActivity : BaseActivity() {
         val activity = dataRepository.getActivities()?.firstOrNull()
 
         if (activity == null) {
-            response.text = "activity is null, make List Athlete Activity service call"
+            binding.response.response.text =
+                "activity is null, make List Athlete Activity service call"
             setProgressVisibility(false)
             return
         }
@@ -198,7 +203,7 @@ class ActivityActivity : BaseActivity() {
     private fun onGetActivityLapsSuccess(laps: StravaResponse<List<Lap>>) {
         setProgressVisibility(false)
 
-        response.text = laps.toString()
+        binding.response.response.text = laps.toString()
     }
 
     private fun getActivityPhotos() {
@@ -207,7 +212,8 @@ class ActivityActivity : BaseActivity() {
         val activity = dataRepository.getActivities()?.firstOrNull()
 
         if (activity == null) {
-            response.text = "activity is null, make List Athlete Activity service call"
+            binding.response.response.text =
+                "activity is null, make List Athlete Activity service call"
             setProgressVisibility(false)
             return
         }
@@ -222,7 +228,7 @@ class ActivityActivity : BaseActivity() {
     private fun onGetActivityPhotosSuccess(photos: StravaResponse<List<Photo>>) {
         setProgressVisibility(false)
 
-        response.text = photos.toString()
+        binding.response.response.text = photos.toString()
     }
 
     private fun getActivityZones() {
@@ -231,7 +237,8 @@ class ActivityActivity : BaseActivity() {
         val activity = dataRepository.getActivities()?.firstOrNull()
 
         if (activity == null) {
-            response.text = "activity is null, make List Athlete Activity service call"
+            binding.response.response.text =
+                "activity is null, make List Athlete Activity service call"
             setProgressVisibility(false)
             return
         }
@@ -246,7 +253,7 @@ class ActivityActivity : BaseActivity() {
     private fun onGetActivityZonesSuccess(zones: StravaResponse<List<ActivityZone>>) {
         setProgressVisibility(false)
 
-        response.text = zones.toString()
+        binding.response.response.text = zones.toString()
     }
 
     private fun updateActivity() {
@@ -255,7 +262,8 @@ class ActivityActivity : BaseActivity() {
         val activity = dataRepository.getActivities()?.firstOrNull()
 
         if (activity == null) {
-            response.text = "activity is null, make List Athlete Activity service call"
+            binding.response.response.text =
+                "activity is null, make List Athlete Activity service call"
             setProgressVisibility(false)
             return
         }
@@ -274,6 +282,6 @@ class ActivityActivity : BaseActivity() {
     private fun onUpdateActivitySuccess(activity: StravaResponse<Activity>) {
         setProgressVisibility(false)
 
-        response.text = activity.toString()
+        binding.response.response.text = activity.toString()
     }
 }

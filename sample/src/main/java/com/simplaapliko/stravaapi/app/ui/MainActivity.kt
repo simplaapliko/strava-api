@@ -17,20 +17,22 @@
 package com.simplaapliko.stravaapi.app.ui
 
 import android.os.Bundle
-import com.simplaapliko.stravaapi.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.simplaapliko.stravaapi.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        activity.setOnClickListener { goToActivityScreen() }
-        athlete.setOnClickListener { goToAthleteScreen() }
-        authorize.setOnClickListener { goToAuthorizeScreen() }
-        gear.setOnClickListener { goToGearScreen() }
-        token.setOnClickListener { goTokenScreen() }
+        binding.activity.setOnClickListener { goToActivityScreen() }
+        binding.athlete.setOnClickListener { goToAthleteScreen() }
+        binding.authorize.setOnClickListener { goToAuthorizeScreen() }
+        binding.gear.setOnClickListener { goToGearScreen() }
+        binding.token.setOnClickListener { goTokenScreen() }
     }
 
     private fun goToActivityScreen() {

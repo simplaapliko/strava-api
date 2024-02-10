@@ -17,7 +17,7 @@
 apply plugin: 'kotlin'
 apply plugin: 'maven-publish'
 
-version = '0.5.3'
+version = '0.6.0'
 group = 'com.github.simplaapliko'
 
 java {

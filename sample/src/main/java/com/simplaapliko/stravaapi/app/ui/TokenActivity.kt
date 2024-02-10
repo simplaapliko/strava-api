@@ -22,10 +22,9 @@ import android.os.Bundle
 import com.simplaapliko.strava.model.RefreshToken
 import com.simplaapliko.strava.model.Token
 import com.simplaapliko.stravaapi.R
+import com.simplaapliko.stravaapi.databinding.ActivityTokenBinding
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_token.*
-import kotlinx.android.synthetic.main.include_response.*
 
 class TokenActivity : BaseActivity() {
 
@@ -35,13 +34,16 @@ class TokenActivity : BaseActivity() {
         }
     }
 
+    private lateinit var binding: ActivityTokenBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_token)
+        binding = ActivityTokenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        get_token.setOnClickListener { getToken() }
-        refresh_token.setOnClickListener { refreshToken() }
-        deauthorize.setOnClickListener { deauthorize() }
+        binding.getToken.setOnClickListener { getToken() }
+        binding.refreshToken.setOnClickListener { refreshToken() }
+        binding.deauthorize.setOnClickListener { deauthorize() }
     }
 
     private fun getToken() {
@@ -66,7 +68,7 @@ class TokenActivity : BaseActivity() {
         tokenRepository.setExpiresAt(token.expiresAt)
         tokenRepository.setRefreshToken(token.refreshToken)
 
-        response.text = token.toString()
+        binding.response.response.text = token.toString()
     }
 
     private fun refreshToken() {
@@ -90,7 +92,7 @@ class TokenActivity : BaseActivity() {
         tokenRepository.setExpiresAt(refreshToken.expiresAt)
         tokenRepository.setRefreshToken(refreshToken.refreshToken)
 
-        response.text = refreshToken.toString()
+        binding.response.response.text = refreshToken.toString()
     }
 
     private fun deauthorize() {
@@ -111,6 +113,6 @@ class TokenActivity : BaseActivity() {
         authRepository.clear()
         tokenRepository.clear()
 
-        response.text = "Deauthorized"
+        binding.response.response.text = "Deauthorized"
     }
 }

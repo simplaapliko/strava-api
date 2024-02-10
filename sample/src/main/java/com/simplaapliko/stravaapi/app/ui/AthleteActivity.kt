@@ -23,11 +23,9 @@ import com.simplaapliko.strava.model.ActivityStats
 import com.simplaapliko.strava.model.Athlete
 import com.simplaapliko.strava.model.StravaResponse
 import com.simplaapliko.strava.model.Zones
-import com.simplaapliko.stravaapi.R
+import com.simplaapliko.stravaapi.databinding.ActivityAthleteBinding
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_athlete.*
-import kotlinx.android.synthetic.main.include_response.*
 
 class AthleteActivity : BaseActivity() {
 
@@ -37,14 +35,17 @@ class AthleteActivity : BaseActivity() {
         }
     }
 
+    private lateinit var binding: ActivityAthleteBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_athlete)
+        binding = ActivityAthleteBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        get_authenticated_athlete.setOnClickListener { getAuthenticatedAthlete() }
-        get_athlete_stats.setOnClickListener { getAthleteStats() }
-        get_zones.setOnClickListener { getZones() }
-        update_athlete.setOnClickListener { updateAthlete() }
+        binding.getAuthenticatedAthlete.setOnClickListener { getAuthenticatedAthlete() }
+        binding.getAthleteStats.setOnClickListener { getAthleteStats() }
+        binding.getZones.setOnClickListener { getZones() }
+        binding.updateAthlete.setOnClickListener { updateAthlete() }
     }
 
     private fun getAuthenticatedAthlete() {
@@ -62,7 +63,7 @@ class AthleteActivity : BaseActivity() {
 
         dataRepository.setAuthenticatedAthlete(athlete.value)
 
-        response.text = athlete.toString()
+        binding.response.response.text = athlete.toString()
     }
 
     private fun getAthleteStats() {
@@ -71,7 +72,7 @@ class AthleteActivity : BaseActivity() {
         val athlete = tokenRepository.getAthlete()
 
         if (athlete == null) {
-            response.text = "athlete is null, make a GetToken service call"
+            binding.response.response.text = "athlete is null, make a GetToken service call"
             setProgressVisibility(false)
             return
         }
@@ -88,7 +89,7 @@ class AthleteActivity : BaseActivity() {
 
         dataRepository.setAthleteStats(activityStats.value)
 
-        response.text = activityStats.toString()
+        binding.response.response.text = activityStats.toString()
     }
 
     private fun getZones() {
@@ -106,7 +107,7 @@ class AthleteActivity : BaseActivity() {
 
         dataRepository.setZones(zones.value)
 
-        response.text = zones.toString()
+        binding.response.response.text = zones.toString()
     }
 
     private fun updateAthlete() {
@@ -122,6 +123,6 @@ class AthleteActivity : BaseActivity() {
     private fun onUpdateAthleteSuccess(athlete: StravaResponse<Athlete>) {
         setProgressVisibility(false)
 
-        response.text = athlete.toString()
+        binding.response.response.text = athlete.toString()
     }
 }

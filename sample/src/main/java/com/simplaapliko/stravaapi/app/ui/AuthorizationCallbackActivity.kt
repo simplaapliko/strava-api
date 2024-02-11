@@ -17,7 +17,7 @@
 package com.simplaapliko.stravaapi.app.ui
 
 import android.os.Bundle
-import com.simplaapliko.strava.api.Auth
+import com.simplaapliko.strava.auth.Auth
 import com.simplaapliko.stravaapi.databinding.ActivityAuthorizationCallbackBinding
 
 class AuthorizationCallbackActivity : BaseActivity() {

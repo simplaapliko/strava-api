@@ -21,7 +21,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.simplaapliko.strava.api.Auth
+import com.simplaapliko.strava.auth.Auth
 import com.simplaapliko.stravaapi.R
 import com.simplaapliko.stravaapi.databinding.ActivityAuthorizeBinding
 

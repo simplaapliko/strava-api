@@ -19,11 +19,12 @@ package com.simplaapliko.stravaapi.app.ui
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.simplaapliko.strava.api.ActivityApi
-import com.simplaapliko.strava.api.AthleteApi
-import com.simplaapliko.strava.api.GearApi
-import com.simplaapliko.strava.api.StravaApiV3
-import com.simplaapliko.strava.api.TokenApi
+import com.simplaapliko.strava.api.rxjava2.ActivityApi
+import com.simplaapliko.strava.api.rxjava2.AthleteApi
+import com.simplaapliko.strava.api.rxjava2.GearApi
+import com.simplaapliko.strava.api.rxjava2.TokenApi
+import com.simplaapliko.strava.api.rxjava2.buildStravaApiRetrofit
+import com.simplaapliko.strava.api.rxjava2.createStravaApi
 import com.simplaapliko.stravaapi.R
 import com.simplaapliko.stravaapi.app.data.AuthRepository
 import com.simplaapliko.stravaapi.app.data.AuthSharedPreferencesRepository
@@ -33,10 +34,7 @@ import com.simplaapliko.stravaapi.app.data.TokenRepository
 import com.simplaapliko.stravaapi.app.data.TokenSharedPreferencesRepository
 import com.simplaapliko.stravaapi.app.di.NetworkModule
 import io.reactivex.disposables.CompositeDisposable
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
 
 abstract class BaseActivity : AppCompatActivity() {
 
@@ -67,33 +65,27 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     fun provideActivityApi(): ActivityApi {
-        return provideApi(provideAuthorizedOkHttpClient(), StravaApiV3.BASE_URL)
+        return provideAuthorizedRetrofit().createStravaApi()
     }
 
     fun provideAthleteApi(): AthleteApi {
-        return provideApi(provideAuthorizedOkHttpClient(), StravaApiV3.BASE_URL)
+        return provideAuthorizedRetrofit().createStravaApi()
     }
 
     fun provideGearApi(): GearApi {
-        return provideApi(provideAuthorizedOkHttpClient(), StravaApiV3.BASE_URL)
+        return provideAuthorizedRetrofit().createStravaApi()
     }
 
     fun provideTokenApi(): TokenApi {
-        return provideApi(NetworkModule().provideOkHttpClient(), StravaApiV3.BASE_URL)
+        return provideRetrofit().createStravaApi()
     }
 
-    private fun provideAuthorizedOkHttpClient(): OkHttpClient {
+    private fun provideAuthorizedRetrofit(): Retrofit {
         val token = tokenRepository.getAccessToken()
-        return NetworkModule().provideOkHttpClient(token)
+        return buildStravaApiRetrofit(NetworkModule().provideOkHttpClient(token))
     }
 
-    private inline fun <reified T> provideApi(client: OkHttpClient, baseUrl: String): T {
-        return Retrofit.Builder()
-            .client(client)
-            .baseUrl(baseUrl)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(T::class.java)
+    private fun provideRetrofit(): Retrofit {
+        return buildStravaApiRetrofit(NetworkModule().provideOkHttpClient())
     }
 }

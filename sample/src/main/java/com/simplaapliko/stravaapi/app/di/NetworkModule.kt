@@ -16,7 +16,7 @@
 
 package com.simplaapliko.stravaapi.app.di
 
-import com.simplaapliko.strava.api.okHttpClientBuilder
+import com.simplaapliko.strava.api.rxjava2.buildStravaApiOkHttpClient
 import com.simplaapliko.stravaapi.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -32,9 +32,11 @@ class NetworkModule {
             logging.level = HttpLoggingInterceptor.Level.NONE
         }
 
-        return okHttpClientBuilder { token }
-            .addInterceptor(logging)
-            .build()
+        val tokenProvider = { token }
+
+        return buildStravaApiOkHttpClient(tokenProvider) {
+            addInterceptor(logging)
+        }
     }
 
     fun provideOkHttpClient(): OkHttpClient {

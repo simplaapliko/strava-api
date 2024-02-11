@@ -57,7 +57,8 @@ android {
 }
 
 dependencies {
-  implementation project(path: ':strava_api')
+  implementation project(path: ':strava-api:rxjava2')
+  implementation project(path: ':strava-api-auth')
 
   implementation deps.kotlin.stdlib.jdk
 

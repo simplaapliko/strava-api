@@ -14,33 +14,9 @@
  * limitations under the License.
  */
 
-apply plugin: 'kotlin'
-apply plugin: 'maven-publish'
+apply from: "$rootDir/gradle/base-module.gradle"
 
-version = '0.7.0'
-group = 'com.github.simplaapliko'
-
-ext {
-    mavenArtifactId = ''
-}
-
-java {
-    withSourcesJar()
-    withJavadocJar()
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            maven(MavenPublication) {
-                groupId project.group
-                artifactId mavenArtifactId
-                version project.version
-                from components.java
-            }
-        }
-    }
-}
+ext.mavenArtifactId = 'auth'
 
 dependencies {
     implementation deps.kotlin.stdlib.jdk

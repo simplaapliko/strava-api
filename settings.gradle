@@ -1,2 +1,6 @@
 include ':sample'
-include ':strava_api'
+
+include ':strava-api:rxjava2'
+
+include ':strava-api-auth'
+include ':strava-api-common'

@@ -19,65 +19,7 @@
 apply plugin: 'com.github.ben-manes.versions'
 
 buildscript {
-
-  ext.buildConfig = [
-      'minSdk'    : 21,
-      'compileSdk': 34,
-      'targetSdk' : 34,
-  ]
-
-  ext.versions = [
-      'dagger'  : '2.50',
-      'kotlin'  : '1.9.22',
-      'okHttp'  : '4.12.0',
-      'retrofit': '2.9.0',
-  ]
-
-  ext.deps = [
-      'android'        : [
-          'support': [
-              'annotations'     : "androidx.annotation:annotation:1.7.1",
-              'cardview'        : "androidx.cardview:cardview:1.0.0",
-              'constraintLayout': "androidx.constraintlayout:constraintlayout:2.1.4",
-              'core'            : "androidx.core:core:1.12.0",
-              'material'        : "com.google.android.material:material:1.11.0",
-          ],
-      ],
-      'analytics'      : [
-          'crashlytics': "com.crashlytics.sdk.android:crashlytics:2.9.8",
-      ],
-      'dagger'         : [
-          'runtime' : "com.google.dagger:dagger:${versions.dagger}",
-          'compiler': "com.google.dagger:dagger-compiler:${versions.dagger}",
-      ],
-      'javaxannotation': "javax.annotation:jsr250-api:1.0",
-      'kotlin'         : [
-          'stdlib': [
-              'jdk': "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
-          ],
-      ],
-      'gson' : "com.google.code.gson:gson:2.10.1",
-      'json' : "org.json:json:20200518",
-      'okhttp'         : [
-          'client' : "com.squareup.okhttp3:okhttp:${versions.okHttp}",
-          'logging': "com.squareup.okhttp3:logging-interceptor:${versions.okHttp}",
-      ],
-      'reactivex'      : [
-          'rxAndroid': "io.reactivex.rxjava2:rxandroid:2.1.1",
-          'rxJava2'  : "io.reactivex.rxjava2:rxjava:2.2.21",
-      ],
-      'retrofit'       : [
-          'client'       :    "com.squareup.retrofit2:retrofit:${versions.retrofit}",
-          'adapterRxJava':    "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}",
-          'converterGson':   "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
-          'converterScalars': "com.squareup.retrofit2:converter-scalars:${versions.retrofit}",
-      ],
-      'test'           : [
-          'mockito': "org.mockito:mockito-core:2.18.3",
-          'junit'  : "junit:junit:4.13",
-      ],
-      'truth'          : "com.google.truth:truth:1.4.0",
-  ]
+  apply from: 'gradle/versions.gradle'
 
   repositories {
     google()

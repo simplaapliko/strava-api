@@ -17,10 +17,3 @@
 apply from: "$rootDir/gradle/base-module.gradle"
 
 ext.mavenArtifactId = 'auth'
-
-dependencies {
-    implementation deps.kotlin.stdlib.jdk
-
-    testImplementation deps.test.junit
-    testImplementation deps.truth
-}

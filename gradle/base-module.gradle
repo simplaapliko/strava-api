@@ -43,8 +43,8 @@ afterEvaluate {
 }
 
 dependencies {
-    implementation deps.kotlin.stdlib.jdk
+    implementation deps.kotlin.stdlib
 
     testImplementation deps.test.junit
-    testImplementation deps.truth
+    testImplementation deps.test.truth
 }

@@ -21,13 +21,13 @@ apply plugin: 'kotlin-kapt'
 android {
   namespace 'com.simplaapliko.stravaapi'
 
-  compileSdkVersion buildConfig.compileSdk
+  compileSdk 34
 
   defaultConfig {
     applicationId "com.simplaapliko.stravaapi"
 
-    minSdkVersion buildConfig.minSdk
-    targetSdkVersion buildConfig.targetSdk
+    minSdkVersion 21
+    targetSdkVersion 34
 
     versionCode 1
     versionName "1.0.0"
@@ -60,25 +60,13 @@ dependencies {
   implementation project(path: ':strava-api:rxjava2')
   implementation project(path: ':strava-api-auth')
 
-  implementation deps.kotlin.stdlib.jdk
+  implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.22"
 
-  implementation deps.android.support.annotations
-  implementation deps.android.support.cardview
-  implementation deps.android.support.constraintLayout
-  implementation deps.android.support.core
-  implementation deps.android.support.material
+  implementation "androidx.annotation:annotation:1.7.1"
+  implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+  implementation "com.google.android.material:material:1.11.0"
 
-  implementation deps.reactivex.rxAndroid
+  implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
 
-  implementation deps.dagger.runtime
-  kapt deps.dagger.compiler
-  compileOnly deps.javaxannotation
-
-  implementation deps.okhttp.client
-  implementation deps.okhttp.logging
-
-  implementation deps.retrofit.adapterRxJava
-  implementation deps.retrofit.converterGson
-
-  testImplementation deps.test.junit
+  implementation "com.squareup.okhttp3:logging-interceptor:4.12.0"
 }

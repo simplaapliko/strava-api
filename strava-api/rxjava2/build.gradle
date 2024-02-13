@@ -24,8 +24,6 @@ dependencies {
     api deps.retrofit.client
     api deps.reactivex.rxJava2
 
-    implementation deps.kotlin.stdlib.jdk
-
     implementation deps.retrofit.adapterRxJava
     implementation deps.retrofit.converterGson
 

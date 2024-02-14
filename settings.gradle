@@ -1,6 +1,7 @@
 include ':sample'
 
 include ':strava-api:code-generator'
+include ':strava-api:coroutine'
 include ':strava-api:rxjava2'
 
 include ':strava-api-auth'

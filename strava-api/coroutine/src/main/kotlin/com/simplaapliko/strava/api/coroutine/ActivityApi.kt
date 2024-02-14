@@ -1,5 +1,5 @@
 // Generated code, do not modify.
-package com.simplaapliko.strava.api.rxjava2
+package com.simplaapliko.strava.api.coroutine
 
 import com.simplaapliko.strava.model.Activity
 import com.simplaapliko.strava.model.ActivityZone
@@ -9,7 +9,6 @@ import com.simplaapliko.strava.model.Lap
 import com.simplaapliko.strava.model.Photo
 import com.simplaapliko.strava.model.StravaResponse
 import com.simplaapliko.strava.model.UpdatableActivity
-import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -31,12 +30,12 @@ public interface ActivityApi {
      * @param perPage Number of items per page. Defaults to 30.
      */
     @GET("athlete/activities")
-    public fun getActivities(
+    public suspend fun getActivities(
         @Query("before") before: Int? = null,
         @Query("after") after: Int? = null,
         @Query("page") page: Int? = null,
         @Query("per_page") perPage: Int? = null,
-    ): Single<StravaResponse<List<Activity>>>
+    ): StravaResponse<List<Activity>>
 
     /**
      * Creates a manual activity for an athlete.
@@ -56,7 +55,7 @@ public interface ActivityApi {
      * @param commute Set to 1 to mark as commute.
      */
     @POST("activities")
-    public fun createActivity(
+    public suspend fun createActivity(
         @Query("name") name: String,
         @Query("type") type: String? = null,
         @Query("sport_type") sportType: String,
@@ -66,7 +65,7 @@ public interface ActivityApi {
         @Query("distance") distance: Float? = null,
         @Query("trainer") trainer: Int? = null,
         @Query("commute") commute: Int? = null,
-    ): Single<StravaResponse<Activity>>
+    ): StravaResponse<Activity>
 
     /**
      * Returns the given activity that is owned by the authenticated athlete.
@@ -76,7 +75,7 @@ public interface ActivityApi {
      * @param id The identifier of the activity.
      */
     @GET("activities/{id}")
-    public fun getActivity(@Path("id") id: Long): Single<StravaResponse<Activity>>
+    public suspend fun getActivity(@Path("id") id: Long): StravaResponse<Activity>
 
     /**
      * Returns the comments on the given activity.
@@ -88,11 +87,11 @@ public interface ActivityApi {
      * @param perPage Number of items per page. Defaults to 30.
      */
     @GET("activities/{id}/comments")
-    public fun getActivityComments(
+    public suspend fun getActivityComments(
         @Path("id") id: Long,
         @Query("page") page: Int? = null,
         @Query("per_page") perPage: Int? = null,
-    ): Single<StravaResponse<List<Comment>>>
+    ): StravaResponse<List<Comment>>
 
     /**
      * Returns the athletes who kudoed an activity identified by an identifier.
@@ -104,11 +103,11 @@ public interface ActivityApi {
      * @param perPage Number of items per page. Defaults to 30.
      */
     @GET("activities/{id}/kudos")
-    public fun getActivityKudos(
+    public suspend fun getActivityKudos(
         @Path("id") id: Long,
         @Query("page") page: Int? = null,
         @Query("per_page") perPage: Int? = null,
-    ): Single<StravaResponse<List<Athlete>>>
+    ): StravaResponse<List<Athlete>>
 
     /**
      * Returns the laps of an activity identified by an identifier.
@@ -118,7 +117,7 @@ public interface ActivityApi {
      * @param id The identifier of the activity.
      */
     @GET("activities/{id}/laps")
-    public fun getActivityLaps(@Path("id") id: Long): Single<StravaResponse<List<Lap>>>
+    public suspend fun getActivityLaps(@Path("id") id: Long): StravaResponse<List<Lap>>
 
     /**
      * Returns photos of an activity identified by an identifier.
@@ -129,8 +128,8 @@ public interface ActivityApi {
      * @param size The size of the photo, default value 5000.
      */
     @GET("activities/{id}/photos")
-    public fun getActivityPhotos(@Path("id") id: Long, @Query("size") size: Int = 5_000):
-            Single<StravaResponse<List<Photo>>>
+    public suspend fun getActivityPhotos(@Path("id") id: Long, @Query("size") size: Int = 5_000):
+            StravaResponse<List<Photo>>
 
     /**
      * Summit Feature. Returns the zones of a given activity.
@@ -140,7 +139,7 @@ public interface ActivityApi {
      * @param id The identifier of the activity.
      */
     @GET("activities/{id}/zones")
-    public fun getActivityZones(@Path("id") id: Long): Single<StravaResponse<List<ActivityZone>>>
+    public suspend fun getActivityZones(@Path("id") id: Long): StravaResponse<List<ActivityZone>>
 
     /**
      * Updates the given activity that is owned by the authenticated athlete.
@@ -150,6 +149,6 @@ public interface ActivityApi {
      * @param id The identifier of the activity.
      */
     @PUT("activities/{id}")
-    public fun updateActivity(@Path("id") id: Long, @Body body: UpdatableActivity):
-            Single<StravaResponse<Activity>>
+    public suspend fun updateActivity(@Path("id") id: Long, @Body body: UpdatableActivity):
+            StravaResponse<Activity>
 }

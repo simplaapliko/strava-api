@@ -1,10 +1,8 @@
 // Generated code, do not modify.
-package com.simplaapliko.strava.api.rxjava2
+package com.simplaapliko.strava.api.coroutine
 
 import com.simplaapliko.strava.model.RefreshToken
 import com.simplaapliko.strava.model.Token
-import io.reactivex.Completable
-import io.reactivex.Single
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
@@ -19,12 +17,12 @@ public interface TokenApi {
      */
     @FormUrlEncoded
     @POST("oauth/token")
-    public fun token(
+    public suspend fun token(
         @Field("client_id") clientId: Int,
         @Field("client_secret") clientSecret: String,
         @Field("code") code: String,
         @Field("grant_type") grantType: String = "authorization_code",
-    ): Single<Token>
+    ): Token
 
     /**
      * @param clientId The application’s ID, obtained during registration.
@@ -36,17 +34,17 @@ public interface TokenApi {
      */
     @FormUrlEncoded
     @POST("oauth/token")
-    public fun refreshToken(
+    public suspend fun refreshToken(
         @Field("client_id") clientId: Int,
         @Field("client_secret") clientSecret: String,
         @Field("refresh_token") refreshToken: String,
         @Field("grant_type") grantType: String = "refresh_token",
-    ): Single<RefreshToken>
+    ): RefreshToken
 
     /**
      * @param accessToken Responds with the refresh tokens that were revoked.
      */
     @FormUrlEncoded
     @POST("oauth/deauthorize")
-    public fun deauthorize(@Field("access_token") accessToken: String): Completable
+    public suspend fun deauthorize(@Field("access_token") accessToken: String)
 }

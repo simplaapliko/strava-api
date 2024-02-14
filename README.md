@@ -16,9 +16,12 @@ dependencies {
     ...
     
     // add specific version
-    implementation 'com.github.simplaapliko:strava-api:x.y.z'
+    implementation 'com.github.simplaapliko.strava-api:auth:x.y.z'
+    implementation 'com.github.simplaapliko.strava-api:common:x.y.z'
+    implementation 'com.github.simplaapliko.strava-api:coroutine:x.y.z'
+    implementation 'com.github.simplaapliko.strava-api:rxjava2:x.y.z'
     
     // or a snapshot
-    // implementation 'com.github.simplaapliko:strava-api:master-SNAPSHOT'
+    // implementation 'com.github.simplaapliko.strava-api:auth:master-SNAPSHOT'
 }
 ```

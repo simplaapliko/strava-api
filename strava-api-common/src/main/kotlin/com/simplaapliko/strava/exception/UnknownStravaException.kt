@@ -16,4 +16,6 @@
 
 package com.simplaapliko.strava.exception
 
-class UnknownStravaException(message: String) : RuntimeException(message)
+import java.io.IOException
+
+class UnknownStravaException(message: String) : IOException(message)

@@ -16,4 +16,6 @@
 
 package com.simplaapliko.strava.exception
 
-class UnauthorizedException(message: String) : RuntimeException(message)
+import java.io.IOException
+
+class UnauthorizedException(message: String) : IOException(message)

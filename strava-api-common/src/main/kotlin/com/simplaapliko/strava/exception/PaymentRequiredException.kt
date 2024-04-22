@@ -16,4 +16,6 @@
 
 package com.simplaapliko.strava.exception
 
-class PaymentRequiredException(message: String) : RuntimeException(message)
+import java.io.IOException
+
+class PaymentRequiredException(message: String) : IOException(message)

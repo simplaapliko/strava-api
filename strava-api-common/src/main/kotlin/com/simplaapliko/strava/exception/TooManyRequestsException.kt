@@ -16,13 +16,15 @@
 
 package com.simplaapliko.strava.exception
 
+import java.io.IOException
+
 class TooManyRequestsException(
     val limit15Minute: Int?,
     val limitDaily: Int?,
     val usage15Minute: Int?,
     val usageDaily: Int?,
     message: String,
-) : RuntimeException(message) {
+) : IOException(message) {
 
     fun is15MinuteLimitReached(): Boolean {
         return usage15Minute != null && limit15Minute != null && usage15Minute >= limit15Minute

@@ -16,4 +16,6 @@
 
 package com.simplaapliko.strava.exception
 
-class NotFoundException(message: String) : RuntimeException(message)
+import java.io.IOException
+
+class NotFoundException(message: String) : IOException(message)

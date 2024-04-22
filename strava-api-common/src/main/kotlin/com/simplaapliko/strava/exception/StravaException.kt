@@ -16,4 +16,6 @@
 
 package com.simplaapliko.strava.exception
 
-class StravaException(message: String) : RuntimeException(message)
+import java.io.IOException
+
+class StravaException(message: String) : IOException(message)

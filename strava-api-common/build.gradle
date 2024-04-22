@@ -20,10 +20,10 @@ ext.mavenArtifactId = 'common'
 
 dependencies {
     implementation deps.json
+    implementation deps.retrofit.converterGson
 
     api deps.gson
 
     api deps.okhttp.client
     api deps.retrofit.client
-    api deps.reactivex.rxJava2
 }

@@ -19,12 +19,12 @@ package com.simplaapliko.stravaapi.app.ui
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.simplaapliko.strava.api.buildStravaApiRetrofit
+import com.simplaapliko.strava.api.createStravaApi
 import com.simplaapliko.strava.api.rxjava2.ActivityApi
 import com.simplaapliko.strava.api.rxjava2.AthleteApi
 import com.simplaapliko.strava.api.rxjava2.GearApi
 import com.simplaapliko.strava.api.rxjava2.TokenApi
-import com.simplaapliko.strava.api.rxjava2.buildStravaApiRetrofit
-import com.simplaapliko.strava.api.rxjava2.createStravaApi
 import com.simplaapliko.stravaapi.R
 import com.simplaapliko.stravaapi.app.data.AuthRepository
 import com.simplaapliko.stravaapi.app.data.AuthSharedPreferencesRepository
@@ -35,6 +35,7 @@ import com.simplaapliko.stravaapi.app.data.TokenSharedPreferencesRepository
 import com.simplaapliko.stravaapi.app.di.NetworkModule
 import io.reactivex.disposables.CompositeDisposable
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 
 abstract class BaseActivity : AppCompatActivity() {
 
@@ -82,10 +83,14 @@ abstract class BaseActivity : AppCompatActivity() {
 
     private fun provideAuthorizedRetrofit(): Retrofit {
         val token = tokenRepository.getAccessToken()
-        return buildStravaApiRetrofit(NetworkModule().provideOkHttpClient(token))
+        return buildStravaApiRetrofit(NetworkModule().provideOkHttpClient(token)) {
+            addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        }
     }
 
     private fun provideRetrofit(): Retrofit {
-        return buildStravaApiRetrofit(NetworkModule().provideOkHttpClient())
+        return buildStravaApiRetrofit(NetworkModule().provideOkHttpClient()) {
+            addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        }
     }
 }

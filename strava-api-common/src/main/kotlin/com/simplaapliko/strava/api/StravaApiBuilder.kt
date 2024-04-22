@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-package com.simplaapliko.strava.api.rxjava2
+package com.simplaapliko.strava.api
 
 import com.simplaapliko.strava.api.StravaApiV3.BASE_URL
-import com.simplaapliko.strava.api.StravaAuthorizationInterceptor
-import com.simplaapliko.strava.api.StravaResponseInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 inline fun <reified T> Retrofit.createStravaApi(): T = create(T::class.java)
@@ -34,7 +31,6 @@ fun buildStravaApiRetrofit(
         .baseUrl(BASE_URL)
         .client(client)
         .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
 
     if (applyToBuilder != null) {
         builder.applyToBuilder()

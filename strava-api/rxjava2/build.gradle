@@ -21,11 +21,7 @@ ext.mavenArtifactId = 'rxjava2'
 dependencies {
     api project(path: ':strava-api-common')
 
-    api deps.retrofit.client
     api deps.reactivex.rxJava2
-
-    implementation deps.retrofit.adapterRxJava
-    implementation deps.retrofit.converterGson
 
     implementation deps.json
     implementation deps.gson

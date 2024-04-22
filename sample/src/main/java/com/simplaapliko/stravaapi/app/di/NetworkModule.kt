@@ -16,7 +16,7 @@
 
 package com.simplaapliko.stravaapi.app.di
 
-import com.simplaapliko.strava.api.rxjava2.buildStravaApiOkHttpClient
+import com.simplaapliko.strava.api.buildStravaApiOkHttpClient
 import com.simplaapliko.stravaapi.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

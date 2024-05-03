@@ -56,22 +56,7 @@ internal class StravaResponseInterceptor : Interceptor {
 
         when (response.code) {
             200, 201 -> {
-                val jsonObject = JSONObject()
-                jsonObject.put("limit15Minute", limits.limit15Minute)
-                jsonObject.put("limitDaily", limits.limitDaily)
-                jsonObject.put("readLimit15Minute", limits.readLimit15Minute)
-                jsonObject.put("readLimitDaily", limits.readLimitDaily)
-                jsonObject.put("usage15Minute", limits.usage15Minute)
-                jsonObject.put("usageDaily", limits.usageDaily)
-
-                if (responseString.startsWith("[")) {
-                    jsonObject.put("value", JSONArray(responseString))
-                } else {
-                    jsonObject.put("value", JSONObject(responseString))
-                }
-
-                val contentType: MediaType? = responseBody.contentType()
-                val body: ResponseBody = jsonObject.toString().toResponseBody(contentType)
+                val body = buildResponseBody(responseString, responseBody.contentType(), limits)
                 return response.newBuilder().body(body).build()
             }
             401 -> throw UnauthorizedException(responseString)
@@ -91,6 +76,28 @@ internal class StravaResponseInterceptor : Interceptor {
             500 -> throw StravaException(responseString)
             else -> throw UnknownStravaException(responseString)
         }
+    }
+
+    private fun buildResponseBody(
+        responseString: String,
+        contentType: MediaType?,
+        limits: Limits,
+    ): ResponseBody {
+        val jsonObject = JSONObject()
+        jsonObject.put("limit15Minute", limits.limit15Minute)
+        jsonObject.put("limitDaily", limits.limitDaily)
+        jsonObject.put("readLimit15Minute", limits.readLimit15Minute)
+        jsonObject.put("readLimitDaily", limits.readLimitDaily)
+        jsonObject.put("usage15Minute", limits.usage15Minute)
+        jsonObject.put("usageDaily", limits.usageDaily)
+
+        if (responseString.startsWith("[")) {
+            jsonObject.put("value", JSONArray(responseString))
+        } else {
+            jsonObject.put("value", JSONObject(responseString))
+        }
+
+        return jsonObject.toString().toResponseBody(contentType)
     }
 }
 

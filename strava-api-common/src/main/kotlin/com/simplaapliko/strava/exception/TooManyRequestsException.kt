@@ -21,6 +21,8 @@ import java.io.IOException
 class TooManyRequestsException(
     val limit15Minute: Int?,
     val limitDaily: Int?,
+    val readLimit15Minute: Int?,
+    val readLimitDaily: Int?,
     val usage15Minute: Int?,
     val usageDaily: Int?,
     message: String,
@@ -32,5 +34,13 @@ class TooManyRequestsException(
 
     fun isDailyLimitReached(): Boolean {
         return usageDaily != null && limitDaily != null && usageDaily >= limitDaily
+    }
+
+    fun is15MinuteReadLimitReached(): Boolean {
+        return usage15Minute != null && readLimit15Minute != null && usage15Minute >= readLimit15Minute
+    }
+
+    fun isDailyReadLimitReached(): Boolean {
+        return usageDaily != null && readLimitDaily != null && usageDaily >= readLimitDaily
     }
 }

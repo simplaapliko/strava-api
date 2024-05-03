@@ -59,6 +59,8 @@ internal class StravaResponseInterceptor : Interceptor {
                 val jsonObject = JSONObject()
                 jsonObject.put("limit15Minute", limits.limit15Minute)
                 jsonObject.put("limitDaily", limits.limitDaily)
+                jsonObject.put("readLimit15Minute", limits.readLimit15Minute)
+                jsonObject.put("readLimitDaily", limits.readLimitDaily)
                 jsonObject.put("usage15Minute", limits.usage15Minute)
                 jsonObject.put("usageDaily", limits.usageDaily)
 
@@ -79,6 +81,8 @@ internal class StravaResponseInterceptor : Interceptor {
                 throw TooManyRequestsException(
                     limit15Minute = limits.limit15Minute,
                     limitDaily = limits.limitDaily,
+                    readLimit15Minute = limits.readLimit15Minute,
+                    readLimitDaily = limits.readLimitDaily,
                     usage15Minute = limits.usage15Minute,
                     usageDaily = limits.usageDaily,
                     message = responseString
@@ -90,20 +94,25 @@ internal class StravaResponseInterceptor : Interceptor {
     }
 }
 
-private const val LIMIT_HEADER = "X-RateLimit-Limit"
-private const val USAGE_HEADER = "X-RateLimit-Usage"
+private const val RATE_LIMIT_LIMIT = "x-ratelimit-limit"
+private const val RATE_LIMIT_USAGE = "x-ratelimit-usage"
+private const val READ_RATE_LIMIT_LIMIT = "x-readratelimit-limit"
 
 private fun getLimits(headers: Headers): Limits {
-    val limits = headers[LIMIT_HEADER]
-    val usages = headers[USAGE_HEADER]
+    val rateLimits = headers[RATE_LIMIT_LIMIT]
+    val readRateLimits = headers[READ_RATE_LIMIT_LIMIT]
+    val rateLimitUsages = headers[RATE_LIMIT_USAGE]
 
-    return if (limits != null && usages != null) {
-        val limitsArray = limits.split(",").map { it.toInt() }
-        val usagesArray = usages.split(",").map { it.toInt() }
+    return if (rateLimits != null && rateLimitUsages != null && readRateLimits != null) {
+        val limitsArray = rateLimits.split(",").map { it.toInt() }
+        val readLimitsArray = readRateLimits.split(",").map { it.toInt() }
+        val usagesArray = rateLimitUsages.split(",").map { it.toInt() }
 
         Limits(
             limit15Minute = limitsArray.first(),
             limitDaily = limitsArray.last(),
+            readLimit15Minute = readLimitsArray.first(),
+            readLimitDaily = readLimitsArray.last(),
             usage15Minute = usagesArray.first(),
             usageDaily = usagesArray.last()
         )
@@ -115,6 +124,8 @@ private fun getLimits(headers: Headers): Limits {
 private data class Limits(
     val limit15Minute: Int? = null,
     val limitDaily: Int? = null,
+    val readLimit15Minute: Int? = null,
+    val readLimitDaily: Int? = null,
     val usage15Minute: Int? = null,
     val usageDaily: Int? = null,
 )
